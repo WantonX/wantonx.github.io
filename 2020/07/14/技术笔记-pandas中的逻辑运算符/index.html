@@ -17,7 +17,7 @@
   <meta name="description" content="">
   <meta name="author" content="ZiJie Xu">
   <meta name="keywords" content="">
-  <title>[学习笔记]模型的灵敏度分析和稳健性分析方法 - WantonX</title>
+  <title>[技术笔记]pandas中的逻辑运算符 - WantonX</title>
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
 
@@ -164,8 +164,8 @@
               
   <div class="mt-3 post-meta">
     <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-    <time datetime="2020-07-13 20:46">
-      2020年7月13日 晚上
+    <time datetime="2020-07-14 09:43">
+      2020年7月14日 上午
     </time>
   </div>
 
@@ -175,7 +175,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      671 字
+      429 字
     </span>
   
 
@@ -216,13 +216,31 @@
           <div class="post-content mx-auto" id="post">
             
             <article class="markdown-body">
-              <p>在完成做出假设，用符号表示有关量，列出数学表达式，求解得到答案后，还需要对所得到的答案进行<em>灵敏度分析</em>和<em>稳健性分析</em>。本文旨在复习所学到的检验分析方法。</p>
-<p><strong><em>灵敏度分析</em></strong>的意义在于，所得数据为测量值，与实际值可能存在差异，如果模型的输出对模型的输入很敏感，可能导致模型的偏误被放大，因此要对模型进行灵敏度分析。这让我联想到伍德里奇《计量经济学》第九章对于数据问题的再讨论，即解释变量的测量误差在CEV假定下，会对有误差的估计量造成衰减偏误，其他解释变量同样受到影响。</p>
-<p>而<strong><em>稳健性分析</em></strong>在旨在放松假定，对更一般化的情况进行检验，毕竟假设往往线性、简单、理想化，可能与实际结果不符合。</p>
-<h2 id="灵敏度分析"><a href="#灵敏度分析" class="headerlink" title="灵敏度分析"></a>灵敏度分析</h2><h3 id="方法一：数值法"><a href="#方法一：数值法" class="headerlink" title="方法一：数值法"></a>方法一：数值法</h3><p>对可能存在的误差大小进行估计，将观测值根据误差范围进行调整再输入模型，观察观测值的改变量大小对输出值改变量大小的影响（当然都是相对指标，一般以百分比衡量）。在输入时多参数的情况下，一般有两种思路：（1）只改变一个参数，保持其他参数不变，用来检验最不容易确定的参数；（2）改变若干参数，考察一组参数的稳定性，因为可能参数之间本就存在协同性。</p>
-<h3 id="方法二：解析法"><a href="#方法二：解析法" class="headerlink" title="方法二：解析法"></a>方法二：解析法</h3><p>数值法是直接带入数据进行计算，而解析法则是通过对公式的分析，从数学模型上得到一个相对变化率，再带入数值检验，<strong>更加精确</strong>。如单输入-单输出情形下，变化率的求解就很简单。但其也存在其显而易见的缺点：在多输入-多输出情况下，<strong>获得精确的解析式非常困难</strong>；<strong>很多问题是离散的</strong>。</p>
-<h2 id="稳健性分析"><a href="#稳健性分析" class="headerlink" title="稳健性分析"></a>稳健性分析</h2><p>在很多实际问题中，为了简单起见，我们往往会做出许多线性化的假设，同时也会将某些与时间有关的变量假设成与时间无关的常量，这使得得到的数学模型有很大的局限性。</p>
-<p>对已有模型进行强健性分析是指将模型中线性化的假设改为更一般的非线性情形，同时将常量改为变量，然后重新分析、建模、求解。</p>
+              <p>首先需要说明的是，在pandas中进行逻辑运算时，其运算符不再是<strong>and</strong>;<strong>or</strong>;<strong>not</strong>，转而变成了相对应的<strong>&amp;</strong>，<strong>|</strong>，<strong>～</strong>，<sup><a href="#fn_1" id="reffn_1">1</a></sup>如下列代码:</p>
+<pre><code>In [129]: s = pd.Series(range(-3, 4))
+ In [132]: s[(s &lt; -1) | (s &gt; 0.5)]
+ Out[132]: 
+            0   -3
+            1   -2
+            4    1
+            5    2
+            6    3
+            dtype: int64 
+</code></pre><p>其原因是什么？查阅了网上的一些<a href="https://www.imooc.com/wenda/detail/567532" target="_blank" rel="noopener">资料</a>发现，是因为当我们使用and，or，not等运算符时，python自动将运算符两边的式子转换为bool类型再进行比较，而在pandas的Series、DataFrame以及numpy的array上，是没有bool值的，所以在元素级的操作上使用&amp;、|、～代替。</p>
+<p>（题外话：当然更具体的我也不是很清楚，这有待后续学习了《流畅的python》后再验证，一想到github上就有电子版，我还傻乎乎花了一百多买了个新书我就很心痛）</p>
+<p>值得注意的是，其<strong>元素符优先级</strong>也发生了改变，在pandas中，这类逻辑运算符优先级很高，因此运算符两侧最好时刻都<strong>加上括号</strong>，防止不必要的错误。比如：</p>
+<pre><code>In[23]: army[(army.deaths &gt; 500) | (army.deaths &lt; 50)]
+Out[23]: regiment    company    deaths    battles    size    veterans    readiness    armored    deserters
+origin                                    
+Arizona    Nighthawks    1st    523    5    1045    1    1    1    4
+Texas    Nighthawks    2nd    25    2    1099    62    3    1    31
+Florida    Nighthawks    2nd    616    2    1400    26    3    1    2
+Maine    Dragoons    1st    43    4    1592    73    2    0    3
+Alaska    Dragoons    2nd    523    8    987    949    2    0    24
+Louisana    Scouts    2nd    37    8    1099    63    2    1    2
+Georgia    Scouts    2nd    35    9    1523    345    3    1    3
+</code></pre><p>是正确的，而<em>army[army.deaths &gt; 500 | army.deaths &lt; 50]</em>则会报错：<em>ValueError: The truth value of a Series is ambiguous. Use a.empty, a.bool(), a.item(), a.any() or a.all().</em></p>
+<h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><p><sup><a href="#fn_1" id="reffn_1">1</a></sup>： 来源：<a href="https://blog.csdn.net/claroja/article/details/65661826" target="_blank" rel="noopener">https://blog.csdn.net/claroja/article/details/65661826</a> </p>
 
             </article>
             <hr>
@@ -232,9 +250,9 @@
                   <div class="post-meta mr-3">
                     <i class="iconfont icon-category"></i>
                     
-                      <a class="hover-with-bg" href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</a>
+                      <a class="hover-with-bg" href="/categories/%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0/">技术笔记</a>
                     
-                      <a class="hover-with-bg" href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1/">数学建模</a>
+                      <a class="hover-with-bg" href="/categories/%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0/python/">python</a>
                     
                   </div>
                 
@@ -242,9 +260,7 @@
                   <div class="post-meta">
                     <i class="iconfont icon-tags"></i>
                     
-                      <a class="hover-with-bg" href="/tags/%E7%81%B5%E6%95%8F%E5%BA%A6%E5%88%86%E6%9E%90/">灵敏度分析</a>
-                    
-                      <a class="hover-with-bg" href="/tags/%E7%A8%B3%E5%81%A5%E6%80%A7%E5%88%86%E6%9E%90/">稳健性分析</a>
+                      <a class="hover-with-bg" href="/tags/%E9%80%BB%E8%BE%91%E8%BF%90%E7%AE%97%E7%AC%A6/">逻辑运算符</a>
                     
                   </div>
                 
@@ -257,18 +273,12 @@
                   <div class="post-prev col-6">
                     
                     
-                      <a href="/2020/07/14/%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0-pandas%E4%B8%AD%E7%9A%84%E9%80%BB%E8%BE%91%E8%BF%90%E7%AE%97%E7%AC%A6/">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">[技术笔记]pandas中的逻辑运算符</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </div>
                   <div class="post-next col-6">
                     
                     
-                      <a href="/2020/07/12/hello-world/">
-                        <span class="hidden-mobile">Hello World</span>
+                      <a href="/2020/07/13/%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0-%E6%A8%A1%E5%9E%8B%E7%9A%84%E7%81%B5%E6%95%8F%E5%BA%A6%E5%88%86%E6%9E%90%E5%92%8C%E7%A8%B3%E5%81%A5%E6%80%A7%E5%88%86%E6%9E%90%E6%96%B9%E6%B3%95/">
+                        <span class="hidden-mobile">[学习笔记]模型的灵敏度分析和稳健性分析方法</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
@@ -439,7 +449,7 @@
     var typed = new Typed('#subtitle', {
       strings: [
         '  ',
-        "[学习笔记]模型的灵敏度分析和稳健性分析方法&nbsp;",
+        "[技术笔记]pandas中的逻辑运算符&nbsp;",
       ],
       cursorChar: "|",
       typeSpeed: 60,
