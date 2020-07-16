@@ -17,7 +17,7 @@
   <meta name="description" content="">
   <meta name="author" content="ZiJie Xu">
   <meta name="keywords" content="">
-  <title>[学习笔记]数学规划模型初识 - WantonX</title>
+  <title>[学习笔记]数学规划模型深入 - WantonX</title>
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
 
@@ -164,8 +164,8 @@
               
   <div class="mt-3 post-meta">
     <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-    <time datetime="2020-07-16 13:39">
-      2020年7月16日 下午
+    <time datetime="2020-07-16 20:19">
+      2020年7月16日 晚上
     </time>
   </div>
 
@@ -175,7 +175,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      451 字
+      444 字
     </span>
   
 
@@ -216,19 +216,38 @@
           <div class="post-content mx-auto" id="post">
             
             <article class="markdown-body">
-              <h2 id="数学规划模型的三要素"><a href="#数学规划模型的三要素" class="headerlink" title="数学规划模型的三要素"></a>数学规划模型的三要素</h2><ol>
-<li>决策变量</li>
-<li>目标函数</li>
-<li>约束条件</li>
+              <h2 id="一个例题"><a href="#一个例题" class="headerlink" title="一个例题"></a>一个例题</h2><p><img src="/2020/07/16/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E6%95%B0%E5%AD%A6%E8%A7%84%E5%88%92%E6%A8%A1%E5%9E%8B%E6%B7%B1%E5%85%A5/1.jpg" srcset="/img/loading.gif" alt></p>
+<h3 id="第一小问"><a href="#第一小问" class="headerlink" title="第一小问"></a>第一小问</h3><p>第一小问比较好解决，典型的线性规划问题，列举出所有的切割模式（共7种）后，将第i种模式切割的原料钢管根数作为决策变量即可，唯一需要注意的是，约束条件不能是三种钢管个数恰好=(50,20,15)，而应该是&gt;=(50,20,15)，否则可能会造成无解。</p>
+<h3 id="第二小问"><a href="#第二小问" class="headerlink" title="第二小问"></a>第二小问</h3><p>第二小问增加了一种需求和一个约束条件：5米10根；切割模式不超过3种。用枚举法确定合理切割模式较为复杂，因此不如将使用哪种模式也加入决策变量，让lingo自己解决这个问题。当然这需要一个人为的合理度量，此处选择为每根余料不超过3米，即如下附加约束条件：<br><img src="/2020/07/16/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E6%95%B0%E5%AD%A6%E8%A7%84%E5%88%92%E6%A8%A1%E5%9E%8B%E6%B7%B1%E5%85%A5/2.jpg" srcset="/img/loading.gif" alt></p>
+<p>原本的线性约束条件也因此变成了未知量*未知量的非线性约束组合：<br><img src="/2020/07/16/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E6%95%B0%E5%AD%A6%E8%A7%84%E5%88%92%E6%A8%A1%E5%9E%8B%E6%B7%B1%E5%85%A5/3.jpg" srcset="/img/loading.gif" alt></p>
+<p>还可以通过人为增加决策变量的约束减少计算量。</p>
+<h2 id="一些小结"><a href="#一些小结" class="headerlink" title="一些小结"></a>一些小结</h2><h3 id="可能的解"><a href="#可能的解" class="headerlink" title="可能的解"></a>可能的解</h3><ol>
+<li>全局最优解</li>
+<li>局部最优解</li>
+<li>中断解</li>
 </ol>
-<h2 id="0-1变量的运算特点"><a href="#0-1变量的运算特点" class="headerlink" title="0-1变量的运算特点"></a>0-1变量的运算特点</h2><p>在0-1变量中，<img src="/2020/07/16/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E6%95%B0%E5%AD%A6%E8%A7%84%E5%88%92%E6%A8%A1%E5%9E%8B%E5%88%9D%E8%AF%86/1.png" srcset="/img/loading.gif" alt>，两者互为充要条件，而在一般情形下，前者是后者的充分不必要条件。</p>
-<p>0-1变量还可以描述约束条件（if-else）关系，<img src="/2020/07/16/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E6%95%B0%E5%AD%A6%E8%A7%84%E5%88%92%E6%A8%A1%E5%9E%8B%E5%88%9D%E8%AF%86/2.jpg" srcset="/img/loading.gif" alt>，如图例题所示。</p>
-<h2 id="多目标规划模型的处理方法"><a href="#多目标规划模型的处理方法" class="headerlink" title="多目标规划模型的处理方法"></a>多目标规划模型的处理方法</h2><p>多目标规划下，往往这n个目标<strong>相互矛盾</strong>，其解决思路是转变多目标规划为单目标规划。</p>
-<h3 id="方法一：按照目标的重要性分步求解"><a href="#方法一：按照目标的重要性分步求解" class="headerlink" title="方法一：按照目标的重要性分步求解"></a>方法一：按照目标的重要性分步求解</h3><p>如在选课策略模型中，任务要求选修课程最少，且学分尽量多，应学习哪些课程。首先认为选修课程最少为第一目标，在此基础上加入课程总门数的约束，再进行求解。</p>
-<h4 id="缺点："><a href="#缺点：" class="headerlink" title="缺点："></a>缺点：</h4><p>如果有更多个目标，那么很难对目标的重要性进行排序。<br>即使排出顺序，也需要求解很多个单目标规划。<br>当第一个目标对应的单目标规划问题的最优解唯一时，后面的单目标规划丧失意义，并且对于整数规划，Lingo无法告诉我们最优解是否唯一。</p>
-<h3 id="方法二：将多目标加权求和变为单目标"><a href="#方法二：将多目标加权求和变为单目标" class="headerlink" title="方法二：将多目标加权求和变为单目标"></a>方法二：将多目标加权求和变为单目标</h3><p>显然加权系数取决于该目标的重要性。</p>
-<h4 id="缺点：-1"><a href="#缺点：-1" class="headerlink" title="缺点："></a>缺点：</h4><p>由于多个目标之间单位、数量级不一致，导致综合目标没有实际意义。<br>权重系数难以确定。</p>
-<h4 id="注意点："><a href="#注意点：" class="headerlink" title="注意点："></a>注意点：</h4><p>在多个目标的方向不一致（max/min）时，如果综合目标是max，则需要将子目标是min的取相反数再综合。<br>权重还可以为函数，模型会变复杂，但稳健性提升了。</p>
+<h3 id="基本类型"><a href="#基本类型" class="headerlink" title="基本类型"></a>基本类型</h3><ol>
+<li>按照有无约束</li>
+</ol>
+<p>（1）约束优化（constrained optimization）</p>
+<p>（2）无约束优化（unconstrained opt）</p>
+<ol>
+<li>按照决策变量x的分量取值</li>
+</ol>
+<p>（1）连续优化/数学规划（continuous opt / mathematical programming）</p>
+<p>（2）离散优化/组合优化（discrete opt / combinatorial opt ）</p>
+<ol>
+<li>按照目标函数的个数</li>
+</ol>
+<p>单目标规划与多目标规划</p>
+<ol>
+<li>按照参数或者决策变量是否具有不确定性</li>
+</ol>
+<p>确定性规划与不确定性规划（如随机规划、模糊规划等）</p>
+<ol>
+<li>按照目标函数f，约束条件g、h是否连续可微</li>
+</ol>
+<p>光滑优化与非光滑优化</p>
 
             </article>
             <hr>
@@ -240,7 +259,7 @@
                     
                       <a class="hover-with-bg" href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</a>
                     
-                      <a class="hover-with-bg" href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E6%95%B0%E5%AD%A6%E6%A8%A1%E5%9E%8B/">数学模型</a>
+                      <a class="hover-with-bg" href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1/">数学建模</a>
                     
                   </div>
                 
@@ -261,18 +280,12 @@
                   <div class="post-prev col-6">
                     
                     
-                      <a href="/2020/07/16/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E6%95%B0%E5%AD%A6%E8%A7%84%E5%88%92%E6%A8%A1%E5%9E%8B%E6%B7%B1%E5%85%A5/">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">[学习笔记]数学规划模型深入</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </div>
                   <div class="post-next col-6">
                     
                     
-                      <a href="/2020/07/14/%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0-pandas%E4%B8%AD%E7%9A%84%E9%80%BB%E8%BE%91%E8%BF%90%E7%AE%97%E7%AC%A6/">
-                        <span class="hidden-mobile">[技术笔记]pandas中的逻辑运算符</span>
+                      <a href="/2020/07/16/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E6%95%B0%E5%AD%A6%E8%A7%84%E5%88%92%E6%A8%A1%E5%9E%8B%E5%88%9D%E8%AF%86/">
+                        <span class="hidden-mobile">[学习笔记]数学规划模型初识</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
@@ -443,7 +456,7 @@
     var typed = new Typed('#subtitle', {
       strings: [
         '  ',
-        "[学习笔记]数学规划模型初识&nbsp;",
+        "[学习笔记]数学规划模型深入&nbsp;",
       ],
       cursorChar: "|",
       typeSpeed: 60,

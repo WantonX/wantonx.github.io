@@ -4,6 +4,33 @@
   
   
   <entry>
+    <title>[学习笔记]数学规划模型深入</title>
+    <link href="/2020/07/16/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E6%95%B0%E5%AD%A6%E8%A7%84%E5%88%92%E6%A8%A1%E5%9E%8B%E6%B7%B1%E5%85%A5/"/>
+    <url>/2020/07/16/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E6%95%B0%E5%AD%A6%E8%A7%84%E5%88%92%E6%A8%A1%E5%9E%8B%E6%B7%B1%E5%85%A5/</url>
+    
+    <content type="html"><![CDATA[<h2 id="一个例题"><a href="#一个例题" class="headerlink" title="一个例题"></a>一个例题</h2><p><img src="/2020/07/16/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E6%95%B0%E5%AD%A6%E8%A7%84%E5%88%92%E6%A8%A1%E5%9E%8B%E6%B7%B1%E5%85%A5/1.jpg" srcset="/img/loading.gif" alt></p><h3 id="第一小问"><a href="#第一小问" class="headerlink" title="第一小问"></a>第一小问</h3><p>第一小问比较好解决，典型的线性规划问题，列举出所有的切割模式（共7种）后，将第i种模式切割的原料钢管根数作为决策变量即可，唯一需要注意的是，约束条件不能是三种钢管个数恰好=(50,20,15)，而应该是&gt;=(50,20,15)，否则可能会造成无解。</p><h3 id="第二小问"><a href="#第二小问" class="headerlink" title="第二小问"></a>第二小问</h3><p>第二小问增加了一种需求和一个约束条件：5米10根；切割模式不超过3种。用枚举法确定合理切割模式较为复杂，因此不如将使用哪种模式也加入决策变量，让lingo自己解决这个问题。当然这需要一个人为的合理度量，此处选择为每根余料不超过3米，即如下附加约束条件：<br><img src="/2020/07/16/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E6%95%B0%E5%AD%A6%E8%A7%84%E5%88%92%E6%A8%A1%E5%9E%8B%E6%B7%B1%E5%85%A5/2.jpg" srcset="/img/loading.gif" alt></p><p>原本的线性约束条件也因此变成了未知量*未知量的非线性约束组合：<br><img src="/2020/07/16/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E6%95%B0%E5%AD%A6%E8%A7%84%E5%88%92%E6%A8%A1%E5%9E%8B%E6%B7%B1%E5%85%A5/3.jpg" srcset="/img/loading.gif" alt></p><p>还可以通过人为增加决策变量的约束减少计算量。</p><h2 id="一些小结"><a href="#一些小结" class="headerlink" title="一些小结"></a>一些小结</h2><h3 id="可能的解"><a href="#可能的解" class="headerlink" title="可能的解"></a>可能的解</h3><ol><li>全局最优解</li><li>局部最优解</li><li>中断解</li></ol><h3 id="基本类型"><a href="#基本类型" class="headerlink" title="基本类型"></a>基本类型</h3><ol><li>按照有无约束</li></ol><p>（1）约束优化（constrained optimization）</p><p>（2）无约束优化（unconstrained opt）</p><ol><li>按照决策变量x的分量取值</li></ol><p>（1）连续优化/数学规划（continuous opt / mathematical programming）</p><p>（2）离散优化/组合优化（discrete opt / combinatorial opt ）</p><ol><li>按照目标函数的个数</li></ol><p>单目标规划与多目标规划</p><ol><li>按照参数或者决策变量是否具有不确定性</li></ol><p>确定性规划与不确定性规划（如随机规划、模糊规划等）</p><ol><li>按照目标函数f，约束条件g、h是否连续可微</li></ol><p>光滑优化与非光滑优化</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>学习笔记</category>
+      
+      <category>数学建模</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>数学规划模型</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>[学习笔记]数学规划模型初识</title>
     <link href="/2020/07/16/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E6%95%B0%E5%AD%A6%E8%A7%84%E5%88%92%E6%A8%A1%E5%9E%8B%E5%88%9D%E8%AF%86/"/>
     <url>/2020/07/16/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E6%95%B0%E5%AD%A6%E8%A7%84%E5%88%92%E6%A8%A1%E5%9E%8B%E5%88%9D%E8%AF%86/</url>
