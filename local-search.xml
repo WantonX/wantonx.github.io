@@ -4,11 +4,94 @@
   
   
   <entry>
+    <title>[技术笔记]jupyter不能通过浏览器自动打开</title>
+    <link href="/2020/07/27/%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0-jupyter%E4%B8%8D%E8%83%BD%E9%80%9A%E8%BF%87%E6%B5%8F%E8%A7%88%E5%99%A8%E8%87%AA%E5%8A%A8%E6%89%93%E5%BC%80/"/>
+    <url>/2020/07/27/%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0-jupyter%E4%B8%8D%E8%83%BD%E9%80%9A%E8%BF%87%E6%B5%8F%E8%A7%88%E5%99%A8%E8%87%AA%E5%8A%A8%E6%89%93%E5%BC%80/</url>
+    
+    <content type="html"><![CDATA[<p>这两天用win+R打开juypter的时候发现不能通过浏览器自动打开了，只能手动打开。之前我配置的默认浏览器是chrome，中间因为chrome版本太低Google帮我重装过一次，怀疑是重装过后的chrome被改了文件路径，从而导致打不开了，因此决定重新配置juypter的路径即可：</p><p>1、在cmd下执行<em>jupyter notebook —generate-config</em>，会提示该文件所在的目录，我的是C:\Users\Administrator.jupyter\jupyter_notebook_config.py。</p><p>2、进入该目录，用编辑器打开这个文件（我用的是Geany，应该txt编辑器也可以）。</p><p>3、用crtl+F找到<em>#c.NotebookApp.browser</em>，在其下方复制</p><pre><code>import webbrowserwebbrowser.register(&quot;chrome&quot;,None,webbrowser.GenericBrowser(r&quot;C:\Program Files (x86)\Google\Chrome\Application\chrome.exe&quot;))c.NotebookApp.browser = &#39;chrome&#39;</code></pre><p>我这里用的是chrome，其他浏览器同理，位置路径的确变了，因此替换了位置路径。如果不想改变字符串中的反斜杠\，则在字符串前加上r。</p><p>4、保存并运行，发现成功自动打开浏览器了。</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>技术笔记</category>
+      
+      <category>python</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>jupyter notebook</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>[学习笔记]差分方程模型</title>
+    <link href="/2020/07/26/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E5%B7%AE%E5%88%86%E6%96%B9%E7%A8%8B%E6%A8%A1%E5%9E%8B/"/>
+    <url>/2020/07/26/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E5%B7%AE%E5%88%86%E6%96%B9%E7%A8%8B%E6%A8%A1%E5%9E%8B/</url>
+    
+    <content type="html"><![CDATA[<p>差分方程，顾名思义，研究的是一组有规律序列相邻两个时间段间的规律，这种规律能够全部（部分）运用（使用迭代或递推）到一个总体，从而求解问题。</p><h2 id="一阶线性差分方程模型"><a href="#一阶线性差分方程模型" class="headerlink" title="一阶线性差分方程模型"></a>一阶线性差分方程模型</h2><p><strong><em>ΔAn = An+1 - An = f(An,其他因素)</em></strong> 这样一个方程可以被称为一阶差分方程模型，如果f(An,其他因素)是关于An的线性模式，则被称为一阶线性差分方程模型，即<img src="/2020/07/26/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E5%B7%AE%E5%88%86%E6%96%B9%E7%A8%8B%E6%A8%A1%E5%9E%8B/1.png" srcset="/img/loading.gif" alt></p><h3 id="一阶线性差分方程的解及其长期行为"><a href="#一阶线性差分方程的解及其长期行为" class="headerlink" title="一阶线性差分方程的解及其长期行为"></a>一阶线性差分方程的解及其长期行为</h3><p>很容易得到<img src="/2020/07/26/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E5%B7%AE%E5%88%86%E6%96%B9%E7%A8%8B%E6%A8%A1%E5%9E%8B/2.png" srcset="/img/loading.gif" alt></p><p>当n趋于无穷时，<img src="/2020/07/26/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E5%B7%AE%E5%88%86%E6%96%B9%E7%A8%8B%E6%A8%A1%E5%9E%8B/3.png" srcset="/img/loading.gif" alt><img src="/2020/07/26/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E5%B7%AE%E5%88%86%E6%96%B9%E7%A8%8B%E6%A8%A1%E5%9E%8B/4.jpg" srcset="/img/loading.gif" alt></p><h3 id="差分方程模型的平衡点"><a href="#差分方程模型的平衡点" class="headerlink" title="差分方程模型的平衡点"></a>差分方程模型的平衡点</h3><p>平衡点是指An = a, An+1 = a 的情况，如果长期行为等于平衡点，则称之为稳定的平衡点。</p><h2 id="一阶非线性差分方程模型"><a href="#一阶非线性差分方程模型" class="headerlink" title="一阶非线性差分方程模型"></a>一阶非线性差分方程模型</h2><p>我们一般通过变化的散点图，猜想出ΔAn变化的规律，即f(An,其他因素)的形式，再和OLS相结合来拟合关于ΔAn的曲线。当然，差分方程也只是解决拟合问题的一种方法，存在其他更加合适的方法时，也可以用其他方法解决。</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>学习笔记</category>
+      
+      <category>数学建模</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>差分方程模型</tag>
+      
+      <tag>动力系统模型</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>[技术笔记]pandas中agg()与apply()的区别</title>
+    <link href="/2020/07/19/%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0-pandas%E4%B8%ADagg-%E4%B8%8Eapply-%E7%9A%84%E5%8C%BA%E5%88%AB/"/>
+    <url>/2020/07/19/%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0-pandas%E4%B8%ADagg-%E4%B8%8Eapply-%E7%9A%84%E5%8C%BA%E5%88%AB/</url>
+    
+    <content type="html"><![CDATA[<p>对数据集进行分组并对各组应用一个函数（无论是聚合还是转换），通常是数据分析工作中的重要环节<sup id="fnref:1" class="footnote-ref"><a href="#fn:1" rel="footnote"><span class="hint--top hint--rounded" aria-label="源自‘python for data analysis’ chapter 10">[1]</span></a></sup>。<br><img src="/2020/07/19/%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0-pandas%E4%B8%ADagg-%E4%B8%8Eapply-%E7%9A%84%E5%8C%BA%E5%88%AB/1.png" srcset="/img/loading.gif" alt></p><p>这张表就阐述了整一个GroupBy的机制。一般来说，Split部分用groupby()完成，但apply部分可以用apply,agg以及其他一些特定的函数完成（如count，mean，sum等）。</p><p>在<em>‘python for data analysis’</em>一书中并没有很明确地指出这两者的区别，只是说apply比agg更具有普适性，但对应的运行速度也会偏慢（好比在agg中执行自建函数总要比执行已经规划好的优化函数要慢一样）。</p><p>看了网上很多资料，感觉agg与apply的区别主要是，agg只能对数组运算并产生标量值，而apply除此之外还可以返回一个pandas对象，这是agg做不到的，就比如想要对一个数组进行排序操作时，就只能用apply而不能用agg。</p><p>引用：</p><section class="footnotes"><div class="footnote-list"><ol><li><span id="fn:1" class="footnote-text"><span>源自<em>‘python for data analysis’ chapter 10</em><a href="#fnref:1" rev="footnote" class="footnote-backref"> ↩</a></span></span></li></ol></div></section>]]></content>
+    
+    
+    <categories>
+      
+      <category>技术笔记</category>
+      
+      <category>python</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>数据聚合和分组运算</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>[学习笔记]插值与拟合</title>
     <link href="/2020/07/17/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E6%8F%92%E5%80%BC%E4%B8%8E%E6%8B%9F%E5%90%88/"/>
     <url>/2020/07/17/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E6%8F%92%E5%80%BC%E4%B8%8E%E6%8B%9F%E5%90%88/</url>
     
-    <content type="html"><![CDATA[<p>插值的一般思路：根据已知数据点构造一个一般的函数，该函数对现有数据有较好的拟合效果，再用这个函数进行插值预测。构造函数的方法是一个重点（回归的<em>OLS、FSLS、GLS、WLS、Probit、Logit</em>等都是计量中评估的函数方法）。插值一般用来进行填补数据集，但不用做数据预测。 </p><h2 id="多项式插值"><a href="#多项式插值" class="headerlink" title="多项式插值"></a>多项式插值</h2><p>通过一个构造一个多项式函数去插值。原因：1.多项式函数比较简单2.<strong><em>Weierstrass</em>一致逼近定理</strong>：给定一个任意小的e，对于一段连续曲线，一定存在一个多项式，两者在定义域内的插值的绝对值小于任何给定的e。</p><p>那么，<strong>如何确定多项式的形式</strong>呢？在多项插值法中的要求是，要使估计函数在第i个观测值处的值f(xi)=实际观测值。</p><p>其优点是：1.可以确定<strong>唯一</strong>的一个估计函数（根据范德蒙行列式的结论，证明略）；2.在已知<strong>观测值附近，该函数的近似效果是非常好</strong>的（显然，对于一个连续函数，就是有这样的能力，高等数学里都有学到，这也是OLS这种总体误差最小方法所不具备的优点）。</p><p>并且，如果题目提供n+1个观测值，就可以据此列出一个n次多项式（因为n次多项式有包括截距在内有n+1个未知数，需要n+1个条件）。但这样也存在问题，当次数多，数据大时，<strong>容易出现<em>Runge</em>现象</strong>，即高次项数对数据很敏感，微小的扰动都会造成巨大的变化。因此，具有下列改进的方法：</p><h3 id="Lagrange插值法"><a href="#Lagrange插值法" class="headerlink" title="Lagrange插值法"></a><em>Lagrange</em>插值法</h3><p><img src="/2020/07/17/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E6%8F%92%E5%80%BC%E4%B8%8E%E6%8B%9F%E5%90%88/1.png" srcset="/img/loading.gif" alt></p><p>其中，<img src="/2020/07/17/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E6%8F%92%E5%80%BC%E4%B8%8E%E6%8B%9F%E5%90%88/2.png" srcset="/img/loading.gif" alt></p><h3 id="Newton插值法"><a href="#Newton插值法" class="headerlink" title="Newton插值法"></a><em>Newton</em>插值法</h3><p><img src="/2020/07/17/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E6%8F%92%E5%80%BC%E4%B8%8E%E6%8B%9F%E5%90%88/3.png" srcset="/img/loading.gif" alt></p><p>其中，<img src="/2020/07/17/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E6%8F%92%E5%80%BC%E4%B8%8E%E6%8B%9F%E5%90%88/4.png" srcset="/img/loading.gif" alt><img src="/2020/07/17/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E6%8F%92%E5%80%BC%E4%B8%8E%E6%8B%9F%E5%90%88/5.png" srcset="/img/loading.gif" alt></p><h3 id="分段插值法"><a href="#分段插值法" class="headerlink" title="分段插值法"></a>分段插值法</h3><p>分段插值法的建立主要是基于上述两种方法在观测点增多时，次数增加，仍会出现<em>Runge</em>现象，因此分段求函似乎会更好。</p><p>比较常见的分段求函就是两个数据点间的线性插值或者三个数据点间的抛物线插值。</p><h3 id="样条插值法"><a href="#样条插值法" class="headerlink" title="样条插值法"></a>样条插值法</h3><p>分段插值虽然避免了<em>Runge</em>现象，但也使曲线很不平滑。因此，用样条插值法改善这一现象。</p><p>三次样条插值：在相邻的两个结点间用一条三次多项式曲线来近似并插值。</p><p>现在的问题是，两个结点之间就需要构造一个三次函数意味着所有结点的三次函数需要4n个条件才能求解，而n+1个观测值只提供了n+1个条件，还缺少3n-1个条件。因此要保证在插值结点处满足衔接条件：<img src="/2020/07/17/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E6%8F%92%E5%80%BC%E4%B8%8E%E6%8B%9F%E5%90%88/6.png" srcset="/img/loading.gif" alt></p><p>这又提供了3n-3个条件，还缺2个条件需要自己定义。</p><ol><li>方法一：定义最初和最末两个结点处的斜率（实际意义是最初和最末的该变量增长速度如何）。</li><li>方法二：定义最初和最末两个结点的二阶导数，一般令其=0（几何意义是斜率为0&lt;—&gt;曲率为0）.</li><li>方法三：<strong>周期边界条件</strong>，即最初和最末两个结点函数值相同，斜率相同。这说明该段观测值会重复出现，这个数据集具有周期性。</li><li>方法四：根据具体问题具体分析，自己添加即可。</li></ol><h3 id="最邻近插值法"><a href="#最邻近插值法" class="headerlink" title="最邻近插值法"></a>最邻近插值法</h3><p>要估计的值最邻近哪个观测值结点，就将那个观测值作为估计值，是一种简单而不准确的估计方法。</p><h2 id="二维插值"><a href="#二维插值" class="headerlink" title="二维插值"></a>二维插值</h2><p>由单自变量变为双自变量问题。结点类型一般分为网格型结点和散乱型结点，根据不同的结点类型<em>Matlab</em>会选择不同的方法。</p><p>插值方法：</p><h3 id="最邻近插值法-1"><a href="#最邻近插值法-1" class="headerlink" title="最邻近插值法"></a>最邻近插值法</h3><p>同多项式插值法中的最邻近插值法原理。</p><h3 id="分片线性插值"><a href="#分片线性插值" class="headerlink" title="分片线性插值"></a>分片线性插值</h3><p>三角形区域连成一整块即可，具体求值用<em>Matlab</em>。</p><h3 id="双线性插值"><a href="#双线性插值" class="headerlink" title="双线性插值"></a>双线性插值</h3><p>对于四个结点构成的网格，构造一个z=(ax+b)(cy+d)，四个未知数用四个网格结点求解，得到一个双线性函数来估计该网格内某点的值。</p><h2 id="曲线拟合"><a href="#曲线拟合" class="headerlink" title="曲线拟合"></a>曲线拟合</h2><p>在前面我们已经给出了一种方法：多项式插值。这种方法要求用来近似未知函数f的n次插值多项式准确无误地经过已知的n+1个结点。然而当结点数据是由某种实验或者计算方法得出的，就难免带有误差，要求多项式严格经过这些结点，无形中就会将误差保留下来，而且如果每一个结点都有误差的话，由于误差累积的效应，也会导致整体的近似效果较差。</p><p>这促使我们寻求一种新的方法近似未知函数，这一方法并不要求用来近似的函数严格通过已知结点，而只要求在结点处误差，按某一标准最小。为了计算方便，通常就采用误差的平方和最小作为度量误差的标准，即<strong>最小二乘原则<em>*</em></strong>（OLS）<em>*</em>。</p><p>具体计算在<em>Matlab</em>中用<em>polyfit</em>相关命令完成多项式拟合求解。其他类型的曲线则用其他类型的函数解决。</p><h3 id="一个变形：加权最小二乘法-WLS"><a href="#一个变形：加权最小二乘法-WLS" class="headerlink" title="一个变形：加权最小二乘法(WLS)"></a>一个变形：加权最小二乘法(WLS)</h3><p>使用的原因：在不同的观测值点，数据的偏差很不一样（异方差性？在计量经济学中用来解决异方差问题）。</p><h3 id="拟合效果的评价"><a href="#拟合效果的评价" class="headerlink" title="拟合效果的评价"></a>拟合效果的评价</h3><p>最大相对误差/平均相对误差/拟合优度….</p>]]></content>
+    <content type="html"><![CDATA[<p>插值的一般思路：根据已知数据点构造一个一般的函数，该函数对现有数据有较好的拟合效果，再用这个函数进行插值预测。构造函数的方法是一个重点（回归的<em>OLS、FSLS、GLS、WLS、Probit、Logit</em>等都是计量中评估的函数方法）。插值一般用来进行填补数据集，但不用做数据预测。 </p><h2 id="多项式插值"><a href="#多项式插值" class="headerlink" title="多项式插值"></a>多项式插值</h2><p>通过一个构造一个多项式函数去插值。原因：1.多项式函数比较简单2.<strong><em>Weierstrass</em>一致逼近定理</strong>：给定一个任意小的e，对于一段连续曲线，一定存在一个多项式，两者在定义域内的插值的绝对值小于任何给定的e。</p><p>那么，<strong>如何确定多项式的形式</strong>呢？在多项插值法中的要求是，要使估计函数在第i个观测值处的值f(xi)=实际观测值。</p><p>其优点是：1.可以确定<strong>唯一</strong>的一个估计函数（根据范德蒙行列式的结论，证明略）；2.在已知<strong>观测值附近，该函数的近似效果是非常好</strong>的（显然，对于一个连续函数，就是有这样的能力，高等数学里都有学到，这也是OLS这种总体误差最小方法所不具备的优点）。</p><p>并且，如果题目提供n+1个观测值，就可以据此列出一个n次多项式（因为n次多项式有包括截距在内有n+1个未知数，需要n+1个条件）。但这样也存在问题，当次数多，数据大时，<strong>容易出现<em>Runge</em>现象</strong>，即高次项数对数据很敏感，微小的扰动都会造成巨大的变化。因此，具有下列改进的方法：</p><h3 id="Lagrange插值法"><a href="#Lagrange插值法" class="headerlink" title="Lagrange插值法"></a><em>Lagrange</em>插值法</h3><p><img src="/2020/07/17/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E6%8F%92%E5%80%BC%E4%B8%8E%E6%8B%9F%E5%90%88/1.png" srcset="/img/loading.gif" alt></p><p>其中，<img src="/2020/07/17/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E6%8F%92%E5%80%BC%E4%B8%8E%E6%8B%9F%E5%90%88/2.png" srcset="/img/loading.gif" alt></p><h3 id="Newton插值法"><a href="#Newton插值法" class="headerlink" title="Newton插值法"></a><em>Newton</em>插值法</h3><p><img src="/2020/07/17/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E6%8F%92%E5%80%BC%E4%B8%8E%E6%8B%9F%E5%90%88/3.png" srcset="/img/loading.gif" alt></p><p>其中，<img src="/2020/07/17/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E6%8F%92%E5%80%BC%E4%B8%8E%E6%8B%9F%E5%90%88/4.png" srcset="/img/loading.gif" alt><img src="/2020/07/17/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E6%8F%92%E5%80%BC%E4%B8%8E%E6%8B%9F%E5%90%88/5.png" srcset="/img/loading.gif" alt></p><h3 id="分段插值法"><a href="#分段插值法" class="headerlink" title="分段插值法"></a>分段插值法</h3><p>分段插值法的建立主要是基于上述两种方法在观测点增多时，次数增加，仍会出现<em>Runge</em>现象，因此分段求函似乎会更好。</p><p>比较常见的分段求函就是两个数据点间的线性插值或者三个数据点间的抛物线插值。</p><h3 id="样条插值法"><a href="#样条插值法" class="headerlink" title="样条插值法"></a>样条插值法</h3><p>分段插值虽然避免了<em>Runge</em>现象，但也使曲线很不平滑。因此，用样条插值法改善这一现象。</p><p>三次样条插值：在相邻的两个结点间用一条三次多项式曲线来近似并插值。</p><p>现在的问题是，两个结点之间就需要构造一个三次函数意味着所有结点的三次函数需要4n个条件才能求解，而n+1个观测值只提供了n+1个条件，还缺少3n-1个条件。因此要保证在插值结点处满足衔接条件：<img src="/2020/07/17/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E6%8F%92%E5%80%BC%E4%B8%8E%E6%8B%9F%E5%90%88/6.png" srcset="/img/loading.gif" alt></p><p>这又提供了3n-3个条件，还缺2个条件需要自己定义。</p><ol><li>方法一：定义最初和最末两个结点处的斜率（实际意义是最初和最末的该变量增长速度如何）。</li><li>方法二：定义最初和最末两个结点的二阶导数，一般令其=0（几何意义是斜率为0&lt;—&gt;曲率为0）.</li><li>方法三：<strong>周期边界条件</strong>，即最初和最末两个结点函数值相同，斜率相同。这说明该段观测值会重复出现，这个数据集具有周期性。</li><li>方法四：根据具体问题具体分析，自己添加即可。</li></ol><h3 id="最邻近插值法"><a href="#最邻近插值法" class="headerlink" title="最邻近插值法"></a>最邻近插值法</h3><p>要估计的值最邻近哪个观测值结点，就将那个观测值作为估计值，是一种简单而不准确的估计方法。</p><h2 id="二维插值"><a href="#二维插值" class="headerlink" title="二维插值"></a>二维插值</h2><p>由单自变量变为双自变量问题。结点类型一般分为网格型结点和散乱型结点，根据不同的结点类型<em>Matlab</em>会选择不同的方法。</p><p>插值方法：</p><h3 id="最邻近插值法-1"><a href="#最邻近插值法-1" class="headerlink" title="最邻近插值法"></a>最邻近插值法</h3><p>同多项式插值法中的最邻近插值法原理。</p><h3 id="分片线性插值"><a href="#分片线性插值" class="headerlink" title="分片线性插值"></a>分片线性插值</h3><p>三角形区域连成一整块即可，具体求值用<em>Matlab</em>。</p><h3 id="双线性插值"><a href="#双线性插值" class="headerlink" title="双线性插值"></a>双线性插值</h3><p>对于四个结点构成的网格，构造一个z=(ax+b)(cy+d)，四个未知数用四个网格结点求解，得到一个双线性函数来估计该网格内某点的值。</p><h2 id="曲线拟合"><a href="#曲线拟合" class="headerlink" title="曲线拟合"></a>曲线拟合</h2><p>在前面我们已经给出了一种方法：多项式插值。这种方法要求用来近似未知函数f的n次插值多项式准确无误地经过已知的n+1个结点。然而当结点数据是由某种实验或者计算方法得出的，就难免带有误差，要求多项式严格经过这些结点，无形中就会将误差保留下来，而且如果每一个结点都有误差的话，由于误差累积的效应，也会导致整体的近似效果较差。</p><p>这促使我们寻求一种新的方法近似未知函数，这一方法并不要求用来近似的函数严格通过已知结点，而只要求在结点处误差，按某一标准最小。为了计算方便，通常就采用误差的平方和最小作为度量误差的标准，即<strong>最小二乘原则**</strong>（OLS）**。</p><p>具体计算在<em>Matlab</em>中用<em>polyfit</em>相关命令完成多项式拟合求解。其他类型的曲线则用其他类型的函数解决。</p><h3 id="一个变形：加权最小二乘法-WLS"><a href="#一个变形：加权最小二乘法-WLS" class="headerlink" title="一个变形：加权最小二乘法(WLS)"></a>一个变形：加权最小二乘法(WLS)</h3><p>使用的原因：在不同的观测值点，数据的偏差很不一样（异方差性？在计量经济学中用来解决异方差问题）。</p><h3 id="拟合效果的评价"><a href="#拟合效果的评价" class="headerlink" title="拟合效果的评价"></a>拟合效果的评价</h3><p>最大相对误差/平均相对误差/拟合优度….</p>]]></content>
     
     
     <categories>

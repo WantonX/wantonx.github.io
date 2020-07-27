@@ -17,7 +17,7 @@
   <meta name="description" content="">
   <meta name="author" content="ZiJie Xu">
   <meta name="keywords" content="">
-  <title>[学习笔记]插值与拟合 - WantonX</title>
+  <title>[技术笔记]pandas中agg()与apply()的区别 - WantonX</title>
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
 
@@ -164,8 +164,8 @@
               
   <div class="mt-3 post-meta">
     <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-    <time datetime="2020-07-17 21:47">
-      2020年7月17日 晚上
+    <time datetime="2020-07-19 10:12">
+      2020年7月19日 上午
     </time>
   </div>
 
@@ -175,7 +175,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      1.5k 字
+      259 字
     </span>
   
 
@@ -185,7 +185,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      15
+      2
        分钟
     </span>
   
@@ -216,39 +216,14 @@
           <div class="post-content mx-auto" id="post">
             
             <article class="markdown-body">
-              <p>插值的一般思路：根据已知数据点构造一个一般的函数，该函数对现有数据有较好的拟合效果，再用这个函数进行插值预测。构造函数的方法是一个重点（回归的<em>OLS、FSLS、GLS、WLS、Probit、Logit</em>等都是计量中评估的函数方法）。插值一般用来进行填补数据集，但不用做数据预测。 </p>
-<h2 id="多项式插值"><a href="#多项式插值" class="headerlink" title="多项式插值"></a>多项式插值</h2><p>通过一个构造一个多项式函数去插值。原因：1.多项式函数比较简单2.<strong><em>Weierstrass</em>一致逼近定理</strong>：给定一个任意小的e，对于一段连续曲线，一定存在一个多项式，两者在定义域内的插值的绝对值小于任何给定的e。</p>
-<p>那么，<strong>如何确定多项式的形式</strong>呢？在多项插值法中的要求是，要使估计函数在第i个观测值处的值f(xi)=实际观测值。</p>
-<p>其优点是：1.可以确定<strong>唯一</strong>的一个估计函数（根据范德蒙行列式的结论，证明略）；2.在已知<strong>观测值附近，该函数的近似效果是非常好</strong>的（显然，对于一个连续函数，就是有这样的能力，高等数学里都有学到，这也是OLS这种总体误差最小方法所不具备的优点）。</p>
-<p>并且，如果题目提供n+1个观测值，就可以据此列出一个n次多项式（因为n次多项式有包括截距在内有n+1个未知数，需要n+1个条件）。但这样也存在问题，当次数多，数据大时，<strong>容易出现<em>Runge</em>现象</strong>，即高次项数对数据很敏感，微小的扰动都会造成巨大的变化。因此，具有下列改进的方法：</p>
-<h3 id="Lagrange插值法"><a href="#Lagrange插值法" class="headerlink" title="Lagrange插值法"></a><em>Lagrange</em>插值法</h3><p><img src="/2020/07/17/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E6%8F%92%E5%80%BC%E4%B8%8E%E6%8B%9F%E5%90%88/1.png" srcset="/img/loading.gif" alt></p>
-<p>其中，<img src="/2020/07/17/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E6%8F%92%E5%80%BC%E4%B8%8E%E6%8B%9F%E5%90%88/2.png" srcset="/img/loading.gif" alt></p>
-<h3 id="Newton插值法"><a href="#Newton插值法" class="headerlink" title="Newton插值法"></a><em>Newton</em>插值法</h3><p><img src="/2020/07/17/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E6%8F%92%E5%80%BC%E4%B8%8E%E6%8B%9F%E5%90%88/3.png" srcset="/img/loading.gif" alt></p>
-<p>其中，<img src="/2020/07/17/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E6%8F%92%E5%80%BC%E4%B8%8E%E6%8B%9F%E5%90%88/4.png" srcset="/img/loading.gif" alt><img src="/2020/07/17/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E6%8F%92%E5%80%BC%E4%B8%8E%E6%8B%9F%E5%90%88/5.png" srcset="/img/loading.gif" alt></p>
-<h3 id="分段插值法"><a href="#分段插值法" class="headerlink" title="分段插值法"></a>分段插值法</h3><p>分段插值法的建立主要是基于上述两种方法在观测点增多时，次数增加，仍会出现<em>Runge</em>现象，因此分段求函似乎会更好。</p>
-<p>比较常见的分段求函就是两个数据点间的线性插值或者三个数据点间的抛物线插值。</p>
-<h3 id="样条插值法"><a href="#样条插值法" class="headerlink" title="样条插值法"></a>样条插值法</h3><p>分段插值虽然避免了<em>Runge</em>现象，但也使曲线很不平滑。因此，用样条插值法改善这一现象。</p>
-<p>三次样条插值：在相邻的两个结点间用一条三次多项式曲线来近似并插值。</p>
-<p>现在的问题是，两个结点之间就需要构造一个三次函数意味着所有结点的三次函数需要4n个条件才能求解，而n+1个观测值只提供了n+1个条件，还缺少3n-1个条件。因此要保证在插值结点处满足衔接条件：<img src="/2020/07/17/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E6%8F%92%E5%80%BC%E4%B8%8E%E6%8B%9F%E5%90%88/6.png" srcset="/img/loading.gif" alt></p>
-<p>这又提供了3n-3个条件，还缺2个条件需要自己定义。</p>
-<ol>
-<li>方法一：定义最初和最末两个结点处的斜率（实际意义是最初和最末的该变量增长速度如何）。</li>
-<li>方法二：定义最初和最末两个结点的二阶导数，一般令其=0（几何意义是斜率为0&lt;—&gt;曲率为0）.</li>
-<li>方法三：<strong>周期边界条件</strong>，即最初和最末两个结点函数值相同，斜率相同。这说明该段观测值会重复出现，这个数据集具有周期性。</li>
-<li>方法四：根据具体问题具体分析，自己添加即可。</li>
-</ol>
-<h3 id="最邻近插值法"><a href="#最邻近插值法" class="headerlink" title="最邻近插值法"></a>最邻近插值法</h3><p>要估计的值最邻近哪个观测值结点，就将那个观测值作为估计值，是一种简单而不准确的估计方法。</p>
-<h2 id="二维插值"><a href="#二维插值" class="headerlink" title="二维插值"></a>二维插值</h2><p>由单自变量变为双自变量问题。结点类型一般分为网格型结点和散乱型结点，根据不同的结点类型<em>Matlab</em>会选择不同的方法。</p>
-<p>插值方法：</p>
-<h3 id="最邻近插值法-1"><a href="#最邻近插值法-1" class="headerlink" title="最邻近插值法"></a>最邻近插值法</h3><p>同多项式插值法中的最邻近插值法原理。</p>
-<h3 id="分片线性插值"><a href="#分片线性插值" class="headerlink" title="分片线性插值"></a>分片线性插值</h3><p>三角形区域连成一整块即可，具体求值用<em>Matlab</em>。</p>
-<h3 id="双线性插值"><a href="#双线性插值" class="headerlink" title="双线性插值"></a>双线性插值</h3><p>对于四个结点构成的网格，构造一个z=(ax+b)(cy+d)，四个未知数用四个网格结点求解，得到一个双线性函数来估计该网格内某点的值。</p>
-<h2 id="曲线拟合"><a href="#曲线拟合" class="headerlink" title="曲线拟合"></a>曲线拟合</h2><p>在前面我们已经给出了一种方法：多项式插值。这种方法要求用来近似未知函数f的n次插值多项式准确无误地经过已知的n+1个结点。然而当结点数据是由某种实验或者计算方法得出的，就难免带有误差，要求多项式严格经过这些结点，无形中就会将误差保留下来，而且如果每一个结点都有误差的话，由于误差累积的效应，也会导致整体的近似效果较差。</p>
-<p>这促使我们寻求一种新的方法近似未知函数，这一方法并不要求用来近似的函数严格通过已知结点，而只要求在结点处误差，按某一标准最小。为了计算方便，通常就采用误差的平方和最小作为度量误差的标准，即<strong>最小二乘原则**</strong>（OLS）**。</p>
-<p>具体计算在<em>Matlab</em>中用<em>polyfit</em>相关命令完成多项式拟合求解。其他类型的曲线则用其他类型的函数解决。</p>
-<h3 id="一个变形：加权最小二乘法-WLS"><a href="#一个变形：加权最小二乘法-WLS" class="headerlink" title="一个变形：加权最小二乘法(WLS)"></a>一个变形：加权最小二乘法(WLS)</h3><p>使用的原因：在不同的观测值点，数据的偏差很不一样（异方差性？在计量经济学中用来解决异方差问题）。</p>
-<h3 id="拟合效果的评价"><a href="#拟合效果的评价" class="headerlink" title="拟合效果的评价"></a>拟合效果的评价</h3><p>最大相对误差/平均相对误差/拟合优度….</p>
-
+              <p>对数据集进行分组并对各组应用一个函数（无论是聚合还是转换），通常是数据分析工作中的重要环节<sup id="fnref:1" class="footnote-ref"><a href="#fn:1" rel="footnote"><span class="hint--top hint--rounded" aria-label="源自‘python for data analysis’ chapter 10
+">[1]</span></a></sup>。<br><img src="/2020/07/19/%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0-pandas%E4%B8%ADagg-%E4%B8%8Eapply-%E7%9A%84%E5%8C%BA%E5%88%AB/1.png" srcset="/img/loading.gif" alt></p>
+<p>这张表就阐述了整一个GroupBy的机制。一般来说，Split部分用groupby()完成，但apply部分可以用apply,agg以及其他一些特定的函数完成（如count，mean，sum等）。</p>
+<p>在<em>‘python for data analysis’</em>一书中并没有很明确地指出这两者的区别，只是说apply比agg更具有普适性，但对应的运行速度也会偏慢（好比在agg中执行自建函数总要比执行已经规划好的优化函数要慢一样）。</p>
+<p>看了网上很多资料，感觉agg与apply的区别主要是，agg只能对数组运算并产生标量值，而apply除此之外还可以返回一个pandas对象，这是agg做不到的，就比如想要对一个数组进行排序操作时，就只能用apply而不能用agg。</p>
+<p>引用：</p>
+<section class="footnotes"><div class="footnote-list"><ol><li><span id="fn:1" class="footnote-text"><span>源自<em>‘python for data analysis’ chapter 10</em>
+<a href="#fnref:1" rev="footnote" class="footnote-backref"> ↩</a></span></span></li></ol></div></section>
             </article>
             <hr>
             <div>
@@ -257,9 +232,9 @@
                   <div class="post-meta mr-3">
                     <i class="iconfont icon-category"></i>
                     
-                      <a class="hover-with-bg" href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</a>
+                      <a class="hover-with-bg" href="/categories/%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0/">技术笔记</a>
                     
-                      <a class="hover-with-bg" href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1/">数学建模</a>
+                      <a class="hover-with-bg" href="/categories/%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0/python/">python</a>
                     
                   </div>
                 
@@ -267,9 +242,7 @@
                   <div class="post-meta">
                     <i class="iconfont icon-tags"></i>
                     
-                      <a class="hover-with-bg" href="/tags/%E6%8F%92%E5%80%BC/">插值</a>
-                    
-                      <a class="hover-with-bg" href="/tags/%E6%8B%9F%E5%90%88/">拟合</a>
+                      <a class="hover-with-bg" href="/tags/%E6%95%B0%E6%8D%AE%E8%81%9A%E5%90%88%E5%92%8C%E5%88%86%E7%BB%84%E8%BF%90%E7%AE%97/">数据聚合和分组运算</a>
                     
                   </div>
                 
@@ -282,9 +255,9 @@
                   <div class="post-prev col-6">
                     
                     
-                      <a href="/2020/07/19/%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0-pandas%E4%B8%ADagg-%E4%B8%8Eapply-%E7%9A%84%E5%8C%BA%E5%88%AB/">
+                      <a href="/2020/07/26/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E5%B7%AE%E5%88%86%E6%96%B9%E7%A8%8B%E6%A8%A1%E5%9E%8B/">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">[技术笔记]pandas中agg()与apply()的区别</span>
+                        <span class="hidden-mobile">[学习笔记]差分方程模型</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -292,8 +265,8 @@
                   <div class="post-next col-6">
                     
                     
-                      <a href="/2020/07/16/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E6%95%B0%E5%AD%A6%E8%A7%84%E5%88%92%E6%A8%A1%E5%9E%8B%E6%B7%B1%E5%85%A5/">
-                        <span class="hidden-mobile">[学习笔记]数学规划模型深入</span>
+                      <a href="/2020/07/17/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E6%8F%92%E5%80%BC%E4%B8%8E%E6%8B%9F%E5%90%88/">
+                        <span class="hidden-mobile">[学习笔记]插值与拟合</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
@@ -464,7 +437,7 @@
     var typed = new Typed('#subtitle', {
       strings: [
         '  ',
-        "[学习笔记]插值与拟合&nbsp;",
+        "[技术笔记]pandas中agg()与apply()的区别&nbsp;",
       ],
       cursorChar: "|",
       typeSpeed: 60,
