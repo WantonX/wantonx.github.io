@@ -180,6 +180,143 @@
     
     
     <div class="col-12 col-md-12 mx-auto index-info">
+      <a class="index-header" href="/2020/07/28/%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0-dataframe-apply%E5%92%8Cgroupby-apply%E7%9A%84%E5%8C%BA%E5%88%AB/">[技术笔记]dataframe.apply和groupby.apply的区别</a>
+
+      <a href="/2020/07/28/%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0-dataframe-apply%E5%92%8Cgroupby-apply%E7%9A%84%E5%8C%BA%E5%88%AB/" class="index-excerpt">
+        
+        
+          
+        
+        <div>在看书学习apply函数的过程中，我发现书上还是比较集中于讲解apply在groupby分组、聚合这方面的作用，如下面这个用特定于分组的值填充缺失值[1]：    In [91]: s = pd.Series(np.random.randn(6))
+In [92]: s[::2] = np.nan
+
+In [93]: s
+Out[93]: 
+0         NaN
+1   -0.125921
+</div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>&nbsp;2020-07-28
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0/">技术笔记</a>
+            
+              <a href="/categories/%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0/python/">python</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/apply-%E5%87%BD%E6%95%B0/">apply()函数</a>
+            
+          </div>
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <div class="col-12 col-md-12 mx-auto index-info">
+      <a class="index-header" href="/2020/07/27/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E7%BB%BC%E5%90%88%E8%AF%84%E4%BB%B7%E6%A8%A1%E5%9E%8B/">[学习笔记]综合评价模型</a>
+
+      <a href="/2020/07/27/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E7%BB%BC%E5%90%88%E8%AF%84%E4%BB%B7%E6%A8%A1%E5%9E%8B/" class="index-excerpt">
+        
+        
+          
+        
+        <div>综合评价问题：综合考虑事物的多个指标所包含的信息，对各个备选决策方案优劣进行排序，最终选出最优方案。
+主要步骤：（1）选择综合评价指标（不遗漏、不重复、尽可能独立）；（2）确定各参评方案的指标值，形成决策矩阵；（3）指标值预处理（目的：消除指标值在单位、数量级、方向性三个方面的差异）；（4）确定各项指标的权重系数（重要程度）；（5）对预处理后的指标值进行加权综合，给出各方案的综合得分，按照综合得分</div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>&nbsp;2020-07-27
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</a>
+            
+              <a href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1/">数学建模</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E7%BB%BC%E5%90%88%E8%AF%84%E4%BB%B7%E6%A8%A1%E5%9E%8B/">综合评价模型</a>
+            
+          </div>
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <div class="col-12 col-md-12 mx-auto index-info">
+      <a class="index-header" href="/2020/07/27/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B%E6%A8%A1%E5%9E%8B/">[学习笔记]微分方程模型</a>
+
+      <a href="/2020/07/27/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B%E6%A8%A1%E5%9E%8B/" class="index-excerpt">
+        
+        
+          
+        
+        <div>微分方程模型的思想：假设我们要研究量x,y,z 与t的关系,微分方程模型的思想是从考察量x,y,z对t的导数(即x,y,z对t的变化率)入手，找出导数符合的规律，建立包含未知函数的导数(偏导数)的方程(方程组)，通过分析、求解微分方程（组）来获得x,y,z与t的函数关系。
+以下是几个常见的根据微分方程构建的模型：
+人口增长模型马尔萨斯的指数增长模型基本假设：单位时间内人口的增长率为常数r，即
+x(</div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>&nbsp;2020-07-27
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</a>
+            
+              <a href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1/">数学建模</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B%E6%A8%A1%E5%9E%8B/">微分方程模型</a>
+            
+          </div>
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <div class="col-12 col-md-12 mx-auto index-info">
       <a class="index-header" href="/2020/07/27/%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0-jupyter%E4%B8%8D%E8%83%BD%E9%80%9A%E8%BF%87%E6%B5%8F%E8%A7%88%E5%99%A8%E8%87%AA%E5%8A%A8%E6%89%93%E5%BC%80/">[技术笔记]jupyter不能通过浏览器自动打开</a>
 
       <a href="/2020/07/27/%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0-jupyter%E4%B8%8D%E8%83%BD%E9%80%9A%E8%BF%87%E6%B5%8F%E8%A7%88%E5%99%A8%E8%87%AA%E5%8A%A8%E6%89%93%E5%BC%80/" class="index-excerpt">
@@ -498,79 +635,19 @@ In [129]: s = pd.Series(range(-3, 4))
     </div>
   </div>
 
-  <div class="row mx-auto index-card">
-    
-    
-    <div class="col-12 col-md-12 mx-auto index-info">
-      <a class="index-header" href="/2020/07/13/%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0-%E6%A8%A1%E5%9E%8B%E7%9A%84%E7%81%B5%E6%95%8F%E5%BA%A6%E5%88%86%E6%9E%90%E5%92%8C%E7%A8%B3%E5%81%A5%E6%80%A7%E5%88%86%E6%9E%90%E6%96%B9%E6%B3%95/">[学习笔记]模型的灵敏度分析和稳健性分析方法</a>
-
-      <a href="/2020/07/13/%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0-%E6%A8%A1%E5%9E%8B%E7%9A%84%E7%81%B5%E6%95%8F%E5%BA%A6%E5%88%86%E6%9E%90%E5%92%8C%E7%A8%B3%E5%81%A5%E6%80%A7%E5%88%86%E6%9E%90%E6%96%B9%E6%B3%95/" class="index-excerpt">
-        
-        
-          
-        
-        <div>在完成做出假设，用符号表示有关量，列出数学表达式，求解得到答案后，还需要对所得到的答案进行灵敏度分析和稳健性分析。本文旨在复习所学到的检验分析方法。
-灵敏度分析的意义在于，所得数据为测量值，与实际值可能存在差异，如果模型的输出对模型的输入很敏感，可能导致模型的偏误被放大，因此要对模型进行灵敏度分析。这让我联想到伍德里奇《计量经济学》第九章对于数据问题的再讨论，即解释变量的测量误差在CEV假定下，会</div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>&nbsp;2020-07-13
-          </div>
-        
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-category"></i>
-            
-              <a href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</a>
-            
-              <a href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1/">数学建模</a>
-            
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/%E7%81%B5%E6%95%8F%E5%BA%A6%E5%88%86%E6%9E%90/">灵敏度分析</a>
-            
-              <a href="/tags/%E7%A8%B3%E5%81%A5%E6%80%A7%E5%88%86%E6%9E%90/">稳健性分析</a>
-            
-          </div>
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <div class="col-12 col-md-12 mx-auto index-info">
-      <a class="index-header" href="/2020/07/12/hello-world/">Hello World</a>
-
-      <a href="/2020/07/12/hello-world/" class="index-excerpt">
-        
-        
-          
-        
-        <div>Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.
-Quick</div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>&nbsp;2020-07-12
-          </div>
-        
-        
-        
-      </div>
-    </div>
-  </div>
 
 
+  <nav aria-label="navigation">
+    <span class="pagination" id="pagination">
+      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/"><i class="iconfont icon-arrowright"></i></a>
+    </span>
+  </nav>
+  
+  <script>
+    for (ele of document.getElementById("pagination").getElementsByTagName("a")) {
+      ele.href += '#board';
+    }
+  </script>
 
 
 

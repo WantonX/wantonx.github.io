@@ -17,7 +17,7 @@
   <meta name="description" content="">
   <meta name="author" content="ZiJie Xu">
   <meta name="keywords" content="">
-  <title>[技术笔记]jupyter不能通过浏览器自动打开 - WantonX</title>
+  <title>[学习笔记]微分方程模型 - WantonX</title>
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
 
@@ -164,8 +164,8 @@
               
   <div class="mt-3 post-meta">
     <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-    <time datetime="2020-07-27 08:52">
-      2020年7月27日 早上
+    <time datetime="2020-07-27 13:21">
+      2020年7月27日 下午
     </time>
   </div>
 
@@ -175,7 +175,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      272 字
+      465 字
     </span>
   
 
@@ -185,7 +185,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      3
+      4
        分钟
     </span>
   
@@ -216,17 +216,14 @@
           <div class="post-content mx-auto" id="post">
             
             <article class="markdown-body">
-              <p>这两天用win+R打开juypter的时候发现不能通过浏览器自动打开了，只能手动打开。之前我配置的默认浏览器是chrome，中间因为chrome版本太低Google帮我重装过一次，怀疑是重装过后的chrome被改了文件路径，从而导致打不开了，因此决定重新配置juypter的路径即可：</p>
-<p>1、在cmd下执行<em>jupyter notebook —generate-config</em>，会提示该文件所在的目录，我的是C:\Users\Administrator.jupyter\jupyter_notebook_config.py。</p>
-<p>2、进入该目录，用编辑器打开这个文件（我用的是Geany，应该txt编辑器也可以）。</p>
-<p>3、用crtl+F找到<em>#c.NotebookApp.browser</em>，在其下方复制</p>
-<pre><code>import webbrowser
-
-webbrowser.register(&quot;chrome&quot;,None,webbrowser.GenericBrowser(r&quot;C:\Program Files (x86)\Google\Chrome\Application\chrome.exe&quot;))
-
-c.NotebookApp.browser = &#39;chrome&#39;
-</code></pre><p>我这里用的是chrome，其他浏览器同理，位置路径的确变了，因此替换了位置路径。如果不想改变字符串中的反斜杠\，则在字符串前加上r。</p>
-<p>4、保存并运行，发现成功自动打开浏览器了。</p>
+              <p><strong>微分方程模型的思想</strong>：假设我们要研究量x,y,z 与t的关系,微分方程模型的思想是从考察量x,y,z对t的导数(即x,y,z对t的变化率)入手，找出导数符合的规律，建立包含未知函数的导数(偏导数)的方程(方程组)，通过分析、求解微分方程（组）来获得x,y,z与t的函数关系。</p>
+<p>以下是几个常见的根据微分方程构建的模型：</p>
+<h2 id="人口增长模型"><a href="#人口增长模型" class="headerlink" title="人口增长模型"></a>人口增长模型</h2><h3 id="马尔萨斯的指数增长模型"><a href="#马尔萨斯的指数增长模型" class="headerlink" title="马尔萨斯的指数增长模型"></a>马尔萨斯的指数增长模型</h3><p>基本假设：单位时间内人口的增长率为常数r，即<img src="/2020/07/27/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B%E6%A8%A1%E5%9E%8B/1.png" srcset="/img/loading.gif" alt></p>
+<p>x(t)可以用指数形式来表示，再通过求导即可得到每年的人口增长速度。这个模型有它的优点和缺陷：<strong>可用于短期人口增长预测</strong>（与19世纪以前欧洲一些地区人口统计数据吻合/适用于19世纪后迁往加拿大的欧洲移民后代），但<strong>不能预测较长期的人口增长过程</strong>（不符合19世纪后多数地区人口增长规律，人口增长率r逐渐下降）。</p>
+<h3 id="阻滞增长模型（Logistic模型）"><a href="#阻滞增长模型（Logistic模型）" class="headerlink" title="阻滞增长模型（Logistic模型）"></a>阻滞增长模型（Logistic模型）</h3><p>基本思想：人口增长到一定程度时，由于资源、环境等约束，人口本身会对r产生影响，即r是x的减函数。最简单的函数是线性函数，因此令<strong>r（x） = r - sx， 其中s = r/Smax</strong>，在此条件下可以求得<img src="/2020/07/27/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B%E6%A8%A1%E5%9E%8B/2.png" srcset="/img/loading.gif" alt></p>
+<p>两个未知参数r和Smax可以用以前的数据去拟合（ols）。</p>
+<p>进一步改进则引入其他的非线性函数，并求解相关系数。</p>
+<h3 id="传染病传播模型"><a href="#传染病传播模型" class="headerlink" title="传染病传播模型"></a>传染病传播模型</h3><p>比较科学的两个模型：SIS（传染病可治愈但无免疫性）和SIR（传染病可治愈且有免疫性）。</p>
 
             </article>
             <hr>
@@ -236,9 +233,9 @@ c.NotebookApp.browser = &#39;chrome&#39;
                   <div class="post-meta mr-3">
                     <i class="iconfont icon-category"></i>
                     
-                      <a class="hover-with-bg" href="/categories/%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0/">技术笔记</a>
+                      <a class="hover-with-bg" href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</a>
                     
-                      <a class="hover-with-bg" href="/categories/%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0/python/">python</a>
+                      <a class="hover-with-bg" href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1/">数学建模</a>
                     
                   </div>
                 
@@ -246,7 +243,7 @@ c.NotebookApp.browser = &#39;chrome&#39;
                   <div class="post-meta">
                     <i class="iconfont icon-tags"></i>
                     
-                      <a class="hover-with-bg" href="/tags/jupyter-notebook/">jupyter notebook</a>
+                      <a class="hover-with-bg" href="/tags/%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B%E6%A8%A1%E5%9E%8B/">微分方程模型</a>
                     
                   </div>
                 
@@ -259,9 +256,9 @@ c.NotebookApp.browser = &#39;chrome&#39;
                   <div class="post-prev col-6">
                     
                     
-                      <a href="/2020/07/27/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B%E6%A8%A1%E5%9E%8B/">
+                      <a href="/2020/07/27/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E7%BB%BC%E5%90%88%E8%AF%84%E4%BB%B7%E6%A8%A1%E5%9E%8B/">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">[学习笔记]微分方程模型</span>
+                        <span class="hidden-mobile">[学习笔记]综合评价模型</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -269,8 +266,8 @@ c.NotebookApp.browser = &#39;chrome&#39;
                   <div class="post-next col-6">
                     
                     
-                      <a href="/2020/07/26/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E5%B7%AE%E5%88%86%E6%96%B9%E7%A8%8B%E6%A8%A1%E5%9E%8B/">
-                        <span class="hidden-mobile">[学习笔记]差分方程模型</span>
+                      <a href="/2020/07/27/%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0-jupyter%E4%B8%8D%E8%83%BD%E9%80%9A%E8%BF%87%E6%B5%8F%E8%A7%88%E5%99%A8%E8%87%AA%E5%8A%A8%E6%89%93%E5%BC%80/">
+                        <span class="hidden-mobile">[技术笔记]jupyter不能通过浏览器自动打开</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
@@ -441,7 +438,7 @@ c.NotebookApp.browser = &#39;chrome&#39;
     var typed = new Typed('#subtitle', {
       strings: [
         '  ',
-        "[技术笔记]jupyter不能通过浏览器自动打开&nbsp;",
+        "[学习笔记]微分方程模型&nbsp;",
       ],
       cursorChar: "|",
       typeSpeed: 60,
