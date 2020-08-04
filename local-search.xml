@@ -4,6 +4,89 @@
   
   
   <entry>
+    <title>[技术笔记]plt.plot()的marker、color、linestyle参数</title>
+    <link href="/2020/08/04/%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0-plt-plot-%E7%9A%84marker%E3%80%81color%E3%80%81linestyle%E5%8F%82%E6%95%B0/"/>
+    <url>/2020/08/04/%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0-plt-plot-%E7%9A%84marker%E3%80%81color%E3%80%81linestyle%E5%8F%82%E6%95%B0/</url>
+    
+    <content type="html"><![CDATA[<p><em>ax.plot(x, y, ‘g—‘)</em>和<em>ax.plot(x, y, linestyle=’—‘, color=’g’)</em>是等价的，前者通过格式字符串书写，较为简单，其格式可以为：</p><pre><code>fmt = &#39;[marker][line][color]&#39;</code></pre><p>或者：</p><pre><code>fmt = &#39;[color][marker][line]&#39;</code></pre><p>当然也可以通过color(c) = …, linestyle(ls) = …, marker = …获得。三者的具体常用标记如下：</p><h3 id="Colors"><a href="#Colors" class="headerlink" title="Colors"></a>Colors</h3><div class="table-container"><table><thead><tr><th>character</th><th>color</th></tr></thead><tbody><tr><td>‘b’</td><td>blue</td></tr><tr><td>‘g’</td><td>green</td></tr><tr><td>‘r’</td><td>red</td></tr><tr><td>‘c’</td><td>青色</td></tr><tr><td>‘m’</td><td>品红</td></tr><tr><td>‘y’</td><td>yellow</td></tr><tr><td>‘k’</td><td>black</td></tr><tr><td>‘w’</td><td>white</td></tr></tbody></table></div><p>如果颜色是格式字符串的唯一部分，则可以另外使用任何<a href="https://matplotlib.org/api/colors_api.html#module-matplotlib.colors" target="_blank" rel="noopener">matplotlib.colors</a>规格，例如全名（’green’）或十六进制字符串（’#008000’）。</p><h3 id="Markers"><a href="#Markers" class="headerlink" title="Markers"></a>Markers</h3><div class="table-container"><table><thead><tr><th>character</th><th>marker</th></tr></thead><tbody><tr><td>‘.’</td><td>点标记</td></tr><tr><td>‘,’</td><td>像素标记</td></tr><tr><td>‘o’</td><td>圆圈标记</td></tr><tr><td>‘v’</td><td>triangle_down标记</td></tr><tr><td>‘^’</td><td>三角形标记</td></tr><tr><td>‘&lt;’</td><td>triangle_left标记</td></tr><tr><td>‘&gt;’</td><td>triangle_right标记</td></tr><tr><td>‘1’</td><td>tri_down标记</td></tr><tr><td>‘2’</td><td>tri_up标记</td></tr><tr><td>‘3’</td><td>tri_left标记</td></tr><tr><td>‘4’</td><td>tri_right标记</td></tr><tr><td>‘s’</td><td>方形标记</td></tr><tr><td>‘p’</td><td>五边形标记</td></tr><tr><td>‘*’</td><td>星标</td></tr><tr><td>‘h’</td><td>六角形标记1</td></tr><tr><td>‘H’</td><td>六角形标记2</td></tr><tr><td>‘+’</td><td>加号</td></tr><tr><td>‘x’</td><td>X标记</td></tr><tr><td>‘D’</td><td>钻石标记</td></tr><tr><td>‘d’</td><td>小钻石标记</td></tr><tr><td>‘_’</td><td>水平线标记</td></tr></tbody></table></div><h3 id="Linestyles"><a href="#Linestyles" class="headerlink" title="Linestyles"></a>Linestyles</h3><div class="table-container"><table><thead><tr><th>character</th><th>linestyle</th></tr></thead><tbody><tr><td>‘-‘</td><td>实线</td></tr><tr><td>‘—‘</td><td>虚线</td></tr><tr><td>‘-.’</td><td>点划线</td></tr><tr><td>‘:’</td><td>点线</td></tr></tbody></table></div>]]></content>
+    
+    
+    <categories>
+      
+      <category>技术笔记</category>
+      
+      <category>python</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>matplotlib</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>[技术笔记]Jupyter Notebook 和绘图有关的几个魔术指令（%matplotlib inline, auto, notebook）</title>
+    <link href="/2020/08/02/%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0-Jupyter-Notebook-%E5%92%8C%E7%BB%98%E5%9B%BE%E6%9C%89%E5%85%B3%E7%9A%84%E5%87%A0%E4%B8%AA%E9%AD%94%E6%9C%AF%E6%8C%87%E4%BB%A4%EF%BC%88-matplotlib-inline-auto-notebook%EF%BC%89/"/>
+    <url>/2020/08/02/%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0-Jupyter-Notebook-%E5%92%8C%E7%BB%98%E5%9B%BE%E6%9C%89%E5%85%B3%E7%9A%84%E5%87%A0%E4%B8%AA%E9%AD%94%E6%9C%AF%E6%8C%87%E4%BB%A4%EF%BC%88-matplotlib-inline-auto-notebook%EF%BC%89/</url>
+    
+    <content type="html"><![CDATA[<p>Jupyter notebook默认输出的图片是静态的，无法进行放大等操作，可以添加一条魔术指令：</p><pre><code>%matplotlib notebook</code></pre><p>这样就能够在notebook中进行放大缩小等交互操作了。</p><p>在notebook中使用plt绘图共有三种模式：</p><ol><li>%matplotlib inline：这是默认的模式，输出的图片是静态的</li><li>%matplotlib auto：在这个模式下会弹出一个单独 的绘图窗口，和在pycharm中一样</li><li>%matplotlib notebook：在这个模式下会在notebook中产生一个绘图窗口，能够对图片进行放大缩小等操作。</li></ol><p>注：本文为转载，原文链接：<a href="https://blog.csdn.net/qq_26822029/article/details/103064856" target="_blank" rel="noopener">https://blog.csdn.net/qq_26822029/article/details/103064856</a></p>]]></content>
+    
+    
+    <categories>
+      
+      <category>技术笔记</category>
+      
+      <category>python</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>Jupyter Notebook</tag>
+      
+      <tag>转载</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>[技术笔记]pandas中常用的汇总和统计方法</title>
+    <link href="/2020/07/30/%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0-pandas%E4%B8%AD%E5%B8%B8%E7%94%A8%E7%9A%84%E6%B1%87%E6%80%BB%E5%92%8C%E7%BB%9F%E8%AE%A1%E6%96%B9%E6%B3%95/"/>
+    <url>/2020/07/30/%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0-pandas%E4%B8%AD%E5%B8%B8%E7%94%A8%E7%9A%84%E6%B1%87%E6%80%BB%E5%92%8C%E7%BB%9F%E8%AE%A1%E6%96%B9%E6%B3%95/</url>
+    
+    <content type="html"><![CDATA[<div class="table-container"><table><thead><tr><th>方法</th><th>说明</th></tr></thead><tbody><tr><td>count</td><td>计算非NA值的数量</td></tr><tr><td>describe</td><td>汇总统计</td></tr><tr><td>min、max</td><td>计算最大最小值</td></tr><tr><td>argmin、argmax</td><td>最大最小值所在的索引位置（整数）</td></tr><tr><td>idxmin、idxmax</td><td>最大最小值所在的索引标签</td></tr><tr><td>quantile</td><td>计算样本的分位数</td></tr><tr><td>sum</td><td>值的总和</td></tr><tr><td>mean</td><td>值的平均数</td></tr><tr><td>median</td><td>值的算术中位数</td></tr><tr><td>mad</td><td>平均绝对离差</td></tr><tr><td>var</td><td>方差</td></tr><tr><td>std</td><td>标准差</td></tr><tr><td>skew</td><td>偏度</td></tr><tr><td>kurt</td><td>峰度</td></tr><tr><td>cumsum</td><td>累计和</td></tr><tr><td>cummin、cummax</td><td>累计最大值和累计最小值</td></tr><tr><td>cumprod</td><td>累计积</td></tr><tr><td>diff</td><td>一阶差分</td></tr><tr><td>pct_change</td><td>百分数变化</td></tr></tbody></table></div><p><sup id="fnref:1" class="footnote-ref"><a href="#fn:1" rel="footnote"><span class="hint--top hint--rounded" aria-label="上述统计方法都是基于样本而言，自由度为N-1">[1]</span></a></sup></p><p>注释：</p><section class="footnotes"><div class="footnote-list"><ol><li><span id="fn:1" class="footnote-text"><span>上述统计方法都是基于样本而言，自由度为N-1<a href="#fnref:1" rev="footnote" class="footnote-backref"> ↩</a></span></span></li></ol></div></section>]]></content>
+    
+    
+    <categories>
+      
+      <category>技术笔记</category>
+      
+      <category>python</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>统计</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>[技术笔记]dataframe.apply和groupby.apply的区别</title>
     <link href="/2020/07/28/%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0-dataframe-apply%E5%92%8Cgroupby-apply%E7%9A%84%E5%8C%BA%E5%88%AB/"/>
     <url>/2020/07/28/%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0-dataframe-apply%E5%92%8Cgroupby-apply%E7%9A%84%E5%8C%BA%E5%88%AB/</url>
