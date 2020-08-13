@@ -4,6 +4,33 @@
   
   
   <entry>
+    <title>[技术笔记]一些常用库的引入规定（持续更新）</title>
+    <link href="/2020/08/13/%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0-%E4%B8%80%E4%BA%9B%E5%B8%B8%E7%94%A8%E5%BA%93%E7%9A%84%E5%BC%95%E5%85%A5%E8%A7%84%E5%AE%9A%EF%BC%88%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0%EF%BC%89/"/>
+    <url>/2020/08/13/%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0-%E4%B8%80%E4%BA%9B%E5%B8%B8%E7%94%A8%E5%BA%93%E7%9A%84%E5%BC%95%E5%85%A5%E8%A7%84%E5%AE%9A%EF%BC%88%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0%EF%BC%89/</url>
+    
+    <content type="html"><![CDATA[<pre><code>import pandas as pdfrom pandas import Series, DataFrameimport matplotlib.pyplot as plt # 常用的绘图库from datetime import datetime/date/time/timedelta # python标准库里常用的时间方法from dateutil.parser import prase # pandas自动安装的时间包，parse方法可以解析几乎所有人类能够理解的日期表达形式</code></pre>]]></content>
+    
+    
+    <categories>
+      
+      <category>技术笔记</category>
+      
+      <category>python</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>常用库</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>[技术笔记]plt.plot()的marker、color、linestyle参数</title>
     <link href="/2020/08/04/%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0-plt-plot-%E7%9A%84marker%E3%80%81color%E3%80%81linestyle%E5%8F%82%E6%95%B0/"/>
     <url>/2020/08/04/%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0-plt-plot-%E7%9A%84marker%E3%80%81color%E3%80%81linestyle%E5%8F%82%E6%95%B0/</url>
@@ -118,7 +145,7 @@
     <link href="/2020/07/27/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E7%BB%BC%E5%90%88%E8%AF%84%E4%BB%B7%E6%A8%A1%E5%9E%8B/"/>
     <url>/2020/07/27/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E7%BB%BC%E5%90%88%E8%AF%84%E4%BB%B7%E6%A8%A1%E5%9E%8B/</url>
     
-    <content type="html"><![CDATA[<p>综合评价问题：综合考虑事物的多个指标所包含的信息，对各个备选决策方案优劣进行排序，最终选出最优方案。</p><p>主要步骤：（1）选择综合评价指标（不遗漏、不重复、尽可能独立）；（2）确定各参评方案的指标值，形成决策矩阵；（3）指标值预处理（目的：消除指标值在单位、数量级、方向性三个方面的差异）；（4）确定各项指标的权重系数（重要程度）；（5）对预处理后的指标值进行加权综合，给出各方案的综合得分，按照综合得分对各个参评方案进行优劣排序。</p><p>评价方法分类：（1）主观复权法：综合指数法、模糊综合评判法、层次分析法、功效系数法等。（2）客观赋权法：主成分分析法、因子分析法、熵权法、理想解法（TOPSIS法）等。</p><h2 id="层次分析法（AHP）"><a href="#层次分析法（AHP）" class="headerlink" title="层次分析法（AHP）"></a>层次分析法（AHP）</h2><p>假设有n个指标，我们虽然不知道他们的各自重要程度（权重），但知道它们的重要程度之比，则可以以这个比值建立一个成对比较矩阵A，根据矩阵获得各个指标的权重。</p><p>根据特征向量的定义，可以得出这个矩<strong>阵A具有特征值n和特征向量W = (W1,W2,W3,W4….Wn).T</strong>。</p><p><img src="/2020/07/27/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E7%BB%BC%E5%90%88%E8%AF%84%E4%BB%B7%E6%A8%A1%E5%9E%8B/1.jpg" srcset="/img/loading.gif" alt></p><p>并且有定理：1、A的秩为1，A的唯一非零特征值为n；2、A的任一列向量都是对应于特征值n 的特征向量。在此定理下，对任一列向量归一化后，就给出了这n个指标的权重的真实值。</p><p><strong>比值的确定就是主观的</strong>,Saaty等人提出1~9尺度——aij 取值1,2,… , 9及其互反数1,1/2, … , 1/9，因为心理学家认为成对比较的因素不宜超过9个。需要注意的是，对影响因素为负的指标，要提前做处理，不然性质不符，无法使用此方法。</p><p>性质1和性质2是较好满足的，但性质3这种传递性在主观下很难满足。但Saaty认为，我们在实际操作时不需要完全满足一致性，只要能通过<strong>一致性检验</strong>即可。</p><h3 id="一致性检验"><a href="#一致性检验" class="headerlink" title="一致性检验"></a>一致性检验</h3><p><img src="/2020/07/27/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E7%BB%BC%E5%90%88%E8%AF%84%E4%BB%B7%E6%A8%A1%E5%9E%8B/2.png" srcset="/img/loading.gif" alt></p><p>CI越大，不一致越严重。为衡量CI的大小，引入随机一致性指标RI——随机模拟得到aij, 形成A，计算CI即得RI。</p><p>令<strong>CR = CI/RI</strong>，一般认为当CR&lt;0.1时，通过一致性检验。</p>]]></content>
+    <content type="html"><![CDATA[<p>综合评价问题：综合考虑事物的多个指标所包含的信息，对各个备选决策方案优劣进行排序，最终选出最优方案。</p><p>主要步骤：（1）选择综合评价指标（不遗漏、不重复、尽可能独立）；（2）确定各参评方案的指标值，形成决策矩阵；（3）指标值预处理（目的：消除指标值在单位、数量级、方向性三个方面的差异）；（4）确定各项指标的权重系数（重要程度）；（5）对预处理后的指标值进行加权综合，给出各方案的综合得分，按照综合得分对各个参评方案进行优劣排序。</p><p>评价方法分类：（1）主观复权法：综合指数法、模糊综合评判法、层次分析法、功效系数法等。（2）客观赋权法：主成分分析法、因子分析法、熵权法、理想解法（TOPSIS法）等。</p><h2 id="层次分析法（AHP）"><a href="#层次分析法（AHP）" class="headerlink" title="层次分析法（AHP）"></a>层次分析法（AHP）</h2><p>假设有n个指标，我们虽然不知道他们的各自重要程度（权重），但知道它们的重要程度之比，则可以以这个比值建立一个成对比较矩阵A，根据矩阵获得各个指标的权重。</p><p>根据特征向量的定义，可以得出这个矩<strong>阵A具有特征值n和特征向量W = (W1,W2,W3,W4….Wn).T</strong>。</p><p><img src="/2020/07/27/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E7%BB%BC%E5%90%88%E8%AF%84%E4%BB%B7%E6%A8%A1%E5%9E%8B/1.jpg" srcset="/img/loading.gif" alt></p><p>并且有定理：1、A的秩为1，A的唯一非零特征值为n；2、A的任一列向量都是对应于特征值n 的特征向量。在此定理下，对任一列向量归一化后，就给出了这n个指标的权重的真实值。</p><p><strong>比值的确定就是主观的</strong>,Saaty等人提出1~9尺度——aij 取值1,2,… , 9及其互反数1,1/2, … , 1/9，因为心理学家认为成对比较的因素不宜超过9个。需要注意的是，对影响因素为负的指标，要提前做处理，不然性质不符，无法使用此方法。</p><p>性质1和性质2是较好满足的，但性质3这种传递性在主观下很难满足。但Saaty认为，我们在实际操作时不需要完全满足一致性，只要能通过<strong>一致性检验</strong>即可。</p><h3 id="一致性检验"><a href="#一致性检验" class="headerlink" title="一致性检验"></a>一致性检验</h3><p><img src="/2020/07/27/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E7%BB%BC%E5%90%88%E8%AF%84%E4%BB%B7%E6%A8%A1%E5%9E%8B/2.png" srcset="/img/loading.gif" alt></p><p>CI越大，不一致越严重。为衡量CI的大小，引入随机一致性指标RI——随机模拟得到aij, 形成A，计算CI即得RI。</p><p>令<strong>CR = CI/RI</strong>，一般认为当CR&lt;0.1时，通过一致性检验。</p><h2 id="熵权法"><a href="#熵权法" class="headerlink" title="熵权法"></a>熵权法</h2><p>熵权法是一种<strong>客观赋权法</strong>，基础是各项指标都已经量化好，利用指标值数据的离散程度来确定各项指标在综合评价中的权重，离散程度越大，该项指标权重越大。</p><p>在信息论中，熵是对不确定性的一种度量。不确定性越大，熵就越小。</p><h3 id="step1：数据预处理"><a href="#step1：数据预处理" class="headerlink" title="step1：数据预处理"></a>step1：数据预处理</h3><p><img src="/2020/07/27/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E7%BB%BC%E5%90%88%E8%AF%84%E4%BB%B7%E6%A8%A1%E5%9E%8B/2.jpg" srcset="/img/loading.gif" alt></p><h3 id="step2：数据归一化"><a href="#step2：数据归一化" class="headerlink" title="step2：数据归一化"></a>step2：数据归一化</h3><p>让各个指标数据的和为1，即Pi = Yi / （Y1+Y2+Y3+….+Yn）。</p><h3 id="step3：计算第j项指标的熵"><a href="#step3：计算第j项指标的熵" class="headerlink" title="step3：计算第j项指标的熵"></a>step3：计算第j项指标的熵</h3><p><img src="/2020/07/27/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E7%BB%BC%E5%90%88%E8%AF%84%E4%BB%B7%E6%A8%A1%E5%9E%8B/3.png" srcset="/img/loading.gif" alt></p><h3 id="step4：计算指标的离散程度并计算权重"><a href="#step4：计算指标的离散程度并计算权重" class="headerlink" title="step4：计算指标的离散程度并计算权重"></a>step4：计算指标的离散程度并计算权重</h3><p>令Dj = 1 - Ej（因为熵越大，不确定性越小），接下来再把各个指标的离散程度归一化处理。</p><h3 id="step6：计算结果并排序"><a href="#step6：计算结果并排序" class="headerlink" title="step6：计算结果并排序"></a>step6：计算结果并排序</h3><h2 id="理想点法"><a href="#理想点法" class="headerlink" title="理想点法"></a>理想点法</h2><p>理想点法是综合各个方案与理想的最优方案以及最差方案之间的距离，对各个方案的优劣进行排序，与最优方案越接近同时与最差方案距离越远的方案，综合得分越高。</p><h3 id="step1：数据的预处理"><a href="#step1：数据的预处理" class="headerlink" title="step1：数据的预处理"></a>step1：数据的预处理</h3><p>方法有很多，此处就不再赘述了。</p><h3 id="step2：确定各个指标的权重"><a href="#step2：确定各个指标的权重" class="headerlink" title="step2：确定各个指标的权重"></a>step2：确定各个指标的权重</h3><p>可以用所有用于确定指标权重的方法。</p><h3 id="step3：计算加权的指标值"><a href="#step3：计算加权的指标值" class="headerlink" title="step3：计算加权的指标值"></a>step3：计算加权的指标值</h3><h3 id="step4："><a href="#step4：" class="headerlink" title="step4："></a>step4：</h3>]]></content>
     
     
     <categories>
