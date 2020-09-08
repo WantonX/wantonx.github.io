@@ -1,7 +1,7 @@
+
+
 <!DOCTYPE html>
-<html lang="zh-CN">
-
-
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
 
 
 
@@ -25,7 +25,7 @@
 
 <!-- 主题依赖的图标库，不要自行修改 -->
 
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_yg9cfy8wd6.css">
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_6peoq002giu.css">
 
 
 
@@ -38,6 +38,7 @@
 
 
   <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
 <meta name="generator" content="Hexo 4.2.1"></head>
 
 
@@ -132,8 +133,14 @@
         
         
           <li class="nav-item" id="search-btn">
-            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;&nbsp;<i
-                class="iconfont icon-search"></i>&nbsp;&nbsp;</a>
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" href="javascript:">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
           </li>
         
       </ul>
@@ -141,12 +148,12 @@
   </div>
 </nav>
 
-    <div class="view intro-2" id="background" parallax=true
+    <div class="banner intro-2" id="background" parallax=true
          style="background: url('/website_picture/article_picture.jpg') no-repeat center center;
            background-size: cover;">
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
-          <div class="container text-center white-text fadeInUp">
+          <div class="container page-header text-center fade-in-up">
             <span class="h2" id="subtitle">
               
             </span>
@@ -179,25 +186,325 @@
   <div class="row mx-auto index-card">
     
     
-    <div class="col-12 col-md-12 mx-auto index-info">
-      <a class="index-header" href="/2020/08/13/%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0-%E4%B8%80%E4%BA%9B%E5%B8%B8%E7%94%A8%E5%BA%93%E7%9A%84%E5%BC%95%E5%85%A5%E8%A7%84%E5%AE%9A%EF%BC%88%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0%EF%BC%89/">[技术笔记]一些常用库的引入规定（持续更新）</a>
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        <a href="/2020/09/07/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E9%9D%A2%E6%9D%BF%E6%95%B0%E6%8D%AE%E5%9B%9E%E5%BD%92%E6%A8%A1%E5%9E%8B/">[学习笔记]面板数据回归模型</a>
+      </h1>
 
-      <a href="/2020/08/13/%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0-%E4%B8%80%E4%BA%9B%E5%B8%B8%E7%94%A8%E5%BA%93%E7%9A%84%E5%BC%95%E5%85%A5%E8%A7%84%E5%AE%9A%EF%BC%88%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0%EF%BC%89/" class="index-excerpt">
-        
-        
+      <p class="index-excerpt">
+        <a href="/2020/09/07/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E9%9D%A2%E6%9D%BF%E6%95%B0%E6%8D%AE%E5%9B%9E%E5%BD%92%E6%A8%A1%E5%9E%8B/">
           
-        
-        <div>import pandas as pd
-from pandas import Series, DataFrame
-import matplotlib.pyplot as plt # 常用的绘图库
-from datetime import datetime/date/time/timedelta # python标准库里常用的时间方法
-from dateutil.parser import pras</div>
-      </a>
+          
+            
+          
+          面板数据的优势可以处理一些不可观测的遗漏变量——如果漏掉的变量不随时间变化，则面板数据可以帮助消除遗漏变量偏差。
+由上一篇笔记可知，由于各人/地/企业…各自存在一些属于自己的，影响因变量而不随时间变化的特征（异质性特征），横截面数据很难消除这些固定效应，因此选择面板数据回归模型进行处理。
+差分估计两期差分模型
+多期差分模型方法一：个体中心化方法处理固定效应
+其原理是针对同一样本，将其不同时期的做均
+        </a>
+      </p>
 
       <div class="index-btm post-metas">
         
           <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>&nbsp;2020-08-13
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-09-07 20:23" pubdate>
+              2020-09-07
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</a>
+            
+              <a href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E8%AE%A1%E9%87%8F%E7%BB%8F%E6%B5%8E%E5%AD%A6/">计量经济学</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E9%9D%A2%E6%9D%BF%E6%95%B0%E6%8D%AE/">面板数据</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        <a href="/2020/09/07/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E8%B7%A8%E6%97%B6%E6%A8%AA%E6%88%AA%E9%9D%A2%E7%9A%84%E6%B7%B7%E5%90%88%EF%BC%9A%E7%AE%80%E5%8D%95%E9%9D%A2%E6%9D%BF%E6%95%B0%E6%8D%AE%E6%96%B9%E6%B3%95/">[学习笔记]跨时横截面的混合：简单面板数据方法</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2020/09/07/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E8%B7%A8%E6%97%B6%E6%A8%AA%E6%88%AA%E9%9D%A2%E7%9A%84%E6%B7%B7%E5%90%88%EF%BC%9A%E7%AE%80%E5%8D%95%E9%9D%A2%E6%9D%BF%E6%95%B0%E6%8D%AE%E6%96%B9%E6%B3%95/">
+          
+          
+            
+          
+          跨时独立横截面的混合定义跨时独立混合横截面数据指的是在不同时点从一个大总体里进行随机抽样的结果，各个时期都是各自进行一次随机抽样，样本量可以不同，完全独立。这可能造成观测点不是同分布的。
+年度虚拟变量年度虚拟变量就是用来解决不同时间的观测点不是同分布问题的，即以最初一年为基年，后续几年分别设立一个虚拟变量，容许截距项甚至斜率（通过交互项）随时间的改变而改变。
+利用混合截面做政策分析当某些外生事件（
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-09-07 12:47" pubdate>
+              2020-09-07
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</a>
+            
+              <a href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E8%AE%A1%E9%87%8F%E7%BB%8F%E6%B5%8E%E5%AD%A6/">计量经济学</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E9%9D%A2%E6%9D%BF%E6%95%B0%E6%8D%AE/">面板数据</a>
+            
+              <a href="/tags/%E6%B7%B7%E5%90%88%E6%A8%AA%E6%88%AA%E9%9D%A2/">混合横截面</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        <a href="/2020/09/07/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E8%AE%A1%E9%87%8F%E5%B0%8F%E5%A4%8D%E4%B9%A0/">[学习笔记]计量小复习</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2020/09/07/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E8%AE%A1%E9%87%8F%E5%B0%8F%E5%A4%8D%E4%B9%A0/">
+          
+          
+            
+          
+          1、方差膨胀因子（VIF）：测度某一自变量是否存在多重共线性，一般认为VIF&gt;10则存在较强的多重共线性，VIF&gt;100则存在严重的多重共线性。
+2、含ln的回归系数的解释：
+lny = alnx x变动1%，y变动a%
+lny = ax x变动1，y变动100a%
+y = alnx x变动1%，y变动a/100
+3、Wald Test注意点：在WT中，c(n)的n是从1开始的，不是从
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-09-07 08:25" pubdate>
+              2020-09-07
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</a>
+            
+              <a href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E8%AE%A1%E9%87%8F%E7%BB%8F%E6%B5%8E%E5%AD%A6/">计量经济学</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E8%AE%A1%E9%87%8F%E7%BB%8F%E6%B5%8E%E5%AD%A6/">计量经济学</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        <a href="/2020/08/30/%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0-pandas%E5%AD%A6%E4%B9%A0%E5%B0%8F%E7%AC%94%E8%AE%B01/">[技术笔记]pandas学习小笔记1</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2020/08/30/%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0-pandas%E5%AD%A6%E4%B9%A0%E5%B0%8F%E7%AC%94%E8%AE%B01/">
+          
+          
+            
+          
+          1、在使用pd.to_datetime()替换相关数据时，可能df[XXX] = pd.to_datetime(df[XXX])还是很好想到的，但如要对df的行标签进行转换，就应该是df.index = pd.to_datetime(df.index)这样子。
+2、当要删除某些具有特定数据的行或者列时，应该使用df.replace()和df.dropna()结合的方法。
+如想要删除那些全是0的列，
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-08-30 17:20" pubdate>
+              2020-08-30
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0/">技术笔记</a>
+            
+              <a href="/categories/%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0/python/">python</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/pandas/">pandas</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        <a href="/2020/08/17/%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0-%E9%87%8D%E8%A3%85%E7%B3%BB%E7%BB%9F%E5%90%8E%E5%AE%89%E8%A3%85%E8%BD%AF%E4%BB%B6%E9%81%87%E5%88%B0%E7%9A%84%E5%90%84%E7%A7%8D%E9%97%AE%E9%A2%98%E5%8F%8A%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95/">[技术笔记]重装硬盘后安装软件遇到的各种问题及解决办法</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2020/08/17/%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0-%E9%87%8D%E8%A3%85%E7%B3%BB%E7%BB%9F%E5%90%8E%E5%AE%89%E8%A3%85%E8%BD%AF%E4%BB%B6%E9%81%87%E5%88%B0%E7%9A%84%E5%90%84%E7%A7%8D%E9%97%AE%E9%A2%98%E5%8F%8A%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95/">
+          
+          
+            
+          
+          win10安装nodejs，报错there is a problem in the windows installer package…原因：win10和win8下必须以管理员模式打开此exe文件。
+解决方法：首先以管理员身份打开cmd，将cmd路径通过cd方法转到nodejs.exe所在文件夹，再通过c：和键入文件名（注意要加后缀.msi）打开此程序。
+markdownpad2没有预览界面，一打
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-08-17 12:23" pubdate>
+              2020-08-17
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/git/">git</a>
+            
+              <a href="/tags/nodejs/">nodejs</a>
+            
+              <a href="/tags/markdownpad2/">markdownpad2</a>
+            
+              <a href="/tags/pip/">pip</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        <a href="/2020/08/17/hello-world/">Hello World</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2020/08/17/hello-world/">
+          
+          
+            
+          
+          Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.
+Quick
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-08-17 12:20" pubdate>
+              2020-08-17
+            </time>
+          </div>
+        
+        
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        <a href="/2020/08/13/%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0-%E4%B8%80%E4%BA%9B%E5%B8%B8%E7%94%A8%E5%BA%93%E7%9A%84%E5%BC%95%E5%85%A5%E8%A7%84%E5%AE%9A%EF%BC%88%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0%EF%BC%89/">[技术笔记]一些常用库的引入规定（持续更新）</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2020/08/13/%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0-%E4%B8%80%E4%BA%9B%E5%B8%B8%E7%94%A8%E5%BA%93%E7%9A%84%E5%BC%95%E5%85%A5%E8%A7%84%E5%AE%9A%EF%BC%88%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0%EF%BC%89/">
+          
+          
+            
+          
+          import pandas as pd
+from pandas import Series, DataFrame
+import matplotlib.pyplot as plt # 常用的绘图库
+from datetime import datetime/date/time/timedelta # python标准库里常用的时间方法
+from dateutil.parser import pras
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-08-13 10:28" pubdate>
+              2020-08-13
+            </time>
           </div>
         
         
@@ -219,31 +526,38 @@ from dateutil.parser import pras</div>
           </div>
         
       </div>
-    </div>
+    </article>
   </div>
 
   <div class="row mx-auto index-card">
     
     
-    <div class="col-12 col-md-12 mx-auto index-info">
-      <a class="index-header" href="/2020/08/04/%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0-plt-plot-%E7%9A%84marker%E3%80%81color%E3%80%81linestyle%E5%8F%82%E6%95%B0/">[技术笔记]plt.plot()的marker、color、linestyle参数</a>
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        <a href="/2020/08/04/%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0-plt-plot-%E7%9A%84marker%E3%80%81color%E3%80%81linestyle%E5%8F%82%E6%95%B0/">[技术笔记]plt.plot()的marker、color、linestyle参数</a>
+      </h1>
 
-      <a href="/2020/08/04/%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0-plt-plot-%E7%9A%84marker%E3%80%81color%E3%80%81linestyle%E5%8F%82%E6%95%B0/" class="index-excerpt">
-        
-        
+      <p class="index-excerpt">
+        <a href="/2020/08/04/%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0-plt-plot-%E7%9A%84marker%E3%80%81color%E3%80%81linestyle%E5%8F%82%E6%95%B0/">
           
-        
-        <div>ax.plot(x, y, ‘g—‘)和ax.plot(x, y, linestyle=’—‘, color=’g’)是等价的，前者通过格式字符串书写，较为简单，其格式可以为：
+          
+            
+          
+          ax.plot(x, y, ‘g—‘)和ax.plot(x, y, linestyle=’—‘, color=’g’)是等价的，前者通过格式字符串书写，较为简单，其格式可以为：
 fmt = &#39;[marker][line][color]&#39;
 或者：
 fmt = &#39;[color][marker][line]&#39;
-当然也可以通过color(c) = …, linestyle(</div>
-      </a>
+当然也可以通过color(c) = …, linestyle(
+        </a>
+      </p>
 
       <div class="index-btm post-metas">
         
           <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>&nbsp;2020-08-04
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-08-04 09:35" pubdate>
+              2020-08-04
+            </time>
           </div>
         
         
@@ -265,33 +579,40 @@ fmt = &#39;[color][marker][line]&#39;
           </div>
         
       </div>
-    </div>
+    </article>
   </div>
 
   <div class="row mx-auto index-card">
     
     
-    <div class="col-12 col-md-12 mx-auto index-info">
-      <a class="index-header" href="/2020/08/02/%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0-Jupyter-Notebook-%E5%92%8C%E7%BB%98%E5%9B%BE%E6%9C%89%E5%85%B3%E7%9A%84%E5%87%A0%E4%B8%AA%E9%AD%94%E6%9C%AF%E6%8C%87%E4%BB%A4%EF%BC%88-matplotlib-inline-auto-notebook%EF%BC%89/">[技术笔记]Jupyter Notebook 和绘图有关的几个魔术指令（%matplotlib inline, auto, notebook）</a>
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        <a href="/2020/08/02/%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0-Jupyter-Notebook-%E5%92%8C%E7%BB%98%E5%9B%BE%E6%9C%89%E5%85%B3%E7%9A%84%E5%87%A0%E4%B8%AA%E9%AD%94%E6%9C%AF%E6%8C%87%E4%BB%A4%EF%BC%88-matplotlib-inline-auto-notebook%EF%BC%89/">[技术笔记]Jupyter Notebook 和绘图有关的几个魔术指令（%matplotlib inline, auto, notebook）</a>
+      </h1>
 
-      <a href="/2020/08/02/%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0-Jupyter-Notebook-%E5%92%8C%E7%BB%98%E5%9B%BE%E6%9C%89%E5%85%B3%E7%9A%84%E5%87%A0%E4%B8%AA%E9%AD%94%E6%9C%AF%E6%8C%87%E4%BB%A4%EF%BC%88-matplotlib-inline-auto-notebook%EF%BC%89/" class="index-excerpt">
-        
-        
+      <p class="index-excerpt">
+        <a href="/2020/08/02/%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0-Jupyter-Notebook-%E5%92%8C%E7%BB%98%E5%9B%BE%E6%9C%89%E5%85%B3%E7%9A%84%E5%87%A0%E4%B8%AA%E9%AD%94%E6%9C%AF%E6%8C%87%E4%BB%A4%EF%BC%88-matplotlib-inline-auto-notebook%EF%BC%89/">
           
-        
-        <div>Jupyter notebook默认输出的图片是静态的，无法进行放大等操作，可以添加一条魔术指令：
+          
+            
+          
+          Jupyter notebook默认输出的图片是静态的，无法进行放大等操作，可以添加一条魔术指令：
 %matplotlib notebook
 这样就能够在notebook中进行放大缩小等交互操作了。
 在notebook中使用plt绘图共有三种模式：
 
 %matplotlib inline：这是默认的模式，输出的图片是静态的
-%matplotlib auto：在这个模式下会弹出一个单独 的绘图窗口，</div>
-      </a>
+%matplotlib auto：在这个模式下会弹出一个单独 的绘图窗口，
+        </a>
+      </p>
 
       <div class="index-btm post-metas">
         
           <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>&nbsp;2020-08-02
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-08-02 09:49" pubdate>
+              2020-08-02
+            </time>
           </div>
         
         
@@ -315,21 +636,24 @@ fmt = &#39;[color][marker][line]&#39;
           </div>
         
       </div>
-    </div>
+    </article>
   </div>
 
   <div class="row mx-auto index-card">
     
     
-    <div class="col-12 col-md-12 mx-auto index-info">
-      <a class="index-header" href="/2020/07/30/%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0-pandas%E4%B8%AD%E5%B8%B8%E7%94%A8%E7%9A%84%E6%B1%87%E6%80%BB%E5%92%8C%E7%BB%9F%E8%AE%A1%E6%96%B9%E6%B3%95/">[技术笔记]pandas中常用的汇总和统计方法</a>
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        <a href="/2020/07/30/%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0-pandas%E4%B8%AD%E5%B8%B8%E7%94%A8%E7%9A%84%E6%B1%87%E6%80%BB%E5%92%8C%E7%BB%9F%E8%AE%A1%E6%96%B9%E6%B3%95/">[技术笔记]pandas中常用的汇总和统计方法</a>
+      </h1>
 
-      <a href="/2020/07/30/%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0-pandas%E4%B8%AD%E5%B8%B8%E7%94%A8%E7%9A%84%E6%B1%87%E6%80%BB%E5%92%8C%E7%BB%9F%E8%AE%A1%E6%96%B9%E6%B3%95/" class="index-excerpt">
-        
-        
+      <p class="index-excerpt">
+        <a href="/2020/07/30/%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0-pandas%E4%B8%AD%E5%B8%B8%E7%94%A8%E7%9A%84%E6%B1%87%E6%80%BB%E5%92%8C%E7%BB%9F%E8%AE%A1%E6%96%B9%E6%B3%95/">
           
-        
-        <div>
+          
+            
+          
+          
 
 
 
@@ -377,13 +701,17 @@ median
 
 mad
 平均绝对离差
-</div>
-      </a>
+
+        </a>
+      </p>
 
       <div class="index-btm post-metas">
         
           <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>&nbsp;2020-07-30
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-07-30 13:59" pubdate>
+              2020-07-30
+            </time>
           </div>
         
         
@@ -405,286 +733,14 @@ mad
           </div>
         
       </div>
-    </div>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <div class="col-12 col-md-12 mx-auto index-info">
-      <a class="index-header" href="/2020/07/28/%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0-dataframe-apply%E5%92%8Cgroupby-apply%E7%9A%84%E5%8C%BA%E5%88%AB/">[技术笔记]dataframe.apply和groupby.apply的区别</a>
-
-      <a href="/2020/07/28/%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0-dataframe-apply%E5%92%8Cgroupby-apply%E7%9A%84%E5%8C%BA%E5%88%AB/" class="index-excerpt">
-        
-        
-          
-        
-        <div>在看书学习apply函数的过程中，我发现书上还是比较集中于讲解apply在groupby分组、聚合这方面的作用，如下面这个用特定于分组的值填充缺失值[1]：    In [91]: s = pd.Series(np.random.randn(6))
-In [92]: s[::2] = np.nan
-
-In [93]: s
-Out[93]: 
-0         NaN
-1   -0.125921
-</div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>&nbsp;2020-07-28
-          </div>
-        
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-category"></i>
-            
-              <a href="/categories/%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0/">技术笔记</a>
-            
-              <a href="/categories/%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0/python/">python</a>
-            
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/apply-%E5%87%BD%E6%95%B0/">apply()函数</a>
-            
-          </div>
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <div class="col-12 col-md-12 mx-auto index-info">
-      <a class="index-header" href="/2020/07/27/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E7%BB%BC%E5%90%88%E8%AF%84%E4%BB%B7%E6%A8%A1%E5%9E%8B/">[学习笔记]综合评价模型</a>
-
-      <a href="/2020/07/27/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E7%BB%BC%E5%90%88%E8%AF%84%E4%BB%B7%E6%A8%A1%E5%9E%8B/" class="index-excerpt">
-        
-        
-          
-        
-        <div>综合评价问题：综合考虑事物的多个指标所包含的信息，对各个备选决策方案优劣进行排序，最终选出最优方案。
-主要步骤：（1）选择综合评价指标（不遗漏、不重复、尽可能独立）；（2）确定各参评方案的指标值，形成决策矩阵；（3）指标值预处理（目的：消除指标值在单位、数量级、方向性三个方面的差异）；（4）确定各项指标的权重系数（重要程度）；（5）对预处理后的指标值进行加权综合，给出各方案的综合得分，按照综合得分</div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>&nbsp;2020-07-27
-          </div>
-        
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-category"></i>
-            
-              <a href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</a>
-            
-              <a href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1/">数学建模</a>
-            
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/%E7%BB%BC%E5%90%88%E8%AF%84%E4%BB%B7%E6%A8%A1%E5%9E%8B/">综合评价模型</a>
-            
-          </div>
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <div class="col-12 col-md-12 mx-auto index-info">
-      <a class="index-header" href="/2020/07/27/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B%E6%A8%A1%E5%9E%8B/">[学习笔记]微分方程模型</a>
-
-      <a href="/2020/07/27/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B%E6%A8%A1%E5%9E%8B/" class="index-excerpt">
-        
-        
-          
-        
-        <div>微分方程模型的思想：假设我们要研究量x,y,z 与t的关系,微分方程模型的思想是从考察量x,y,z对t的导数(即x,y,z对t的变化率)入手，找出导数符合的规律，建立包含未知函数的导数(偏导数)的方程(方程组)，通过分析、求解微分方程（组）来获得x,y,z与t的函数关系。
-以下是几个常见的根据微分方程构建的模型：
-人口增长模型马尔萨斯的指数增长模型基本假设：单位时间内人口的增长率为常数r，即
-x(</div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>&nbsp;2020-07-27
-          </div>
-        
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-category"></i>
-            
-              <a href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</a>
-            
-              <a href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1/">数学建模</a>
-            
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B%E6%A8%A1%E5%9E%8B/">微分方程模型</a>
-            
-          </div>
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <div class="col-12 col-md-12 mx-auto index-info">
-      <a class="index-header" href="/2020/07/27/%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0-jupyter%E4%B8%8D%E8%83%BD%E9%80%9A%E8%BF%87%E6%B5%8F%E8%A7%88%E5%99%A8%E8%87%AA%E5%8A%A8%E6%89%93%E5%BC%80/">[技术笔记]jupyter不能通过浏览器自动打开</a>
-
-      <a href="/2020/07/27/%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0-jupyter%E4%B8%8D%E8%83%BD%E9%80%9A%E8%BF%87%E6%B5%8F%E8%A7%88%E5%99%A8%E8%87%AA%E5%8A%A8%E6%89%93%E5%BC%80/" class="index-excerpt">
-        
-        
-          
-        
-        <div>这两天用win+R打开juypter的时候发现不能通过浏览器自动打开了，只能手动打开。之前我配置的默认浏览器是chrome，中间因为chrome版本太低Google帮我重装过一次，怀疑是重装过后的chrome被改了文件路径，从而导致打不开了，因此决定重新配置juypter的路径即可：
-1、在cmd下执行jupyter notebook —generate-config，会提示该文件所在的目录，我的</div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>&nbsp;2020-07-27
-          </div>
-        
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-category"></i>
-            
-              <a href="/categories/%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0/">技术笔记</a>
-            
-              <a href="/categories/%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0/python/">python</a>
-            
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/jupyter-notebook/">jupyter notebook</a>
-            
-          </div>
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <div class="col-12 col-md-12 mx-auto index-info">
-      <a class="index-header" href="/2020/07/26/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E5%B7%AE%E5%88%86%E6%96%B9%E7%A8%8B%E6%A8%A1%E5%9E%8B/">[学习笔记]差分方程模型</a>
-
-      <a href="/2020/07/26/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E5%B7%AE%E5%88%86%E6%96%B9%E7%A8%8B%E6%A8%A1%E5%9E%8B/" class="index-excerpt">
-        
-        
-          
-        
-        <div>差分方程，顾名思义，研究的是一组有规律序列相邻两个时间段间的规律，这种规律能够全部（部分）运用（使用迭代或递推）到一个总体，从而求解问题。
-一阶线性差分方程模型ΔAn = An+1 - An = f(An,其他因素) 这样一个方程可以被称为一阶差分方程模型，如果f(An,其他因素)是关于An的线性模式，则被称为一阶线性差分方程模型，即
-一阶线性差分方程的解及其长期行为很容易得到
-当n趋于无穷时，
-</div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>&nbsp;2020-07-26
-          </div>
-        
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-category"></i>
-            
-              <a href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</a>
-            
-              <a href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1/">数学建模</a>
-            
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/%E5%B7%AE%E5%88%86%E6%96%B9%E7%A8%8B%E6%A8%A1%E5%9E%8B/">差分方程模型</a>
-            
-              <a href="/tags/%E5%8A%A8%E5%8A%9B%E7%B3%BB%E7%BB%9F%E6%A8%A1%E5%9E%8B/">动力系统模型</a>
-            
-          </div>
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <div class="col-12 col-md-12 mx-auto index-info">
-      <a class="index-header" href="/2020/07/19/%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0-pandas%E4%B8%ADagg-%E4%B8%8Eapply-%E7%9A%84%E5%8C%BA%E5%88%AB/">[技术笔记]pandas中agg()与apply()的区别</a>
-
-      <a href="/2020/07/19/%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0-pandas%E4%B8%ADagg-%E4%B8%8Eapply-%E7%9A%84%E5%8C%BA%E5%88%AB/" class="index-excerpt">
-        
-        
-          
-        
-        <div>对数据集进行分组并对各组应用一个函数（无论是聚合还是转换），通常是数据分析工作中的重要环节[1]。
-这张表就阐述了整一个GroupBy的机制。一般来说，Split部分用groupby()完成，但apply部分可以用apply,agg以及其他一些特定的函数完成（如count，mean，sum等）。
-在‘python for data analysis’一书中并没有很明确地指出这两者的区别，只是说ap</div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>&nbsp;2020-07-19
-          </div>
-        
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-category"></i>
-            
-              <a href="/categories/%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0/">技术笔记</a>
-            
-              <a href="/categories/%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0/python/">python</a>
-            
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/%E6%95%B0%E6%8D%AE%E8%81%9A%E5%90%88%E5%92%8C%E5%88%86%E7%BB%84%E8%BF%90%E7%AE%97/">数据聚合和分组运算</a>
-            
-          </div>
-        
-      </div>
-    </div>
+    </article>
   </div>
 
 
 
   <nav aria-label="navigation">
     <span class="pagination" id="pagination">
-      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/"><i class="iconfont icon-arrowright"></i></a>
+      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/"><i class="iconfont icon-arrowright"></i></a>
     </span>
   </nav>
   

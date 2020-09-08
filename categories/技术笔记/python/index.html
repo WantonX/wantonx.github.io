@@ -1,7 +1,7 @@
+
+
 <!DOCTYPE html>
-<html lang="zh-CN">
-
-
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
 
 
 
@@ -25,7 +25,7 @@
 
 <!-- 主题依赖的图标库，不要自行修改 -->
 
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_yg9cfy8wd6.css">
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_6peoq002giu.css">
 
 
 
@@ -38,6 +38,7 @@
 
 
   <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
 <meta name="generator" content="Hexo 4.2.1"></head>
 
 
@@ -132,8 +133,14 @@
         
         
           <li class="nav-item" id="search-btn">
-            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;&nbsp;<i
-                class="iconfont icon-search"></i>&nbsp;&nbsp;</a>
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" href="javascript:">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
           </li>
         
       </ul>
@@ -141,12 +148,12 @@
   </div>
 </nav>
 
-    <div class="view intro-2" id="background" parallax=true
+    <div class="banner intro-2" id="background" parallax=true
          style="background: url('/website_picture/other.jpg') no-repeat center center;
            background-size: cover;">
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
-          <div class="container text-center white-text fadeInUp">
+          <div class="container page-header text-center fade-in-up">
             <span class="h2" id="subtitle">
               
             </span>
@@ -172,58 +179,64 @@
                 
 
 <div class="list-group">
-  <p class="h4">共计 8 篇文章</p>
+  <p class="h4">共计 9 篇文章</p>
   <hr>
   
     
       
       <p class="h5">2020</p>
     
+    <a href="/2020/08/30/%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0-pandas%E5%AD%A6%E4%B9%A0%E5%B0%8F%E7%AC%94%E8%AE%B01/" class="list-group-item list-group-item-action">
+      <span class="archive-post-title">[技术笔记]pandas学习小笔记1</span>
+      <time style="float: right;">08-30</time>
+    </a>
+  
+    
     <a href="/2020/08/13/%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0-%E4%B8%80%E4%BA%9B%E5%B8%B8%E7%94%A8%E5%BA%93%E7%9A%84%E5%BC%95%E5%85%A5%E8%A7%84%E5%AE%9A%EF%BC%88%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0%EF%BC%89/" class="list-group-item list-group-item-action">
       <span class="archive-post-title">[技术笔记]一些常用库的引入规定（持续更新）</span>
-      <span style="float: right;">08-13</span>
+      <time style="float: right;">08-13</time>
     </a>
   
     
     <a href="/2020/08/04/%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0-plt-plot-%E7%9A%84marker%E3%80%81color%E3%80%81linestyle%E5%8F%82%E6%95%B0/" class="list-group-item list-group-item-action">
       <span class="archive-post-title">[技术笔记]plt.plot()的marker、color、linestyle参数</span>
-      <span style="float: right;">08-04</span>
+      <time style="float: right;">08-04</time>
     </a>
   
     
     <a href="/2020/08/02/%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0-Jupyter-Notebook-%E5%92%8C%E7%BB%98%E5%9B%BE%E6%9C%89%E5%85%B3%E7%9A%84%E5%87%A0%E4%B8%AA%E9%AD%94%E6%9C%AF%E6%8C%87%E4%BB%A4%EF%BC%88-matplotlib-inline-auto-notebook%EF%BC%89/" class="list-group-item list-group-item-action">
       <span class="archive-post-title">[技术笔记]Jupyter Notebook 和绘图有关的几个魔术指令（%matplotlib inline, auto, notebook）</span>
-      <span style="float: right;">08-02</span>
+      <time style="float: right;">08-02</time>
     </a>
   
     
     <a href="/2020/07/30/%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0-pandas%E4%B8%AD%E5%B8%B8%E7%94%A8%E7%9A%84%E6%B1%87%E6%80%BB%E5%92%8C%E7%BB%9F%E8%AE%A1%E6%96%B9%E6%B3%95/" class="list-group-item list-group-item-action">
       <span class="archive-post-title">[技术笔记]pandas中常用的汇总和统计方法</span>
-      <span style="float: right;">07-30</span>
+      <time style="float: right;">07-30</time>
     </a>
   
     
     <a href="/2020/07/28/%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0-dataframe-apply%E5%92%8Cgroupby-apply%E7%9A%84%E5%8C%BA%E5%88%AB/" class="list-group-item list-group-item-action">
       <span class="archive-post-title">[技术笔记]dataframe.apply和groupby.apply的区别</span>
-      <span style="float: right;">07-28</span>
+      <time style="float: right;">07-28</time>
     </a>
   
     
     <a href="/2020/07/27/%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0-jupyter%E4%B8%8D%E8%83%BD%E9%80%9A%E8%BF%87%E6%B5%8F%E8%A7%88%E5%99%A8%E8%87%AA%E5%8A%A8%E6%89%93%E5%BC%80/" class="list-group-item list-group-item-action">
       <span class="archive-post-title">[技术笔记]jupyter不能通过浏览器自动打开</span>
-      <span style="float: right;">07-27</span>
+      <time style="float: right;">07-27</time>
     </a>
   
     
     <a href="/2020/07/19/%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0-pandas%E4%B8%ADagg-%E4%B8%8Eapply-%E7%9A%84%E5%8C%BA%E5%88%AB/" class="list-group-item list-group-item-action">
       <span class="archive-post-title">[技术笔记]pandas中agg()与apply()的区别</span>
-      <span style="float: right;">07-19</span>
+      <time style="float: right;">07-19</time>
     </a>
   
     
     <a href="/2020/07/14/%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0-pandas%E4%B8%AD%E7%9A%84%E9%80%BB%E8%BE%91%E8%BF%90%E7%AE%97%E7%AC%A6/" class="list-group-item list-group-item-action">
       <span class="archive-post-title">[技术笔记]pandas中的逻辑运算符</span>
-      <span style="float: right;">07-14</span>
+      <time style="float: right;">07-14</time>
     </a>
   
 </div>

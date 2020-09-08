@@ -1,7 +1,7 @@
+
+
 <!DOCTYPE html>
-<html lang="zh-CN">
-
-
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
 
 
 
@@ -26,6 +26,7 @@
   <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
 
   
+    
     <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/github-gist.min.css" />
   
 
@@ -34,7 +35,7 @@
 
 <!-- 主题依赖的图标库，不要自行修改 -->
 
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_yg9cfy8wd6.css">
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_6peoq002giu.css">
 
 
 
@@ -47,6 +48,7 @@
 
 
   <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
 <meta name="generator" content="Hexo 4.2.1"></head>
 
 
@@ -141,8 +143,14 @@
         
         
           <li class="nav-item" id="search-btn">
-            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;&nbsp;<i
-                class="iconfont icon-search"></i>&nbsp;&nbsp;</a>
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" href="javascript:">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
           </li>
         
       </ul>
@@ -150,12 +158,12 @@
   </div>
 </nav>
 
-    <div class="view intro-2" id="background" parallax=true
+    <div class="banner intro-2" id="background" parallax=true
          style="background: url('/website_picture/article_picture.jpg') no-repeat center center;
            background-size: cover;">
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
-          <div class="container text-center white-text fadeInUp">
+          <div class="container page-header text-center fade-in-up">
             <span class="h2" id="subtitle">
               
             </span>
@@ -164,7 +172,7 @@
               
   <div class="mt-3 post-meta">
     <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-    <time datetime="2020-07-27 13:21">
+    <time datetime="2020-07-27 13:21" pubdate>
       2020年7月27日 下午
     </time>
   </div>
@@ -213,9 +221,11 @@
     <div class="col-lg-8 nopadding-md">
       <div class="container nopadding-md" id="board-ctn">
         <div class="py-5" id="board">
-          <div class="post-content mx-auto" id="post">
+          <article class="post-content mx-auto" id="post">
+            <!-- SEO header -->
+            <h1 style="display: none">[学习笔记]微分方程模型</h1>
             
-            <article class="markdown-body">
+            <div class="markdown-body" id="post-body">
               <p><strong>微分方程模型的思想</strong>：假设我们要研究量x,y,z 与t的关系,微分方程模型的思想是从考察量x,y,z对t的导数(即x,y,z对t的变化率)入手，找出导数符合的规律，建立包含未知函数的导数(偏导数)的方程(方程组)，通过分析、求解微分方程（组）来获得x,y,z与t的函数关系。</p>
 <p>以下是几个常见的根据微分方程构建的模型：</p>
 <h2 id="人口增长模型"><a href="#人口增长模型" class="headerlink" title="人口增长模型"></a>人口增长模型</h2><h3 id="马尔萨斯的指数增长模型"><a href="#马尔萨斯的指数增长模型" class="headerlink" title="马尔萨斯的指数增长模型"></a>马尔萨斯的指数增长模型</h3><p>基本假设：单位时间内人口的增长率为常数r，即<img src="/2020/07/27/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B%E6%A8%A1%E5%9E%8B/1.png" srcset="/img/loading.gif" alt></p>
@@ -225,7 +235,7 @@
 <p>进一步改进则引入其他的非线性函数，并求解相关系数。</p>
 <h3 id="传染病传播模型"><a href="#传染病传播模型" class="headerlink" title="传染病传播模型"></a>传染病传播模型</h3><p>比较科学的两个模型：SIS（传染病可治愈但无免疫性）和SIR（传染病可治愈且有免疫性）。</p>
 
-            </article>
+            </div>
             <hr>
             <div>
               <div class="post-metas mb-3">
@@ -253,7 +263,7 @@
               
               
                 <div class="post-prevnext row">
-                  <div class="post-prev col-6">
+                  <article class="post-prev col-6">
                     
                     
                       <a href="/2020/07/27/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E7%BB%BC%E5%90%88%E8%AF%84%E4%BB%B7%E6%A8%A1%E5%9E%8B/">
@@ -262,8 +272,8 @@
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
-                  </div>
-                  <div class="post-next col-6">
+                  </article>
+                  <article class="post-next col-6">
                     
                     
                       <a href="/2020/07/27/%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0-jupyter%E4%B8%8D%E8%83%BD%E9%80%9A%E8%BF%87%E6%B5%8F%E8%A7%88%E5%99%A8%E8%87%AA%E5%8A%A8%E6%89%93%E5%BC%80/">
@@ -272,14 +282,14 @@
                         <i class="iconfont icon-arrowright"></i>
                       </a>
                     
-                  </div>
+                  </article>
                 </div>
               
             </div>
 
             
               <!-- Comments -->
-              <div class="comments" id="comments">
+              <article class="comments" id="comments">
                 
                 
   <div id="vcomments"></div>
@@ -302,15 +312,15 @@
         });
       });
     }
-    createObserver(loadValine, 'vcomments');
+    waitElementVisible('vcomments', loadValine);
   </script>
   <noscript>Please enable JavaScript to view the <a href="https://valine.js.org" target="_blank" rel="nofollow noopener noopener">comments
       powered by Valine.</a></noscript>
 
 
-              </div>
+              </article>
             
-          </div>
+          </article>
         </div>
       </div>
     </div>
@@ -414,7 +424,7 @@
 
       tocbot.init({
         tocSelector: '#tocbot',
-        contentSelector: 'article.markdown-body',
+        contentSelector: '#post-body',
         headingSelector: 'h1,h2,h3,h4,h5,h6',
         linkClass: 'tocbot-link',
         activeLinkClass: 'tocbot-active-link',

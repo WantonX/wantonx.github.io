@@ -1,7 +1,7 @@
+
+
 <!DOCTYPE html>
-<html lang="zh-CN">
-
-
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
 
 
 
@@ -26,6 +26,7 @@
   <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
 
   
+    
     <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/github-gist.min.css" />
   
 
@@ -34,7 +35,7 @@
 
 <!-- 主题依赖的图标库，不要自行修改 -->
 
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_yg9cfy8wd6.css">
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_6peoq002giu.css">
 
 
 
@@ -47,6 +48,7 @@
 
 
   <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
 <meta name="generator" content="Hexo 4.2.1"></head>
 
 
@@ -141,8 +143,14 @@
         
         
           <li class="nav-item" id="search-btn">
-            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;&nbsp;<i
-                class="iconfont icon-search"></i>&nbsp;&nbsp;</a>
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" href="javascript:">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
           </li>
         
       </ul>
@@ -150,12 +158,12 @@
   </div>
 </nav>
 
-    <div class="view intro-2" id="background" parallax=true
+    <div class="banner intro-2" id="background" parallax=true
          style="background: url('/website_picture/article_picture.jpg') no-repeat center center;
            background-size: cover;">
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
-          <div class="container text-center white-text fadeInUp">
+          <div class="container page-header text-center fade-in-up">
             <span class="h2" id="subtitle">
               
             </span>
@@ -164,7 +172,7 @@
               
   <div class="mt-3 post-meta">
     <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-    <time datetime="2020-07-26 21:33">
+    <time datetime="2020-07-26 21:33" pubdate>
       2020年7月26日 晚上
     </time>
   </div>
@@ -213,9 +221,11 @@
     <div class="col-lg-8 nopadding-md">
       <div class="container nopadding-md" id="board-ctn">
         <div class="py-5" id="board">
-          <div class="post-content mx-auto" id="post">
+          <article class="post-content mx-auto" id="post">
+            <!-- SEO header -->
+            <h1 style="display: none">[学习笔记]差分方程模型</h1>
             
-            <article class="markdown-body">
+            <div class="markdown-body" id="post-body">
               <p>差分方程，顾名思义，研究的是一组有规律序列相邻两个时间段间的规律，这种规律能够全部（部分）运用（使用迭代或递推）到一个总体，从而求解问题。</p>
 <h2 id="一阶线性差分方程模型"><a href="#一阶线性差分方程模型" class="headerlink" title="一阶线性差分方程模型"></a>一阶线性差分方程模型</h2><p><strong><em>ΔAn = An+1 - An = f(An,其他因素)</em></strong> 这样一个方程可以被称为一阶差分方程模型，如果f(An,其他因素)是关于An的线性模式，则被称为一阶线性差分方程模型，即<img src="/2020/07/26/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E5%B7%AE%E5%88%86%E6%96%B9%E7%A8%8B%E6%A8%A1%E5%9E%8B/1.png" srcset="/img/loading.gif" alt></p>
 <h3 id="一阶线性差分方程的解及其长期行为"><a href="#一阶线性差分方程的解及其长期行为" class="headerlink" title="一阶线性差分方程的解及其长期行为"></a>一阶线性差分方程的解及其长期行为</h3><p>很容易得到<img src="/2020/07/26/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E5%B7%AE%E5%88%86%E6%96%B9%E7%A8%8B%E6%A8%A1%E5%9E%8B/2.png" srcset="/img/loading.gif" alt></p>
@@ -223,7 +233,7 @@
 <h3 id="差分方程模型的平衡点"><a href="#差分方程模型的平衡点" class="headerlink" title="差分方程模型的平衡点"></a>差分方程模型的平衡点</h3><p>平衡点是指An = a, An+1 = a 的情况，如果长期行为等于平衡点，则称之为稳定的平衡点。</p>
 <h2 id="一阶非线性差分方程模型"><a href="#一阶非线性差分方程模型" class="headerlink" title="一阶非线性差分方程模型"></a>一阶非线性差分方程模型</h2><p>我们一般通过变化的散点图，猜想出ΔAn变化的规律，即f(An,其他因素)的形式，再和OLS相结合来拟合关于ΔAn的曲线。当然，差分方程也只是解决拟合问题的一种方法，存在其他更加合适的方法时，也可以用其他方法解决。</p>
 
-            </article>
+            </div>
             <hr>
             <div>
               <div class="post-metas mb-3">
@@ -253,7 +263,7 @@
               
               
                 <div class="post-prevnext row">
-                  <div class="post-prev col-6">
+                  <article class="post-prev col-6">
                     
                     
                       <a href="/2020/07/27/%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0-jupyter%E4%B8%8D%E8%83%BD%E9%80%9A%E8%BF%87%E6%B5%8F%E8%A7%88%E5%99%A8%E8%87%AA%E5%8A%A8%E6%89%93%E5%BC%80/">
@@ -262,8 +272,8 @@
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
-                  </div>
-                  <div class="post-next col-6">
+                  </article>
+                  <article class="post-next col-6">
                     
                     
                       <a href="/2020/07/19/%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0-pandas%E4%B8%ADagg-%E4%B8%8Eapply-%E7%9A%84%E5%8C%BA%E5%88%AB/">
@@ -272,14 +282,14 @@
                         <i class="iconfont icon-arrowright"></i>
                       </a>
                     
-                  </div>
+                  </article>
                 </div>
               
             </div>
 
             
               <!-- Comments -->
-              <div class="comments" id="comments">
+              <article class="comments" id="comments">
                 
                 
   <div id="vcomments"></div>
@@ -302,15 +312,15 @@
         });
       });
     }
-    createObserver(loadValine, 'vcomments');
+    waitElementVisible('vcomments', loadValine);
   </script>
   <noscript>Please enable JavaScript to view the <a href="https://valine.js.org" target="_blank" rel="nofollow noopener noopener">comments
       powered by Valine.</a></noscript>
 
 
-              </div>
+              </article>
             
-          </div>
+          </article>
         </div>
       </div>
     </div>
@@ -414,7 +424,7 @@
 
       tocbot.init({
         tocSelector: '#tocbot',
-        contentSelector: 'article.markdown-body',
+        contentSelector: '#post-body',
         headingSelector: 'h1,h2,h3,h4,h5,h6',
         linkClass: 'tocbot-link',
         activeLinkClass: 'tocbot-active-link',

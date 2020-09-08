@@ -1,7 +1,7 @@
+
+
 <!DOCTYPE html>
-<html lang="zh-CN">
-
-
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
 
 
 
@@ -17,7 +17,7 @@
   <meta name="description" content="">
   <meta name="author" content="ZiJie Xu">
   <meta name="keywords" content="">
-  <title>标签 - Jupyter Notebook - WantonX</title>
+  <title>标签 - jupyter notebook - WantonX</title>
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
 
@@ -25,7 +25,7 @@
 
 <!-- 主题依赖的图标库，不要自行修改 -->
 
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_yg9cfy8wd6.css">
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_6peoq002giu.css">
 
 
 
@@ -38,6 +38,7 @@
 
 
   <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
 <meta name="generator" content="Hexo 4.2.1"></head>
 
 
@@ -132,8 +133,14 @@
         
         
           <li class="nav-item" id="search-btn">
-            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;&nbsp;<i
-                class="iconfont icon-search"></i>&nbsp;&nbsp;</a>
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" href="javascript:">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
           </li>
         
       </ul>
@@ -141,12 +148,12 @@
   </div>
 </nav>
 
-    <div class="view intro-2" id="background" parallax=true
+    <div class="banner intro-2" id="background" parallax=true
          style="background: url('/website_picture/label.jpg') no-repeat center center;
            background-size: cover;">
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
-          <div class="container text-center white-text fadeInUp">
+          <div class="container page-header text-center fade-in-up">
             <span class="h2" id="subtitle">
               
             </span>
@@ -179,9 +186,9 @@
       
       <p class="h5">2020</p>
     
-    <a href="/2020/08/02/%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0-Jupyter-Notebook-%E5%92%8C%E7%BB%98%E5%9B%BE%E6%9C%89%E5%85%B3%E7%9A%84%E5%87%A0%E4%B8%AA%E9%AD%94%E6%9C%AF%E6%8C%87%E4%BB%A4%EF%BC%88-matplotlib-inline-auto-notebook%EF%BC%89/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">[技术笔记]Jupyter Notebook 和绘图有关的几个魔术指令（%matplotlib inline, auto, notebook）</span>
-      <span style="float: right;">08-02</span>
+    <a href="/2020/07/27/%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0-jupyter%E4%B8%8D%E8%83%BD%E9%80%9A%E8%BF%87%E6%B5%8F%E8%A7%88%E5%99%A8%E8%87%AA%E5%8A%A8%E6%89%93%E5%BC%80/" class="list-group-item list-group-item-action">
+      <span class="archive-post-title">[技术笔记]jupyter不能通过浏览器自动打开</span>
+      <time style="float: right;">07-27</time>
     </a>
   
 </div>
@@ -277,7 +284,7 @@
     var typed = new Typed('#subtitle', {
       strings: [
         '  ',
-        "标签 - Jupyter Notebook&nbsp;",
+        "标签 - jupyter notebook&nbsp;",
       ],
       cursorChar: "|",
       typeSpeed: 60,
@@ -300,6 +307,34 @@
     var inputArea = document.querySelector("#local-search-input");
     inputArea.onclick = function () {
       searchFunc(path, 'local-search-input', 'local-search-result');
+      this.onclick = null
+    }
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>
+-search-input', 'local-search-result');
       this.onclick = null
     }
   </script>

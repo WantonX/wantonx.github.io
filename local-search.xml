@@ -4,11 +4,159 @@
   
   
   <entry>
+    <title>[学习笔记]面板数据回归模型</title>
+    <link href="/2020/09/07/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E9%9D%A2%E6%9D%BF%E6%95%B0%E6%8D%AE%E5%9B%9E%E5%BD%92%E6%A8%A1%E5%9E%8B/"/>
+    <url>/2020/09/07/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E9%9D%A2%E6%9D%BF%E6%95%B0%E6%8D%AE%E5%9B%9E%E5%BD%92%E6%A8%A1%E5%9E%8B/</url>
+    
+    <content type="html"><![CDATA[<h2 id="面板数据的优势"><a href="#面板数据的优势" class="headerlink" title="面板数据的优势"></a>面板数据的优势</h2><p><strong>可以处理一些不可观测的遗漏变量</strong>——如果漏掉的变量不随时间变化，则面板数据可以帮助消除遗漏变量偏差。</p><p>由上一篇笔记可知，由于各人/地/企业…各自存在一些属于自己的，影响因变量而不随时间变化的特征（异质性特征），横截面数据很难消除这些固定效应，因此选择面板数据回归模型进行处理。</p><h2 id="差分估计"><a href="#差分估计" class="headerlink" title="差分估计"></a>差分估计</h2><h3 id="两期差分模型"><a href="#两期差分模型" class="headerlink" title="两期差分模型"></a>两期差分模型</h3><p><img src="/2020/09/07/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E9%9D%A2%E6%9D%BF%E6%95%B0%E6%8D%AE%E5%9B%9E%E5%BD%92%E6%A8%A1%E5%9E%8B/1.jpg" srcset="/img/loading.gif" alt></p><h3 id="多期差分模型"><a href="#多期差分模型" class="headerlink" title="多期差分模型"></a>多期差分模型</h3><h4 id="方法一：个体中心化方法处理固定效应"><a href="#方法一：个体中心化方法处理固定效应" class="headerlink" title="方法一：个体中心化方法处理固定效应"></a>方法一：个体中心化方法处理固定效应</h4><p><img src="/2020/09/07/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E9%9D%A2%E6%9D%BF%E6%95%B0%E6%8D%AE%E5%9B%9E%E5%BD%92%E6%A8%A1%E5%9E%8B/2.jpg" srcset="/img/loading.gif" alt></p><p>其原理是针对同一样本，将其不同时期的做均值化处理，而<strong>个体与组均值的离差</strong>这个差分方程就巧妙地消除了固定效应的影响。</p><p>该方法类似于差分，但不同的是此处为’中心化’的数据，标准误也需要重新计算。</p><h4 id="方法二：’n-1个二值变量’模型"><a href="#方法二：’n-1个二值变量’模型" class="headerlink" title="方法二：’n-1个二值变量’模型"></a>方法二：’n-1个二值变量’模型</h4><p>以一个样本为基础，例如：要考虑江苏、浙江、广州三个省的面板数据，将江苏作为基础，赋予浙江一个虚拟变量ZJ，广州一个虚拟变量GZ，引入这n-1个虚拟变量就可以刻画n条截距项不同的回归直线。</p><p>优点：可以描绘出各个样本具体的异质性大小，还可以检验个体固定效应的显著性</p><p>缺点：在截面样本量很大时实现起来比较困难且耗费自由度高</p><h2 id="时间固定效应"><a href="#时间固定效应" class="headerlink" title="时间固定效应"></a>时间固定效应</h2><h3 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h3><p>遗漏的变量可能随时间而变化，但不随个体的变化而变化。</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>学习笔记</category>
+      
+      <category>计量经济学</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>面板数据</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>[学习笔记]跨时横截面的混合：简单面板数据方法</title>
+    <link href="/2020/09/07/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E8%B7%A8%E6%97%B6%E6%A8%AA%E6%88%AA%E9%9D%A2%E7%9A%84%E6%B7%B7%E5%90%88%EF%BC%9A%E7%AE%80%E5%8D%95%E9%9D%A2%E6%9D%BF%E6%95%B0%E6%8D%AE%E6%96%B9%E6%B3%95/"/>
+    <url>/2020/09/07/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E8%B7%A8%E6%97%B6%E6%A8%AA%E6%88%AA%E9%9D%A2%E7%9A%84%E6%B7%B7%E5%90%88%EF%BC%9A%E7%AE%80%E5%8D%95%E9%9D%A2%E6%9D%BF%E6%95%B0%E6%8D%AE%E6%96%B9%E6%B3%95/</url>
+    
+    <content type="html"><![CDATA[<h2 id="跨时独立横截面的混合"><a href="#跨时独立横截面的混合" class="headerlink" title="跨时独立横截面的混合"></a>跨时独立横截面的混合</h2><h3 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h3><p>跨时独立混合横截面数据指的是在不同时点从一个大总体里进行随机抽样的结果，各个时期都是各自进行一次随机抽样，样本量可以不同，完全独立。这可能造成<strong>观测点不是同分布的</strong>。</p><h3 id="年度虚拟变量"><a href="#年度虚拟变量" class="headerlink" title="年度虚拟变量"></a>年度虚拟变量</h3><p>年度虚拟变量就是用来解决不同时间的观测点不是同分布问题的，即以最初一年为基年，后续几年分别设立一个虚拟变量，容许截距项甚至斜率（通过交互项）随时间的改变而改变。</p><h3 id="利用混合截面做政策分析"><a href="#利用混合截面做政策分析" class="headerlink" title="利用混合截面做政策分析"></a>利用混合截面做政策分析</h3><p>当某些外生事件（常常是政府的政策改变）改变了个人、家庭、企业或城市运行的环境时，便产生了<strong>自然实验</strong>。可以用混合截面的处理方法来处理自然实验的数据。</p><h2 id="两时期面板数据分析"><a href="#两时期面板数据分析" class="headerlink" title="两时期面板数据分析"></a>两时期面板数据分析</h2><h3 id="一些名词解释"><a href="#一些名词解释" class="headerlink" title="一些名词解释"></a>一些名词解释</h3><p><img src="/2020/09/07/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E8%B7%A8%E6%97%B6%E6%A8%AA%E6%88%AA%E9%9D%A2%E7%9A%84%E6%B7%B7%E5%90%88%EF%BC%9A%E7%AE%80%E5%8D%95%E9%9D%A2%E6%9D%BF%E6%95%B0%E6%8D%AE%E6%96%B9%E6%B3%95/1.jpg" srcset="/img/loading.gif" alt></p><ol><li><strong>非观测效应（固定效应）</strong>：指变量a这样影响着y但又不随时间而变化的所有无法观测的因素</li><li><strong>特异性误差（时变误差）</strong>：指误差u这样因时而便影响着y的所有无法观测的因素</li><li><strong>异质性偏误</strong>：遗漏了固定效应而造成的误差，存在遗漏变量问题</li></ol><h3 id="一阶差分方程"><a href="#一阶差分方程" class="headerlink" title="一阶差分方程"></a>一阶差分方程</h3><p><img src="/2020/09/07/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E8%B7%A8%E6%97%B6%E6%A8%AA%E6%88%AA%E9%9D%A2%E7%9A%84%E6%B7%B7%E5%90%88%EF%BC%9A%E7%AE%80%E5%8D%95%E9%9D%A2%E6%9D%BF%E6%95%B0%E6%8D%AE%E6%96%B9%E6%B3%95/2.jpg" srcset="/img/loading.gif" alt></p><p>（13.17）就被称为一阶差分方程，相应的系数被称为一阶差分估计量（<em>first-differenced estimator</em>）。</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>学习笔记</category>
+      
+      <category>计量经济学</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>面板数据</tag>
+      
+      <tag>混合横截面</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>[学习笔记]计量小复习</title>
+    <link href="/2020/09/07/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E8%AE%A1%E9%87%8F%E5%B0%8F%E5%A4%8D%E4%B9%A0/"/>
+    <url>/2020/09/07/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E8%AE%A1%E9%87%8F%E5%B0%8F%E5%A4%8D%E4%B9%A0/</url>
+    
+    <content type="html"><![CDATA[<p>1、<strong>方差膨胀因子（VIF）</strong>：测度某一自变量是否存在多重共线性，一般认为VIF&gt;10则存在较强的多重共线性，VIF&gt;100则存在严重的多重共线性。</p><p>2、<strong>含ln的回归系数的解释</strong>：</p><p>lny = alnx x变动1%，y变动a%</p><p>lny = ax x变动1，y变动100a%</p><p>y = alnx x变动1%，y变动a/100</p><p>3、<strong>Wald Test注意点</strong>：在WT中，c(n)的n是从1开始的，不是从0开始的。</p><p>4、<strong>异方差性注意点</strong>：异方差性不会改变系数的无偏性，也不会对拟合优度产生影响，但会造成假设检验无效。</p><p>4.1 检验异方差的方法：<strong>BP检验</strong>（布罗施-帕甘异方差检验），原理是检验残差平方和各自变量的线性关系；<strong>WHite检验</strong>（怀特检验），是BP检验的升级版，加上了一些非线性关系，但会消耗大量的自由度。</p><p>EViwes操作：eq01—View—Residual Diagnostics—Heteroskedasticity Test（怀特检验是在此基础上勾选<em>Include White cross terms</em>）</p><p>4.2 异方差修正的方法：稳健标准误法；加权最小二乘法（WLS），一定要知道异方差的具体形式才好用。</p><p>5、工具变量注意点：是对遗漏变量的另一种解决方法，有点复杂，等用到了再重新复习。</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>学习笔记</category>
+      
+      <category>计量经济学</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>计量经济学</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>[技术笔记]pandas学习小笔记1</title>
+    <link href="/2020/08/30/%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0-pandas%E5%AD%A6%E4%B9%A0%E5%B0%8F%E7%AC%94%E8%AE%B01/"/>
+    <url>/2020/08/30/%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0-pandas%E5%AD%A6%E4%B9%A0%E5%B0%8F%E7%AC%94%E8%AE%B01/</url>
+    
+    <content type="html"><![CDATA[<p>1、在使用<strong>pd.to_datetime()</strong>替换相关数据时，可能<em>df[XXX] = pd.to_datetime(df[XXX])</em>还是很好想到的，但如要对df的行标签进行转换，就应该是<em>df.index = pd.to_datetime(df.index)</em>这样子。</p><p>2、<strong>当要删除某些具有特定数据的行或者列时</strong>，应该使用df.replace()和df.dropna()结合的方法。</p><p>如想要删除那些全是0的列，可以写如下代码：</p><pre><code>df.replace(0, np.nan, inplace = True)cleaned = df.dropna()</code></pre><p>3、除了一般情况下的直接赋值，大部分情况下函数和方法都有<strong>inplace = True</strong>的属性，不说pd下的方法，就是set_index,fillna,dropna这些Series和DataFrame自带的方法都有inplace属性。</p><p>一个技巧：在jupyter notebook下，打出这样一行代码，直接产生交互的表格之类的，说明这就是一个新的表格，想要其直接继承就表格，就要使用inplace = True。</p><p>4、<strong>删除某行/列的两种方法：</strong>1.如果只想删除列，在df中，用del df[XXX]即可。 2.如果想对行或者列进行操作，则使用df.drop(‘’,axis = XXX, inpalace = XXX)</p><p>5、<strong>检查是否有缺失数据：</strong>对于比较小的数据量，直接使用df.isnull()即可，但是对于很大的数据量，df中间一些数据是省略的，这样做非常不直观。</p><p>所以在这里使用：<strong>df.isnull().sum()</strong>,直接就输出各列存在的缺失值数(因为Flase对应的是0，True对应的是1，全是False则自然是0，没有缺失值)。</p><p>6、<strong>Reset the index so it begins with 0 again:</strong> df.reset_index(drop = True,inplace = True)</p><p>7、<strong>解决使用drop方法删除多列时想要使用列整数索引指定而不是列索引名指定的问题</strong>：</p><p>问题描述：在使用df.drop()方法时，若要删除多行/列，只能输入一个包含行/列名的列表，而不能输入一个整数索引的列表，在使用整数索引更方便的时候就很难搞。</p><p>解决思想：我们可以把整数索引通过某种方式转换成名称组成的索引，再带入drop()中。</p><p>解决方法：若要删除df的1，3，7，9列，则应使用df.drop(df.columns[[0,2,6,8]], axis = 1)，巧妙地将整数索引进行了转化。</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>技术笔记</category>
+      
+      <category>python</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>pandas</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>[技术笔记]重装硬盘后安装软件遇到的各种问题及解决办法</title>
+    <link href="/2020/08/17/%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0-%E9%87%8D%E8%A3%85%E7%B3%BB%E7%BB%9F%E5%90%8E%E5%AE%89%E8%A3%85%E8%BD%AF%E4%BB%B6%E9%81%87%E5%88%B0%E7%9A%84%E5%90%84%E7%A7%8D%E9%97%AE%E9%A2%98%E5%8F%8A%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95/"/>
+    <url>/2020/08/17/%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0-%E9%87%8D%E8%A3%85%E7%B3%BB%E7%BB%9F%E5%90%8E%E5%AE%89%E8%A3%85%E8%BD%AF%E4%BB%B6%E9%81%87%E5%88%B0%E7%9A%84%E5%90%84%E7%A7%8D%E9%97%AE%E9%A2%98%E5%8F%8A%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95/</url>
+    
+    <content type="html"><![CDATA[<h3 id="win10安装nodejs，报错there-is-a-problem-in-the-windows-installer-package…"><a href="#win10安装nodejs，报错there-is-a-problem-in-the-windows-installer-package…" class="headerlink" title="win10安装nodejs，报错there is a problem in the windows installer package…"></a>win10安装nodejs，报错there is a problem in the windows installer package…</h3><p>原因：win10和win8下必须以管理员模式打开此exe文件。</p><p>解决方法：首先以管理员身份打开cmd，将cmd路径通过cd方法转到nodejs.exe所在文件夹，再通过c：和键入文件名（注意要加后缀.msi）打开此程序。</p><h3 id="markdownpad2没有预览界面，一打文字就报错"><a href="#markdownpad2没有预览界面，一打文字就报错" class="headerlink" title="markdownpad2没有预览界面，一打文字就报错"></a>markdownpad2没有预览界面，一打文字就报错</h3><p>原因：装markdownpad的时候少装了一个html的渲染文件。</p><p>解决方法：补装一个即可。<a href="https://pan.baidu.com/s/1Gs1raE_8L0-A9oWSpGOIhg" target="_blank" rel="noopener">地址</a></p><p>提取码：qd0x</p><h3 id="迁移之前的python环境"><a href="#迁移之前的python环境" class="headerlink" title="迁移之前的python环境"></a>迁移之前的python环境</h3><p>原因：把库再装一遍太折磨了，建议是迁移一下环境。</p><p>解决方法：在原电脑上git下输入：</p><pre><code>pip freeze &gt; requirements.txt #会在当前目录下创建一个txt文档，保存了所有环境信息，可能会报错，不用管它。</code></pre><p>把这个文件转移到新电脑，git下输入：</p><pre><code>pip install -r requirements.txt #然后git就开始进行缓慢的拷贝过程了- -，它其实是去网上找所有的库再下载一遍，不是完全意义上的拷贝，然而此刻我却发现，我没有把pip换源...难怪下载速度这么慢，建议是换源了再下载。</code></pre><h3 id="把pip换成国内源"><a href="#把pip换成国内源" class="headerlink" title="把pip换成国内源"></a>把pip换成国内源</h3><p>原因：默认的源下载太慢了，除非时刻开着vpn…</p><p>解决方法：</p><pre><code>pip config set global.index-url https://mirrors.aliyun.com/pypi/simple/</code></pre>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>git</tag>
+      
+      <tag>nodejs</tag>
+      
+      <tag>markdownpad2</tag>
+      
+      <tag>pip</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>Hello World</title>
+    <link href="/2020/08/17/hello-world/"/>
+    <url>/2020/08/17/hello-world/</url>
+    
+    <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><pre><code class="hljs bash">$ hexo new <span class="hljs-string">"My New Post"</span></code></pre><p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p><h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><pre><code class="hljs bash">$ hexo server</code></pre><p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p><h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><pre><code class="hljs bash">$ hexo generate</code></pre><p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p><h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><pre><code class="hljs bash">$ hexo deploy</code></pre><p>More info: <a href="https://hexo.io/docs/one-command-deployment.html" target="_blank" rel="noopener">Deployment</a></p>]]></content>
+    
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>[技术笔记]一些常用库的引入规定（持续更新）</title>
     <link href="/2020/08/13/%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0-%E4%B8%80%E4%BA%9B%E5%B8%B8%E7%94%A8%E5%BA%93%E7%9A%84%E5%BC%95%E5%85%A5%E8%A7%84%E5%AE%9A%EF%BC%88%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0%EF%BC%89/"/>
     <url>/2020/08/13/%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0-%E4%B8%80%E4%BA%9B%E5%B8%B8%E7%94%A8%E5%BA%93%E7%9A%84%E5%BC%95%E5%85%A5%E8%A7%84%E5%AE%9A%EF%BC%88%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0%EF%BC%89/</url>
     
-    <content type="html"><![CDATA[<pre><code>import pandas as pdfrom pandas import Series, DataFrameimport matplotlib.pyplot as plt # 常用的绘图库from datetime import datetime/date/time/timedelta # python标准库里常用的时间方法from dateutil.parser import prase # pandas自动安装的时间包，parse方法可以解析几乎所有人类能够理解的日期表达形式</code></pre>]]></content>
+    <content type="html"><![CDATA[<pre><code>import pandas as pdfrom pandas import Series, DataFrameimport matplotlib.pyplot as plt # 常用的绘图库from datetime import datetime/date/time/timedelta # python标准库里常用的时间方法from dateutil.parser import prase # pandas自动安装的时间包，parse方法可以解析几乎所有人类能够理解的日期表达形式import pytz #下载pandas自带的一个时区库</code></pre>]]></content>
     
     
     <categories>
@@ -145,7 +293,7 @@
     <link href="/2020/07/27/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E7%BB%BC%E5%90%88%E8%AF%84%E4%BB%B7%E6%A8%A1%E5%9E%8B/"/>
     <url>/2020/07/27/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E7%BB%BC%E5%90%88%E8%AF%84%E4%BB%B7%E6%A8%A1%E5%9E%8B/</url>
     
-    <content type="html"><![CDATA[<p>综合评价问题：综合考虑事物的多个指标所包含的信息，对各个备选决策方案优劣进行排序，最终选出最优方案。</p><p>主要步骤：（1）选择综合评价指标（不遗漏、不重复、尽可能独立）；（2）确定各参评方案的指标值，形成决策矩阵；（3）指标值预处理（目的：消除指标值在单位、数量级、方向性三个方面的差异）；（4）确定各项指标的权重系数（重要程度）；（5）对预处理后的指标值进行加权综合，给出各方案的综合得分，按照综合得分对各个参评方案进行优劣排序。</p><p>评价方法分类：（1）主观复权法：综合指数法、模糊综合评判法、层次分析法、功效系数法等。（2）客观赋权法：主成分分析法、因子分析法、熵权法、理想解法（TOPSIS法）等。</p><h2 id="层次分析法（AHP）"><a href="#层次分析法（AHP）" class="headerlink" title="层次分析法（AHP）"></a>层次分析法（AHP）</h2><p>假设有n个指标，我们虽然不知道他们的各自重要程度（权重），但知道它们的重要程度之比，则可以以这个比值建立一个成对比较矩阵A，根据矩阵获得各个指标的权重。</p><p>根据特征向量的定义，可以得出这个矩<strong>阵A具有特征值n和特征向量W = (W1,W2,W3,W4….Wn).T</strong>。</p><p><img src="/2020/07/27/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E7%BB%BC%E5%90%88%E8%AF%84%E4%BB%B7%E6%A8%A1%E5%9E%8B/1.jpg" srcset="/img/loading.gif" alt></p><p>并且有定理：1、A的秩为1，A的唯一非零特征值为n；2、A的任一列向量都是对应于特征值n 的特征向量。在此定理下，对任一列向量归一化后，就给出了这n个指标的权重的真实值。</p><p><strong>比值的确定就是主观的</strong>,Saaty等人提出1~9尺度——aij 取值1,2,… , 9及其互反数1,1/2, … , 1/9，因为心理学家认为成对比较的因素不宜超过9个。需要注意的是，对影响因素为负的指标，要提前做处理，不然性质不符，无法使用此方法。</p><p>性质1和性质2是较好满足的，但性质3这种传递性在主观下很难满足。但Saaty认为，我们在实际操作时不需要完全满足一致性，只要能通过<strong>一致性检验</strong>即可。</p><h3 id="一致性检验"><a href="#一致性检验" class="headerlink" title="一致性检验"></a>一致性检验</h3><p><img src="/2020/07/27/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E7%BB%BC%E5%90%88%E8%AF%84%E4%BB%B7%E6%A8%A1%E5%9E%8B/2.png" srcset="/img/loading.gif" alt></p><p>CI越大，不一致越严重。为衡量CI的大小，引入随机一致性指标RI——随机模拟得到aij, 形成A，计算CI即得RI。</p><p>令<strong>CR = CI/RI</strong>，一般认为当CR&lt;0.1时，通过一致性检验。</p><h2 id="熵权法"><a href="#熵权法" class="headerlink" title="熵权法"></a>熵权法</h2><p>熵权法是一种<strong>客观赋权法</strong>，基础是各项指标都已经量化好，利用指标值数据的离散程度来确定各项指标在综合评价中的权重，离散程度越大，该项指标权重越大。</p><p>在信息论中，熵是对不确定性的一种度量。不确定性越大，熵就越小。</p><h3 id="step1：数据预处理"><a href="#step1：数据预处理" class="headerlink" title="step1：数据预处理"></a>step1：数据预处理</h3><p><img src="/2020/07/27/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E7%BB%BC%E5%90%88%E8%AF%84%E4%BB%B7%E6%A8%A1%E5%9E%8B/2.jpg" srcset="/img/loading.gif" alt></p><h3 id="step2：数据归一化"><a href="#step2：数据归一化" class="headerlink" title="step2：数据归一化"></a>step2：数据归一化</h3><p>让各个指标数据的和为1，即Pi = Yi / （Y1+Y2+Y3+….+Yn）。</p><h3 id="step3：计算第j项指标的熵"><a href="#step3：计算第j项指标的熵" class="headerlink" title="step3：计算第j项指标的熵"></a>step3：计算第j项指标的熵</h3><p><img src="/2020/07/27/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E7%BB%BC%E5%90%88%E8%AF%84%E4%BB%B7%E6%A8%A1%E5%9E%8B/3.png" srcset="/img/loading.gif" alt></p><h3 id="step4：计算指标的离散程度并计算权重"><a href="#step4：计算指标的离散程度并计算权重" class="headerlink" title="step4：计算指标的离散程度并计算权重"></a>step4：计算指标的离散程度并计算权重</h3><p>令Dj = 1 - Ej（因为熵越大，不确定性越小），接下来再把各个指标的离散程度归一化处理。</p><h3 id="step6：计算结果并排序"><a href="#step6：计算结果并排序" class="headerlink" title="step6：计算结果并排序"></a>step6：计算结果并排序</h3><h2 id="理想点法"><a href="#理想点法" class="headerlink" title="理想点法"></a>理想点法</h2><p>理想点法是综合各个方案与理想的最优方案以及最差方案之间的距离，对各个方案的优劣进行排序，与最优方案越接近同时与最差方案距离越远的方案，综合得分越高。</p><h3 id="step1：数据的预处理"><a href="#step1：数据的预处理" class="headerlink" title="step1：数据的预处理"></a>step1：数据的预处理</h3><p>方法有很多，此处就不再赘述了。</p><h3 id="step2：确定各个指标的权重"><a href="#step2：确定各个指标的权重" class="headerlink" title="step2：确定各个指标的权重"></a>step2：确定各个指标的权重</h3><p>可以用所有用于确定指标权重的方法。</p><h3 id="step3：计算加权的指标值"><a href="#step3：计算加权的指标值" class="headerlink" title="step3：计算加权的指标值"></a>step3：计算加权的指标值</h3><h3 id="step4："><a href="#step4：" class="headerlink" title="step4："></a>step4：</h3>]]></content>
+    <content type="html"><![CDATA[<p>综合评价问题：综合考虑事物的多个指标所包含的信息，对各个备选决策方案优劣进行排序，最终选出最优方案。</p><p>主要步骤：（1）选择综合评价指标（不遗漏、不重复、尽可能独立）；（2）确定各参评方案的指标值，形成决策矩阵；（3）指标值预处理（目的：消除指标值在单位、数量级、方向性三个方面的差异）；（4）确定各项指标的权重系数（重要程度）；（5）对预处理后的指标值进行加权综合，给出各方案的综合得分，按照综合得分对各个参评方案进行优劣排序。</p><p>评价方法分类：（1）主观复权法：综合指数法、模糊综合评判法、层次分析法、功效系数法等。（2）客观赋权法：主成分分析法、因子分析法、熵权法、理想解法（TOPSIS法）等。</p><h2 id="层次分析法（AHP）"><a href="#层次分析法（AHP）" class="headerlink" title="层次分析法（AHP）"></a>层次分析法（AHP）</h2><p>假设有n个指标，我们虽然不知道他们的各自重要程度（权重），但知道它们的重要程度之比，则可以以这个比值建立一个成对比较矩阵A，根据矩阵获得各个指标的权重。</p><p>根据特征向量的定义，可以得出这个矩<strong>阵A具有特征值n和特征向量W = (W1,W2,W3,W4….Wn).T</strong>。</p><p><img src="/2020/07/27/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E7%BB%BC%E5%90%88%E8%AF%84%E4%BB%B7%E6%A8%A1%E5%9E%8B/1.jpg" srcset="/img/loading.gif" alt></p><p>并且有定理：1、A的秩为1，A的唯一非零特征值为n；2、A的任一列向量都是对应于特征值n 的特征向量。在此定理下，对任一列向量归一化后，就给出了这n个指标的权重的真实值。</p><p><strong>比值的确定就是主观的</strong>,Saaty等人提出1~9尺度——aij 取值1,2,… , 9及其互反数1,1/2, … , 1/9，因为心理学家认为成对比较的因素不宜超过9个。需要注意的是，对影响因素为负的指标，要提前做处理，不然性质不符，无法使用此方法。</p><p>性质1和性质2是较好满足的，但性质3这种传递性在主观下很难满足。但Saaty认为，我们在实际操作时不需要完全满足一致性，只要能通过<strong>一致性检验</strong>即可。</p><h3 id="一致性检验"><a href="#一致性检验" class="headerlink" title="一致性检验"></a>一致性检验</h3><p><img src="/2020/07/27/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E7%BB%BC%E5%90%88%E8%AF%84%E4%BB%B7%E6%A8%A1%E5%9E%8B/2.png" srcset="/img/loading.gif" alt></p><p>CI越大，不一致越严重。为衡量CI的大小，引入随机一致性指标RI——随机模拟得到aij, 形成A，计算CI即得RI。</p><p>令<strong>CR = CI/RI</strong>，一般认为当CR&lt;0.1时，通过一致性检验。</p><h2 id="熵权法"><a href="#熵权法" class="headerlink" title="熵权法"></a>熵权法</h2><p>熵权法是一种<strong>客观赋权法</strong>，基础是各项指标都已经量化好，利用指标值数据的离散程度来确定各项指标在综合评价中的权重，离散程度越大，该项指标权重越大。</p><p>在信息论中，熵是对不确定性的一种度量。不确定性越大，熵就越小。</p><h3 id="step1：数据预处理"><a href="#step1：数据预处理" class="headerlink" title="step1：数据预处理"></a>step1：数据预处理</h3><p><img src="/2020/07/27/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E7%BB%BC%E5%90%88%E8%AF%84%E4%BB%B7%E6%A8%A1%E5%9E%8B/2.jpg" srcset="/img/loading.gif" alt></p><h3 id="step2：数据归一化"><a href="#step2：数据归一化" class="headerlink" title="step2：数据归一化"></a>step2：数据归一化</h3><p>让各个指标数据的和为1，即Pi = Yi / （Y1+Y2+Y3+….+Yn）。</p><h3 id="step3：计算第j项指标的熵"><a href="#step3：计算第j项指标的熵" class="headerlink" title="step3：计算第j项指标的熵"></a>step3：计算第j项指标的熵</h3><p><img src="/2020/07/27/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E7%BB%BC%E5%90%88%E8%AF%84%E4%BB%B7%E6%A8%A1%E5%9E%8B/3.png" srcset="/img/loading.gif" alt></p><h3 id="step4：计算指标的离散程度并计算权重"><a href="#step4：计算指标的离散程度并计算权重" class="headerlink" title="step4：计算指标的离散程度并计算权重"></a>step4：计算指标的离散程度并计算权重</h3><p>令Dj = 1 - Ej（因为熵越大，不确定性越小），接下来再把各个指标的离散程度归一化处理。</p><h3 id="step6：计算结果并排序"><a href="#step6：计算结果并排序" class="headerlink" title="step6：计算结果并排序"></a>step6：计算结果并排序</h3><h2 id="理想点法"><a href="#理想点法" class="headerlink" title="理想点法"></a>理想点法</h2><p>理想点法是综合各个方案与理想的最优方案以及最差方案之间的距离，对各个方案的优劣进行排序，与最优方案越接近同时与最差方案距离越远的方案，综合得分越高。</p><h3 id="step1：数据的预处理"><a href="#step1：数据的预处理" class="headerlink" title="step1：数据的预处理"></a>step1：数据的预处理</h3><p>方法有很多，此处就不再赘述了。</p><h3 id="step2：确定各个指标的权重"><a href="#step2：确定各个指标的权重" class="headerlink" title="step2：确定各个指标的权重"></a>step2：确定各个指标的权重</h3><p>可以用所有用于确定指标权重的方法。</p><h3 id="step3：计算加权的指标值"><a href="#step3：计算加权的指标值" class="headerlink" title="step3：计算加权的指标值"></a>step3：计算加权的指标值</h3><h3 id="step4：确定正理想方案和负理想方案"><a href="#step4：确定正理想方案和负理想方案" class="headerlink" title="step4：确定正理想方案和负理想方案"></a>step4：确定正理想方案和负理想方案</h3><h3 id="step5：计算各个方案到正负理想方案的距离"><a href="#step5：计算各个方案到正负理想方案的距离" class="headerlink" title="step5：计算各个方案到正负理想方案的距离"></a>step5：计算各个方案到正负理想方案的距离</h3><h3 id="step6：计算各个方案的综合得分"><a href="#step6：计算各个方案的综合得分" class="headerlink" title="step6：计算各个方案的综合得分"></a>step6：计算各个方案的综合得分</h3>]]></content>
     
     
     <categories>
@@ -411,19 +559,6 @@
       <tag>稳健性分析</tag>
       
     </tags>
-    
-  </entry>
-  
-  
-  
-  <entry>
-    <title>Hello World</title>
-    <link href="/2020/07/12/hello-world/"/>
-    <url>/2020/07/12/hello-world/</url>
-    
-    <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><pre><code class="hljs bash">$ hexo new <span class="hljs-string">"My New Post"</span></code></pre><p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p><h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><pre><code class="hljs bash">$ hexo server</code></pre><p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p><h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><pre><code class="hljs bash">$ hexo generate</code></pre><p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p><h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><pre><code class="hljs bash">$ hexo deploy</code></pre><p>More info: <a href="https://hexo.io/docs/one-command-deployment.html" target="_blank" rel="noopener">Deployment</a></p>]]></content>
-    
-    
     
   </entry>
   

@@ -1,7 +1,7 @@
+
+
 <!DOCTYPE html>
-<html lang="zh-CN">
-
-
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
 
 
 
@@ -25,7 +25,7 @@
 
 <!-- 主题依赖的图标库，不要自行修改 -->
 
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_yg9cfy8wd6.css">
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_6peoq002giu.css">
 
 
 
@@ -38,6 +38,7 @@
 
 
   <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
 <meta name="generator" content="Hexo 4.2.1"></head>
 
 
@@ -132,8 +133,14 @@
         
         
           <li class="nav-item" id="search-btn">
-            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;&nbsp;<i
-                class="iconfont icon-search"></i>&nbsp;&nbsp;</a>
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" href="javascript:">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
           </li>
         
       </ul>
@@ -141,12 +148,12 @@
   </div>
 </nav>
 
-    <div class="view intro-2" id="background" parallax=true
+    <div class="banner intro-2" id="background" parallax=true
          style="background: url('/website_picture/article_picture.jpg') no-repeat center center;
            background-size: cover;">
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
-          <div class="container text-center white-text fadeInUp">
+          <div class="container page-header text-center fade-in-up">
             <span class="h2" id="subtitle">
               
             </span>
@@ -179,22 +186,343 @@
   <div class="row mx-auto index-card">
     
     
-    <div class="col-12 col-md-12 mx-auto index-info">
-      <a class="index-header" href="/2020/07/17/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E6%8F%92%E5%80%BC%E4%B8%8E%E6%8B%9F%E5%90%88/">[学习笔记]插值与拟合</a>
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        <a href="/2020/07/28/%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0-dataframe-apply%E5%92%8Cgroupby-apply%E7%9A%84%E5%8C%BA%E5%88%AB/">[技术笔记]dataframe.apply和groupby.apply的区别</a>
+      </h1>
 
-      <a href="/2020/07/17/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E6%8F%92%E5%80%BC%E4%B8%8E%E6%8B%9F%E5%90%88/" class="index-excerpt">
-        
-        
+      <p class="index-excerpt">
+        <a href="/2020/07/28/%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0-dataframe-apply%E5%92%8Cgroupby-apply%E7%9A%84%E5%8C%BA%E5%88%AB/">
           
-        
-        <div>插值的一般思路：根据已知数据点构造一个一般的函数，该函数对现有数据有较好的拟合效果，再用这个函数进行插值预测。构造函数的方法是一个重点（回归的OLS、FSLS、GLS、WLS、Probit、Logit等都是计量中评估的函数方法）。插值一般用来进行填补数据集，但不用做数据预测。 
-多项式插值通过一个构造一个多项式函数去插值。原因：1.多项式函数比较简单2.Weierstrass一致逼近定理：给定一个</div>
-      </a>
+          
+            
+          
+          在看书学习apply函数的过程中，我发现书上还是比较集中于讲解apply在groupby分组、聚合这方面的作用，如下面这个用特定于分组的值填充缺失值[1]：    In [91]: s = pd.Series(np.random.randn(6))
+In [92]: s[::2] = np.nan
+
+In [93]: s
+Out[93]: 
+0         NaN
+1   -0.125921
+
+        </a>
+      </p>
 
       <div class="index-btm post-metas">
         
           <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>&nbsp;2020-07-17
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-07-28 10:53" pubdate>
+              2020-07-28
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0/">技术笔记</a>
+            
+              <a href="/categories/%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0/python/">python</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/apply-%E5%87%BD%E6%95%B0/">apply()函数</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        <a href="/2020/07/27/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E7%BB%BC%E5%90%88%E8%AF%84%E4%BB%B7%E6%A8%A1%E5%9E%8B/">[学习笔记]综合评价模型</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2020/07/27/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E7%BB%BC%E5%90%88%E8%AF%84%E4%BB%B7%E6%A8%A1%E5%9E%8B/">
+          
+          
+            
+          
+          综合评价问题：综合考虑事物的多个指标所包含的信息，对各个备选决策方案优劣进行排序，最终选出最优方案。
+主要步骤：（1）选择综合评价指标（不遗漏、不重复、尽可能独立）；（2）确定各参评方案的指标值，形成决策矩阵；（3）指标值预处理（目的：消除指标值在单位、数量级、方向性三个方面的差异）；（4）确定各项指标的权重系数（重要程度）；（5）对预处理后的指标值进行加权综合，给出各方案的综合得分，按照综合得分
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-07-27 20:07" pubdate>
+              2020-07-27
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</a>
+            
+              <a href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1/">数学建模</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E7%BB%BC%E5%90%88%E8%AF%84%E4%BB%B7%E6%A8%A1%E5%9E%8B/">综合评价模型</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        <a href="/2020/07/27/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B%E6%A8%A1%E5%9E%8B/">[学习笔记]微分方程模型</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2020/07/27/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B%E6%A8%A1%E5%9E%8B/">
+          
+          
+            
+          
+          微分方程模型的思想：假设我们要研究量x,y,z 与t的关系,微分方程模型的思想是从考察量x,y,z对t的导数(即x,y,z对t的变化率)入手，找出导数符合的规律，建立包含未知函数的导数(偏导数)的方程(方程组)，通过分析、求解微分方程（组）来获得x,y,z与t的函数关系。
+以下是几个常见的根据微分方程构建的模型：
+人口增长模型马尔萨斯的指数增长模型基本假设：单位时间内人口的增长率为常数r，即
+x(
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-07-27 13:21" pubdate>
+              2020-07-27
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</a>
+            
+              <a href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1/">数学建模</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B%E6%A8%A1%E5%9E%8B/">微分方程模型</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        <a href="/2020/07/27/%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0-jupyter%E4%B8%8D%E8%83%BD%E9%80%9A%E8%BF%87%E6%B5%8F%E8%A7%88%E5%99%A8%E8%87%AA%E5%8A%A8%E6%89%93%E5%BC%80/">[技术笔记]jupyter不能通过浏览器自动打开</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2020/07/27/%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0-jupyter%E4%B8%8D%E8%83%BD%E9%80%9A%E8%BF%87%E6%B5%8F%E8%A7%88%E5%99%A8%E8%87%AA%E5%8A%A8%E6%89%93%E5%BC%80/">
+          
+          
+            
+          
+          这两天用win+R打开juypter的时候发现不能通过浏览器自动打开了，只能手动打开。之前我配置的默认浏览器是chrome，中间因为chrome版本太低Google帮我重装过一次，怀疑是重装过后的chrome被改了文件路径，从而导致打不开了，因此决定重新配置juypter的路径即可：
+1、在cmd下执行jupyter notebook —generate-config，会提示该文件所在的目录，我的
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-07-27 08:52" pubdate>
+              2020-07-27
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0/">技术笔记</a>
+            
+              <a href="/categories/%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0/python/">python</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/jupyter-notebook/">jupyter notebook</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        <a href="/2020/07/26/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E5%B7%AE%E5%88%86%E6%96%B9%E7%A8%8B%E6%A8%A1%E5%9E%8B/">[学习笔记]差分方程模型</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2020/07/26/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E5%B7%AE%E5%88%86%E6%96%B9%E7%A8%8B%E6%A8%A1%E5%9E%8B/">
+          
+          
+            
+          
+          差分方程，顾名思义，研究的是一组有规律序列相邻两个时间段间的规律，这种规律能够全部（部分）运用（使用迭代或递推）到一个总体，从而求解问题。
+一阶线性差分方程模型ΔAn = An+1 - An = f(An,其他因素) 这样一个方程可以被称为一阶差分方程模型，如果f(An,其他因素)是关于An的线性模式，则被称为一阶线性差分方程模型，即
+一阶线性差分方程的解及其长期行为很容易得到
+当n趋于无穷时，
+
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-07-26 21:33" pubdate>
+              2020-07-26
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</a>
+            
+              <a href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1/">数学建模</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E5%B7%AE%E5%88%86%E6%96%B9%E7%A8%8B%E6%A8%A1%E5%9E%8B/">差分方程模型</a>
+            
+              <a href="/tags/%E5%8A%A8%E5%8A%9B%E7%B3%BB%E7%BB%9F%E6%A8%A1%E5%9E%8B/">动力系统模型</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        <a href="/2020/07/19/%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0-pandas%E4%B8%ADagg-%E4%B8%8Eapply-%E7%9A%84%E5%8C%BA%E5%88%AB/">[技术笔记]pandas中agg()与apply()的区别</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2020/07/19/%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0-pandas%E4%B8%ADagg-%E4%B8%8Eapply-%E7%9A%84%E5%8C%BA%E5%88%AB/">
+          
+          
+            
+          
+          对数据集进行分组并对各组应用一个函数（无论是聚合还是转换），通常是数据分析工作中的重要环节[1]。
+这张表就阐述了整一个GroupBy的机制。一般来说，Split部分用groupby()完成，但apply部分可以用apply,agg以及其他一些特定的函数完成（如count，mean，sum等）。
+在‘python for data analysis’一书中并没有很明确地指出这两者的区别，只是说ap
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-07-19 10:12" pubdate>
+              2020-07-19
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0/">技术笔记</a>
+            
+              <a href="/categories/%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0/python/">python</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E6%95%B0%E6%8D%AE%E8%81%9A%E5%90%88%E5%92%8C%E5%88%86%E7%BB%84%E8%BF%90%E7%AE%97/">数据聚合和分组运算</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        <a href="/2020/07/17/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E6%8F%92%E5%80%BC%E4%B8%8E%E6%8B%9F%E5%90%88/">[学习笔记]插值与拟合</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2020/07/17/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E6%8F%92%E5%80%BC%E4%B8%8E%E6%8B%9F%E5%90%88/">
+          
+          
+            
+          
+          插值的一般思路：根据已知数据点构造一个一般的函数，该函数对现有数据有较好的拟合效果，再用这个函数进行插值预测。构造函数的方法是一个重点（回归的OLS、FSLS、GLS、WLS、Probit、Logit等都是计量中评估的函数方法）。插值一般用来进行填补数据集，但不用做数据预测。 
+多项式插值通过一个构造一个多项式函数去插值。原因：1.多项式函数比较简单2.Weierstrass一致逼近定理：给定一个
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-07-17 21:47" pubdate>
+              2020-07-17
+            </time>
           </div>
         
         
@@ -218,29 +546,36 @@
           </div>
         
       </div>
-    </div>
+    </article>
   </div>
 
   <div class="row mx-auto index-card">
     
     
-    <div class="col-12 col-md-12 mx-auto index-info">
-      <a class="index-header" href="/2020/07/16/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E6%95%B0%E5%AD%A6%E8%A7%84%E5%88%92%E6%A8%A1%E5%9E%8B%E6%B7%B1%E5%85%A5/">[学习笔记]数学规划模型深入</a>
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        <a href="/2020/07/16/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E6%95%B0%E5%AD%A6%E8%A7%84%E5%88%92%E6%A8%A1%E5%9E%8B%E6%B7%B1%E5%85%A5/">[学习笔记]数学规划模型深入</a>
+      </h1>
 
-      <a href="/2020/07/16/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E6%95%B0%E5%AD%A6%E8%A7%84%E5%88%92%E6%A8%A1%E5%9E%8B%E6%B7%B1%E5%85%A5/" class="index-excerpt">
-        
-        
+      <p class="index-excerpt">
+        <a href="/2020/07/16/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E6%95%B0%E5%AD%A6%E8%A7%84%E5%88%92%E6%A8%A1%E5%9E%8B%E6%B7%B1%E5%85%A5/">
           
-        
-        <div>一个例题
+          
+            
+          
+          一个例题
 第一小问第一小问比较好解决，典型的线性规划问题，列举出所有的切割模式（共7种）后，将第i种模式切割的原料钢管根数作为决策变量即可，唯一需要注意的是，约束条件不能是三种钢管个数恰好=(50,20,15)，而应该是&gt;=(50,20,15)，否则可能会造成无解。
-第二小问第二小问增加了一种需求和一个约束条件：5米10根；切割模式不超过3种。用枚举法确定合理切割模式较为复杂，因此不如将使用</div>
-      </a>
+第二小问第二小问增加了一种需求和一个约束条件：5米10根；切割模式不超过3种。用枚举法确定合理切割模式较为复杂，因此不如将使用
+        </a>
+      </p>
 
       <div class="index-btm post-metas">
         
           <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>&nbsp;2020-07-16
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-07-16 20:19" pubdate>
+              2020-07-16
+            </time>
           </div>
         
         
@@ -262,21 +597,24 @@
           </div>
         
       </div>
-    </div>
+    </article>
   </div>
 
   <div class="row mx-auto index-card">
     
     
-    <div class="col-12 col-md-12 mx-auto index-info">
-      <a class="index-header" href="/2020/07/16/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E6%95%B0%E5%AD%A6%E8%A7%84%E5%88%92%E6%A8%A1%E5%9E%8B%E5%88%9D%E8%AF%86/">[学习笔记]数学规划模型初识</a>
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        <a href="/2020/07/16/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E6%95%B0%E5%AD%A6%E8%A7%84%E5%88%92%E6%A8%A1%E5%9E%8B%E5%88%9D%E8%AF%86/">[学习笔记]数学规划模型初识</a>
+      </h1>
 
-      <a href="/2020/07/16/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E6%95%B0%E5%AD%A6%E8%A7%84%E5%88%92%E6%A8%A1%E5%9E%8B%E5%88%9D%E8%AF%86/" class="index-excerpt">
-        
-        
+      <p class="index-excerpt">
+        <a href="/2020/07/16/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E6%95%B0%E5%AD%A6%E8%A7%84%E5%88%92%E6%A8%A1%E5%9E%8B%E5%88%9D%E8%AF%86/">
           
-        
-        <div>数学规划模型的三要素
+          
+            
+          
+          数学规划模型的三要素
 决策变量
 目标函数
 约束条件
@@ -284,13 +622,17 @@
 0-1变量的运算特点在0-1变量中，，两者互为充要条件，而在一般情形下，前者是后者的充分不必要条件。
 0-1变量还可以描述约束条件（if-else）关系，，如图例题所示。
 多目标规划模型的处理方法多目标规划下，往往这n个目标相互矛盾，其解决思路是转变多目标规划为单目标规划。
-方法一：按照目标的重要性分步求解如在选课策略模型中，任务要求选修课程最</div>
-      </a>
+方法一：按照目标的重要性分步求解如在选课策略模型中，任务要求选修课程最
+        </a>
+      </p>
 
       <div class="index-btm post-metas">
         
           <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>&nbsp;2020-07-16
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-07-16 13:39" pubdate>
+              2020-07-16
+            </time>
           </div>
         
         
@@ -312,33 +654,40 @@
           </div>
         
       </div>
-    </div>
+    </article>
   </div>
 
   <div class="row mx-auto index-card">
     
     
-    <div class="col-12 col-md-12 mx-auto index-info">
-      <a class="index-header" href="/2020/07/14/%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0-pandas%E4%B8%AD%E7%9A%84%E9%80%BB%E8%BE%91%E8%BF%90%E7%AE%97%E7%AC%A6/">[技术笔记]pandas中的逻辑运算符</a>
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        <a href="/2020/07/14/%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0-pandas%E4%B8%AD%E7%9A%84%E9%80%BB%E8%BE%91%E8%BF%90%E7%AE%97%E7%AC%A6/">[技术笔记]pandas中的逻辑运算符</a>
+      </h1>
 
-      <a href="/2020/07/14/%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0-pandas%E4%B8%AD%E7%9A%84%E9%80%BB%E8%BE%91%E8%BF%90%E7%AE%97%E7%AC%A6/" class="index-excerpt">
-        
-        
+      <p class="index-excerpt">
+        <a href="/2020/07/14/%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0-pandas%E4%B8%AD%E7%9A%84%E9%80%BB%E8%BE%91%E8%BF%90%E7%AE%97%E7%AC%A6/">
           
-        
-        <div>首先需要说明的是，在pandas中进行逻辑运算时，其运算符不再是and;or;not，转而变成了相对应的&amp;，|，～，1如下列代码:
+          
+            
+          
+          首先需要说明的是，在pandas中进行逻辑运算时，其运算符不再是and;or;not，转而变成了相对应的&amp;，|，～，1如下列代码:
 In [129]: s = pd.Series(range(-3, 4))
  In [132]: s[(s &lt; -1) | (s &gt; 0.5)]
  Out[132]: 
             0   -3
             1   -2
- </div>
-      </a>
+ 
+        </a>
+      </p>
 
       <div class="index-btm post-metas">
         
           <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>&nbsp;2020-07-14
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-07-14 09:43" pubdate>
+              2020-07-14
+            </time>
           </div>
         
         
@@ -360,86 +709,14 @@ In [129]: s = pd.Series(range(-3, 4))
           </div>
         
       </div>
-    </div>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <div class="col-12 col-md-12 mx-auto index-info">
-      <a class="index-header" href="/2020/07/13/%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0-%E6%A8%A1%E5%9E%8B%E7%9A%84%E7%81%B5%E6%95%8F%E5%BA%A6%E5%88%86%E6%9E%90%E5%92%8C%E7%A8%B3%E5%81%A5%E6%80%A7%E5%88%86%E6%9E%90%E6%96%B9%E6%B3%95/">[学习笔记]模型的灵敏度分析和稳健性分析方法</a>
-
-      <a href="/2020/07/13/%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0-%E6%A8%A1%E5%9E%8B%E7%9A%84%E7%81%B5%E6%95%8F%E5%BA%A6%E5%88%86%E6%9E%90%E5%92%8C%E7%A8%B3%E5%81%A5%E6%80%A7%E5%88%86%E6%9E%90%E6%96%B9%E6%B3%95/" class="index-excerpt">
-        
-        
-          
-        
-        <div>在完成做出假设，用符号表示有关量，列出数学表达式，求解得到答案后，还需要对所得到的答案进行灵敏度分析和稳健性分析。本文旨在复习所学到的检验分析方法。
-灵敏度分析的意义在于，所得数据为测量值，与实际值可能存在差异，如果模型的输出对模型的输入很敏感，可能导致模型的偏误被放大，因此要对模型进行灵敏度分析。这让我联想到伍德里奇《计量经济学》第九章对于数据问题的再讨论，即解释变量的测量误差在CEV假定下，会</div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>&nbsp;2020-07-13
-          </div>
-        
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-category"></i>
-            
-              <a href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</a>
-            
-              <a href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1/">数学建模</a>
-            
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/%E7%81%B5%E6%95%8F%E5%BA%A6%E5%88%86%E6%9E%90/">灵敏度分析</a>
-            
-              <a href="/tags/%E7%A8%B3%E5%81%A5%E6%80%A7%E5%88%86%E6%9E%90/">稳健性分析</a>
-            
-          </div>
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <div class="col-12 col-md-12 mx-auto index-info">
-      <a class="index-header" href="/2020/07/12/hello-world/">Hello World</a>
-
-      <a href="/2020/07/12/hello-world/" class="index-excerpt">
-        
-        
-          
-        
-        <div>Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.
-Quick</div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>&nbsp;2020-07-12
-          </div>
-        
-        
-        
-      </div>
-    </div>
+    </article>
   </div>
 
 
 
   <nav aria-label="navigation">
     <span class="pagination" id="pagination">
-      <a class="extend prev" rel="prev" href="/"><i class="iconfont icon-arrowleft"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
+      <a class="extend prev" rel="prev" href="/"><i class="iconfont icon-arrowleft"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/3/"><i class="iconfont icon-arrowright"></i></a>
     </span>
   </nav>
   

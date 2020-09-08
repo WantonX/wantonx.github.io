@@ -1,7 +1,7 @@
+
+
 <!DOCTYPE html>
-<html lang="zh-CN">
-
-
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
 
 
 
@@ -25,7 +25,7 @@
 
 <!-- 主题依赖的图标库，不要自行修改 -->
 
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_yg9cfy8wd6.css">
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_6peoq002giu.css">
 
 
 
@@ -38,6 +38,7 @@
 
 
   <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
 <meta name="generator" content="Hexo 4.2.1"></head>
 
 
@@ -132,8 +133,14 @@
         
         
           <li class="nav-item" id="search-btn">
-            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;&nbsp;<i
-                class="iconfont icon-search"></i>&nbsp;&nbsp;</a>
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" href="javascript:">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
           </li>
         
       </ul>
@@ -141,12 +148,12 @@
   </div>
 </nav>
 
-    <div class="view intro-2" id="background" parallax=true
+    <div class="banner intro-2" id="background" parallax=true
          style="background: url('/website_picture/other.jpg') no-repeat center center;
            background-size: cover;">
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
-          <div class="container text-center white-text fadeInUp">
+          <div class="container page-header text-center fade-in-up">
             <span class="h2" id="subtitle">
               
             </span>
@@ -187,21 +194,21 @@
     <div class="category row">
       <a
         class="category-item  list-group-item category-item-action col-10 col-md-11"
-        id="heading-ckdsturvc0019g8q209rm2upx" role="tab" data-toggle="collapse" href="#collapse-ckdsturvc0019g8q209rm2upx"
+        id="heading-cket9866000048wo0aby136ax" role="tab" data-toggle="collapse" href="#collapse-cket9866000048wo0aby136ax"
         aria-expanded="true"
       >
-        技术笔记
+        学习笔记
         <i class="iconfont icon-arrowright"></i>
       </a>
-      <a href="/categories/%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0/" class="category-count col-2 col-md-1">
+      <a href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" class="category-count col-2 col-md-1">
         <i class="iconfont icon-articles"></i>
-        <span>8</span>
+        <span>10</span>
       </a>
       <div class="category-collapse">
         
           
-  <div id="collapse-ckdsturvc0019g8q209rm2upx" class="collapse in show" role="tabpanel"
-       aria-labelledby="heading-ckdsturvc0019g8q209rm2upx">
+  <div id="collapse-cket9866000048wo0aby136ax" class="collapse in show" role="tabpanel"
+       aria-labelledby="heading-cket9866000048wo0aby136ax">
     
   
   
@@ -210,7 +217,164 @@
     <div class="category-sub row">
       <a
         class="category-subitem collapsed list-group-item category-item-action col-10 col-md-11"
-        id="heading-ckdsturw80026g8q2741d48ju" role="tab" data-toggle="collapse" href="#collapse-ckdsturw80026g8q2741d48ju"
+        id="heading-cket9866p000i8wo02q3d5msx" role="tab" data-toggle="collapse" href="#collapse-cket9866p000i8wo02q3d5msx"
+        aria-expanded="false"
+      >
+        数学建模
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      <a href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1/" class="category-count col-2 col-md-1">
+        <i class="iconfont icon-articles"></i>
+        <span>7</span>
+      </a>
+      <div class="category-collapse">
+        
+          
+  <div id="collapse-cket9866p000i8wo02q3d5msx" class="collapse in" role="tabpanel"
+       aria-labelledby="heading-cket9866p000i8wo02q3d5msx">
+    
+    
+    
+      
+      
+        <a href="/2020/07/27/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E7%BB%BC%E5%90%88%E8%AF%84%E4%BB%B7%E6%A8%A1%E5%9E%8B/" class="list-group-item list-group-item-action">
+          <span class="category-post">[学习笔记]综合评价模型</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2020/07/27/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B%E6%A8%A1%E5%9E%8B/" class="list-group-item list-group-item-action">
+          <span class="category-post">[学习笔记]微分方程模型</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2020/07/26/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E5%B7%AE%E5%88%86%E6%96%B9%E7%A8%8B%E6%A8%A1%E5%9E%8B/" class="list-group-item list-group-item-action">
+          <span class="category-post">[学习笔记]差分方程模型</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2020/07/17/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E6%8F%92%E5%80%BC%E4%B8%8E%E6%8B%9F%E5%90%88/" class="list-group-item list-group-item-action">
+          <span class="category-post">[学习笔记]插值与拟合</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2020/07/16/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E6%95%B0%E5%AD%A6%E8%A7%84%E5%88%92%E6%A8%A1%E5%9E%8B%E6%B7%B1%E5%85%A5/" class="list-group-item list-group-item-action">
+          <span class="category-post">[学习笔记]数学规划模型深入</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2020/07/16/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E6%95%B0%E5%AD%A6%E8%A7%84%E5%88%92%E6%A8%A1%E5%9E%8B%E5%88%9D%E8%AF%86/" class="list-group-item list-group-item-action">
+          <span class="category-post">[学习笔记]数学规划模型初识</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2020/07/13/%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0-%E6%A8%A1%E5%9E%8B%E7%9A%84%E7%81%B5%E6%95%8F%E5%BA%A6%E5%88%86%E6%9E%90%E5%92%8C%E7%A8%B3%E5%81%A5%E6%80%A7%E5%88%86%E6%9E%90%E6%96%B9%E6%B3%95/" class="list-group-item list-group-item-action">
+          <span class="category-post">[学习笔记]模型的灵敏度分析和稳健性分析方法</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+    
+    
+    <div class="category-sub row">
+      <a
+        class="category-subitem collapsed list-group-item category-item-action col-10 col-md-11"
+        id="heading-cket9866z000z8wo0ct13ctma" role="tab" data-toggle="collapse" href="#collapse-cket9866z000z8wo0ct13ctma"
+        aria-expanded="false"
+      >
+        计量经济学
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      <a href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E8%AE%A1%E9%87%8F%E7%BB%8F%E6%B5%8E%E5%AD%A6/" class="category-count col-2 col-md-1">
+        <i class="iconfont icon-articles"></i>
+        <span>3</span>
+      </a>
+      <div class="category-collapse">
+        
+          
+  <div id="collapse-cket9866z000z8wo0ct13ctma" class="collapse in" role="tabpanel"
+       aria-labelledby="heading-cket9866z000z8wo0ct13ctma">
+    
+    
+    
+      
+      
+        <a href="/2020/09/07/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E9%9D%A2%E6%9D%BF%E6%95%B0%E6%8D%AE%E5%9B%9E%E5%BD%92%E6%A8%A1%E5%9E%8B/" class="list-group-item list-group-item-action">
+          <span class="category-post">[学习笔记]面板数据回归模型</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2020/09/07/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E8%B7%A8%E6%97%B6%E6%A8%AA%E6%88%AA%E9%9D%A2%E7%9A%84%E6%B7%B7%E5%90%88%EF%BC%9A%E7%AE%80%E5%8D%95%E9%9D%A2%E6%9D%BF%E6%95%B0%E6%8D%AE%E6%96%B9%E6%B3%95/" class="list-group-item list-group-item-action">
+          <span class="category-post">[学习笔记]跨时横截面的混合：简单面板数据方法</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2020/09/07/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E8%AE%A1%E9%87%8F%E5%B0%8F%E5%A4%8D%E4%B9%A0/" class="list-group-item list-group-item-action">
+          <span class="category-post">[学习笔记]计量小复习</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+  </div>
+
+        
+      </div>
+    </div>
+  
+    
+    
+    <div class="category row">
+      <a
+        class="category-item  list-group-item category-item-action col-10 col-md-11"
+        id="heading-cket9867d001s8wo0gzfmav2h" role="tab" data-toggle="collapse" href="#collapse-cket9867d001s8wo0gzfmav2h"
+        aria-expanded="true"
+      >
+        技术笔记
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      <a href="/categories/%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0/" class="category-count col-2 col-md-1">
+        <i class="iconfont icon-articles"></i>
+        <span>9</span>
+      </a>
+      <div class="category-collapse">
+        
+          
+  <div id="collapse-cket9867d001s8wo0gzfmav2h" class="collapse in show" role="tabpanel"
+       aria-labelledby="heading-cket9867d001s8wo0gzfmav2h">
+    
+  
+  
+    
+    
+    <div class="category-sub row">
+      <a
+        class="category-subitem collapsed list-group-item category-item-action col-10 col-md-11"
+        id="heading-cket9867o002s8wo0fuuw4u1g" role="tab" data-toggle="collapse" href="#collapse-cket9867o002s8wo0fuuw4u1g"
         aria-expanded="false"
       >
         python
@@ -218,15 +382,22 @@
       </a>
       <a href="/categories/%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0/python/" class="category-count col-2 col-md-1">
         <i class="iconfont icon-articles"></i>
-        <span>8</span>
+        <span>9</span>
       </a>
       <div class="category-collapse">
         
           
-  <div id="collapse-ckdsturw80026g8q2741d48ju" class="collapse in" role="tabpanel"
-       aria-labelledby="heading-ckdsturw80026g8q2741d48ju">
+  <div id="collapse-cket9867o002s8wo0fuuw4u1g" class="collapse in" role="tabpanel"
+       aria-labelledby="heading-cket9867o002s8wo0fuuw4u1g">
     
     
+    
+      
+      
+        <a href="/2020/08/30/%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0-pandas%E5%AD%A6%E4%B9%A0%E5%B0%8F%E7%AC%94%E8%AE%B01/" class="list-group-item list-group-item-action">
+          <span class="category-post">[技术笔记]pandas学习小笔记1</span>
+        </a>
+      
     
       
       
@@ -281,113 +452,6 @@
       
         <a href="/2020/07/14/%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0-pandas%E4%B8%AD%E7%9A%84%E9%80%BB%E8%BE%91%E8%BF%90%E7%AE%97%E7%AC%A6/" class="list-group-item list-group-item-action">
           <span class="category-post">[技术笔记]pandas中的逻辑运算符</span>
-        </a>
-      
-    
-  </div>
-
-        
-      </div>
-    </div>
-  
-  </div>
-
-        
-      </div>
-    </div>
-  
-    
-    
-    <div class="category row">
-      <a
-        class="category-item  list-group-item category-item-action col-10 col-md-11"
-        id="heading-ckdsturuc0003g8q29zjy0mah" role="tab" data-toggle="collapse" href="#collapse-ckdsturuc0003g8q29zjy0mah"
-        aria-expanded="true"
-      >
-        学习笔记
-        <i class="iconfont icon-arrowright"></i>
-      </a>
-      <a href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" class="category-count col-2 col-md-1">
-        <i class="iconfont icon-articles"></i>
-        <span>7</span>
-      </a>
-      <div class="category-collapse">
-        
-          
-  <div id="collapse-ckdsturuc0003g8q29zjy0mah" class="collapse in show" role="tabpanel"
-       aria-labelledby="heading-ckdsturuc0003g8q29zjy0mah">
-    
-  
-  
-    
-    
-    <div class="category-sub row">
-      <a
-        class="category-subitem collapsed list-group-item category-item-action col-10 col-md-11"
-        id="heading-ckdsturut000hg8q2082s45wh" role="tab" data-toggle="collapse" href="#collapse-ckdsturut000hg8q2082s45wh"
-        aria-expanded="false"
-      >
-        数学建模
-        <i class="iconfont icon-arrowright"></i>
-      </a>
-      <a href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1/" class="category-count col-2 col-md-1">
-        <i class="iconfont icon-articles"></i>
-        <span>7</span>
-      </a>
-      <div class="category-collapse">
-        
-          
-  <div id="collapse-ckdsturut000hg8q2082s45wh" class="collapse in" role="tabpanel"
-       aria-labelledby="heading-ckdsturut000hg8q2082s45wh">
-    
-    
-    
-      
-      
-        <a href="/2020/07/27/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E7%BB%BC%E5%90%88%E8%AF%84%E4%BB%B7%E6%A8%A1%E5%9E%8B/" class="list-group-item list-group-item-action">
-          <span class="category-post">[学习笔记]综合评价模型</span>
-        </a>
-      
-    
-      
-      
-        <a href="/2020/07/27/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B%E6%A8%A1%E5%9E%8B/" class="list-group-item list-group-item-action">
-          <span class="category-post">[学习笔记]微分方程模型</span>
-        </a>
-      
-    
-      
-      
-        <a href="/2020/07/26/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E5%B7%AE%E5%88%86%E6%96%B9%E7%A8%8B%E6%A8%A1%E5%9E%8B/" class="list-group-item list-group-item-action">
-          <span class="category-post">[学习笔记]差分方程模型</span>
-        </a>
-      
-    
-      
-      
-        <a href="/2020/07/17/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E6%8F%92%E5%80%BC%E4%B8%8E%E6%8B%9F%E5%90%88/" class="list-group-item list-group-item-action">
-          <span class="category-post">[学习笔记]插值与拟合</span>
-        </a>
-      
-    
-      
-      
-        <a href="/2020/07/16/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E6%95%B0%E5%AD%A6%E8%A7%84%E5%88%92%E6%A8%A1%E5%9E%8B%E6%B7%B1%E5%85%A5/" class="list-group-item list-group-item-action">
-          <span class="category-post">[学习笔记]数学规划模型深入</span>
-        </a>
-      
-    
-      
-      
-        <a href="/2020/07/16/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E6%95%B0%E5%AD%A6%E8%A7%84%E5%88%92%E6%A8%A1%E5%9E%8B%E5%88%9D%E8%AF%86/" class="list-group-item list-group-item-action">
-          <span class="category-post">[学习笔记]数学规划模型初识</span>
-        </a>
-      
-    
-      
-      
-        <a href="/2020/07/13/%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0-%E6%A8%A1%E5%9E%8B%E7%9A%84%E7%81%B5%E6%95%8F%E5%BA%A6%E5%88%86%E6%9E%90%E5%92%8C%E7%A8%B3%E5%81%A5%E6%80%A7%E5%88%86%E6%9E%90%E6%96%B9%E6%B3%95/" class="list-group-item list-group-item-action">
-          <span class="category-post">[学习笔记]模型的灵敏度分析和稳健性分析方法</span>
         </a>
       
     
