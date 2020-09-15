@@ -183,7 +183,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      571 字
+      647 字
     </span>
   
 
@@ -193,7 +193,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      6
+      7
        分钟
     </span>
   
@@ -241,6 +241,9 @@ cleaned = df.dropna()
 <p>问题描述：在使用df.drop()方法时，若要删除多行/列，只能输入一个包含行/列名的列表，而不能输入一个整数索引的列表，在使用整数索引更方便的时候就很难搞。</p>
 <p>解决思想：我们可以把整数索引通过某种方式转换成名称组成的索引，再带入drop()中。</p>
 <p>解决方法：若要删除df的1，3，7，9列，则应使用df.drop(df.columns[[0,2,6,8]], axis = 1)，巧妙地将整数索引进行了转化。</p>
+<p>8、关于loc的优化</p>
+<p>平常我们可能使用的是df.loc[1],df.loc[‘xxx’]这样的形式，但其实<strong>women = train.loc[train.Sex == ‘female’,”Survived”]</strong>这样将a condition expression带进去。</p>
+<p>所以除了column names, row labels，这里用这种方法能够更加specific地索引一些需要的值。</p>
 
             </div>
             <hr>

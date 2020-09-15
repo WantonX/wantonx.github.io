@@ -17,7 +17,7 @@
   <meta name="description" content="">
   <meta name="author" content="ZiJie Xu">
   <meta name="keywords" content="">
-  <title>[学习笔记]短面板数据回归模型 - WantonX</title>
+  <title>[技术笔记]序列的一些用法 - WantonX</title>
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
 
@@ -172,8 +172,8 @@
               
   <div class="mt-3 post-meta">
     <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-    <time datetime="2020-09-07 20:23" pubdate>
-      2020年9月7日 晚上
+    <time datetime="2020-09-09 14:48" pubdate>
+      2020年9月9日 下午
     </time>
   </div>
 
@@ -183,7 +183,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      1k 字
+      718 字
     </span>
   
 
@@ -193,7 +193,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      10
+      8
        分钟
     </span>
   
@@ -223,36 +223,58 @@
         <div class="py-5" id="board">
           <article class="post-content mx-auto" id="post">
             <!-- SEO header -->
-            <h1 style="display: none">[学习笔记]短面板数据回归模型</h1>
+            <h1 style="display: none">[技术笔记]序列的一些用法</h1>
             
             <div class="markdown-body" id="post-body">
-              <h2 id="面板数据的分类"><a href="#面板数据的分类" class="headerlink" title="面板数据的分类"></a>面板数据的分类</h2><h2 id="面板数据的优势"><a href="#面板数据的优势" class="headerlink" title="面板数据的优势"></a>面板数据的优势</h2><p><strong>可以处理一些不可观测的遗漏变量</strong>——如果漏掉的变量不随时间变化，则面板数据可以帮助消除遗漏变量偏差。</p>
-<p>由上一篇笔记可知，由于各人/地/企业…各自存在一些属于自己的，影响因变量而不随时间变化的特征（异质性特征），横截面数据很难消除这些固定效应，因此选择面板数据回归模型进行处理。</p>
-<h2 id="差分估计"><a href="#差分估计" class="headerlink" title="差分估计"></a>差分估计</h2><h3 id="两期差分模型"><a href="#两期差分模型" class="headerlink" title="两期差分模型"></a>两期差分模型</h3><p><img src="/2020/09/07/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E9%9D%A2%E6%9D%BF%E6%95%B0%E6%8D%AE%E5%9B%9E%E5%BD%92%E6%A8%A1%E5%9E%8B/1.jpg" srcset="/img/loading.gif" alt></p>
-<h3 id="多期差分模型"><a href="#多期差分模型" class="headerlink" title="多期差分模型"></a>多期差分模型</h3><h4 id="方法一：个体中心化方法处理固定效应"><a href="#方法一：个体中心化方法处理固定效应" class="headerlink" title="方法一：个体中心化方法处理固定效应"></a>方法一：个体中心化方法处理固定效应</h4><p><img src="/2020/09/07/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E9%9D%A2%E6%9D%BF%E6%95%B0%E6%8D%AE%E5%9B%9E%E5%BD%92%E6%A8%A1%E5%9E%8B/2.jpg" srcset="/img/loading.gif" alt></p>
-<p>其原理是针对同一样本，将其不同时期的做均值化处理，而<strong>个体与组均值的离差</strong>这个差分方程就巧妙地消除了固定效应的影响。</p>
-<p>该方法类似于差分，但不同的是此处为’中心化’的数据，标准误也需要重新计算。</p>
-<h4 id="方法二：’n-1个二值变量’模型"><a href="#方法二：’n-1个二值变量’模型" class="headerlink" title="方法二：’n-1个二值变量’模型"></a>方法二：’n-1个二值变量’模型</h4><p>以一个样本为基础，例如：要考虑江苏、浙江、广州三个省的面板数据，将江苏作为基础，赋予浙江一个虚拟变量ZJ，广州一个虚拟变量GZ，引入这n-1个虚拟变量就可以刻画n条截距项不同的回归直线。</p>
-<p>优点：可以描绘出各个样本具体的异质性大小，还可以检验个体固定效应的显著性</p>
-<p>缺点：在截面样本量很大时实现起来比较困难且耗费自由度高</p>
-<h2 id="时间固定效应"><a href="#时间固定效应" class="headerlink" title="时间固定效应"></a>时间固定效应</h2><h3 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h3><p>遗漏的变量可能随时间而变化，但不随个体的变化而变化。</p>
-<h3 id="只有时间固定效应的模型"><a href="#只有时间固定效应的模型" class="headerlink" title="只有时间固定效应的模型"></a>只有时间固定效应的模型</h3><p>将时间固定效应与截距项合并，形成一个新的截距项。</p>
-<p>方法一：做<strong>‘年份中心化’</strong>处理：将某一时间点，这一横截面的所有数据做中心化处理，以消除这个新的截距项（固定时间点不变，对该时间点所有样本取了平均值）。</p>
-<p>方法二：’T-1二值变量’形式</p>
-<h3 id="同时包含个体和时间固定效应的模型"><a href="#同时包含个体和时间固定效应的模型" class="headerlink" title="同时包含个体和时间固定效应的模型"></a>同时包含个体和时间固定效应的模型</h3><p>当T=2时，继续使用一阶差分即可。</p>
-<p>当T&gt;2时，有2*2=4种处理方法，其中最常用的时对个体中心化&amp;加入时间虚拟变量的方法。</p>
-<h2 id="个体固定效应模型假设"><a href="#个体固定效应模型假设" class="headerlink" title="个体固定效应模型假设"></a>个体固定效应模型假设</h2><ol>
-<li>假设一：给定某个x的所有时期的取值和该个体的固定效应时，u的均值为0</li>
+              <p>容器序列如list,tuple,collections.deque可以存放不同类型的数据，而扁平序列如str,bytes,array.array则只可以存放同一类型的数据。</p>
+<p>但是，容器序列存放的是它们所包含的对象的引用，扁平序列则存放值，是一段更加紧凑的内存空间。</p>
+<h2 id="列表推导和生成器表达式"><a href="#列表推导和生成器表达式" class="headerlink" title="列表推导和生成器表达式"></a>列表推导和生成器表达式</h2><h3 id="列表推导式"><a href="#列表推导式" class="headerlink" title="列表推导式"></a>列表推导式</h3><p>列表推导式是用来创建新列表的一个方法，通常能够对for循环、if条件语句等进行精简，是非常好用的语法糖。例如：</p>
+<pre><code>方法一：
+symbols = &#39;ABCDE&#39;
+codes = []
+for symbol in symbols:
+    codes.append(ord(symbol))
+codes
+
+方法二：
+codes = [ord(symbol) for symbol in symbols]    
+codes
+</code></pre><p>两者的输出都是[65, 66, 67, 68, 69]，但显然方法二在可读性和简洁性上更胜一筹。</p>
+<p><strong>列表推导式可以结合条件语句</strong>，如[ord(x) for x in xs if len(x) &gt;10].</p>
+<p><strong>列表推导式还可以构成多循环结构</strong>，如[(x,y) for x in xs for y in ys].</p>
+<h3 id="生成器表达式"><a href="#生成器表达式" class="headerlink" title="生成器表达式"></a>生成器表达式</h3><p>用来初始化元组、数组或其他序列类型，与列表推导式相比，表面上看只是将[]换为了()，但其原理上有本质的不同。</p>
+<p>生成器表达式背后遵守了迭代器协议，可以逐个地产出元素，而不是先建立一个完整的列表，当数据规模很大时，可以有效地节省内存。</p>
+<h2 id="元组"><a href="#元组" class="headerlink" title="元组"></a>元组</h2><h3 id="元组拆包"><a href="#元组拆包" class="headerlink" title="元组拆包"></a>元组拆包</h3><ol>
+<li><p>平行赋值</p>
+<pre><code> In[3]:a,b,c = (1,2,3)    
+ a,b,c
+ Out[3]:(1,2,3)
+</code></pre></li>
+<li><p>用运算符把一个可迭代对象拆开（<strong>只有传参的时候可以这样用</strong>）</p>
+<pre><code> In[6]:t = (20, 8)
+       divmod(*t)
+ Out[6]:(2,4)
+</code></pre></li>
+<li><p>占位符_在元组拆包中的运用</p>
+<pre><code> In[9]:sample = [(1,a), (2,b), (3,c)]
+       for x, _ in sample:
+           print(x)
+ Out[9]:1
+         2
+         3
+</code></pre></li>
+<li><p>用*args来获取不确定数量的参数</p>
+<pre><code> In[10]:a,b,*rest = range(5)
+        rest
+ Out[10]:[2,3,4]
+</code></pre></li>
 </ol>
-<p>该假设要求u的条件均值不依赖于任何时期的x值。</p>
-<ol>
-<li>假设二：个体与个体之间是要求相互独立的，但对于某一个体不同时期的相关性不做要求，即允许数据存在自相关（序列相关）性</li>
-</ol>
-<p>结果：OLS估计量是无偏、一致且接近正态的，但一般的OLS估计的标准误是错误的，这个问题可以通过<strong>‘群聚’</strong>解决。面板数据中群聚标准误是横截面数据中异方差—稳健标准误的推广。在面板数据中，无论是否存在异方差或序列相关，群聚标准误均有效。</p>
-<h2 id="Hausman检验"><a href="#Hausman检验" class="headerlink" title="Hausman检验"></a>Hausman检验</h2><p>这是用来检验个体存在固定效应还是随机效应。</p>
-<p>基本思想：<strong>在a和其他解释变量不相关假定下</strong>，采用中心化变换法估计固定效应模型和采用GLS法随机效应模型得到的参数估计都是无偏且一致的，只是前者不具有效性。<br>若原假设不成立，则固定效应模型的参数估计仍然是一致的，但随机效应模型不一致。因此，在原假设下，二者的参数估计应该不会有显著的差异，<strong>可以基于二者参数估计的差异构造统计检验量</strong>。</p>
-<p><strong><em>H0：a和其他解释变量不相关</em></strong></p>
-<p>注意点：当模型误差项存在序列相关或异方差时，经典的Hausman检验不再试用，需要做其他考虑。</p>
+<h2 id="切片"><a href="#切片" class="headerlink" title="切片"></a>切片</h2><h3 id="为什么切片和区间操作会忽略最后一个元素"><a href="#为什么切片和区间操作会忽略最后一个元素" class="headerlink" title="为什么切片和区间操作会忽略最后一个元素"></a>为什么切片和区间操作会忽略最后一个元素</h3><p>这样做的好处有：range(3)、list[:3]这种只有单个位置信息的一看就知道里面有三个元素；</p>
+<p>stop-start即为所包含的元素数；</p>
+<p>可以用任意一个下标把序列分割成不重叠的两部分。</p>
+<h3 id="多维切片和省略"><a href="#多维切片和省略" class="headerlink" title="多维切片和省略"></a>多维切片和省略</h3><p>如pandas库中的df.iloc[1:3, 5:20]或者numpy库中的a[1:2, 4:5]都是多维切片。</p>
+<p>省略是在numpy中比较有用，等学到了再用。</p>
+<h3 id="给切片赋值"><a href="#给切片赋值" class="headerlink" title="给切片赋值"></a>给切片赋值</h3><p>如果赋值的对象是一个切片，那么赋值语句的右侧必须是一个可迭代对象。<strong>即便只有单独的一个值，也要把它转换成一个序列，如列表。</strong>例如 a[2:5] = 100是错误的，但a[2:5] = [100]就是正确的，并且只回替换a序列中第一个值为100。</p>
 
             </div>
             <hr>
@@ -262,9 +284,9 @@
                   <div class="post-meta mr-3">
                     <i class="iconfont icon-category"></i>
                     
-                      <a class="hover-with-bg" href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</a>
+                      <a class="hover-with-bg" href="/categories/%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0/">技术笔记</a>
                     
-                      <a class="hover-with-bg" href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E8%AE%A1%E9%87%8F%E7%BB%8F%E6%B5%8E%E5%AD%A6/">计量经济学</a>
+                      <a class="hover-with-bg" href="/categories/%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0/python/">python</a>
                     
                   </div>
                 
@@ -272,7 +294,9 @@
                   <div class="post-meta">
                     <i class="iconfont icon-tags"></i>
                     
-                      <a class="hover-with-bg" href="/tags/%E9%9D%A2%E6%9D%BF%E6%95%B0%E6%8D%AE/">面板数据</a>
+                      <a class="hover-with-bg" href="/tags/%E5%BA%8F%E5%88%97/">序列</a>
+                    
+                      <a class="hover-with-bg" href="/tags/%E8%AF%AD%E6%B3%95%E7%B3%96/">语法糖</a>
                     
                   </div>
                 
@@ -285,9 +309,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2020/09/09/%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0-Python%E6%95%B0%E6%8D%AE%E6%A8%A1%E5%9E%8B%E4%B9%8B%E9%AD%94%E6%9C%AF%E6%96%B9%E6%B3%95/">
+                      <a href="/2020/09/15/%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0-%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%88%9D%E8%AF%86/">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">[技术笔记]Python数据模型</span>
+                        <span class="hidden-mobile">[技术笔记]机器学习初识</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -295,8 +319,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2020/09/07/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E8%B7%A8%E6%97%B6%E6%A8%AA%E6%88%AA%E9%9D%A2%E7%9A%84%E6%B7%B7%E5%90%88%EF%BC%9A%E7%AE%80%E5%8D%95%E9%9D%A2%E6%9D%BF%E6%95%B0%E6%8D%AE%E6%96%B9%E6%B3%95/">
-                        <span class="hidden-mobile">[学习笔记]跨时横截面的混合：简单面板数据方法</span>
+                      <a href="/2020/09/09/%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0-Python%E6%95%B0%E6%8D%AE%E6%A8%A1%E5%9E%8B%E4%B9%8B%E9%AD%94%E6%9C%AF%E6%96%B9%E6%B3%95/">
+                        <span class="hidden-mobile">[技术笔记]Python数据模型</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
@@ -467,7 +491,7 @@
     var typed = new Typed('#subtitle', {
       strings: [
         '  ',
-        "[学习笔记]短面板数据回归模型&nbsp;",
+        "[技术笔记]序列的一些用法&nbsp;",
       ],
       cursorChar: "|",
       typeSpeed: 60,

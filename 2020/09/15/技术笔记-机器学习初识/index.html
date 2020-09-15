@@ -17,7 +17,7 @@
   <meta name="description" content="">
   <meta name="author" content="ZiJie Xu">
   <meta name="keywords" content="">
-  <title>[学习笔记]短面板数据回归模型 - WantonX</title>
+  <title>[技术笔记]机器学习初识 - WantonX</title>
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
 
@@ -172,8 +172,8 @@
               
   <div class="mt-3 post-meta">
     <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-    <time datetime="2020-09-07 20:23" pubdate>
-      2020年9月7日 晚上
+    <time datetime="2020-09-15 15:57" pubdate>
+      2020年9月15日 下午
     </time>
   </div>
 
@@ -183,7 +183,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      1k 字
+      685 字
     </span>
   
 
@@ -223,36 +223,69 @@
         <div class="py-5" id="board">
           <article class="post-content mx-auto" id="post">
             <!-- SEO header -->
-            <h1 style="display: none">[学习笔记]短面板数据回归模型</h1>
+            <h1 style="display: none">[技术笔记]机器学习初识</h1>
             
             <div class="markdown-body" id="post-body">
-              <h2 id="面板数据的分类"><a href="#面板数据的分类" class="headerlink" title="面板数据的分类"></a>面板数据的分类</h2><h2 id="面板数据的优势"><a href="#面板数据的优势" class="headerlink" title="面板数据的优势"></a>面板数据的优势</h2><p><strong>可以处理一些不可观测的遗漏变量</strong>——如果漏掉的变量不随时间变化，则面板数据可以帮助消除遗漏变量偏差。</p>
-<p>由上一篇笔记可知，由于各人/地/企业…各自存在一些属于自己的，影响因变量而不随时间变化的特征（异质性特征），横截面数据很难消除这些固定效应，因此选择面板数据回归模型进行处理。</p>
-<h2 id="差分估计"><a href="#差分估计" class="headerlink" title="差分估计"></a>差分估计</h2><h3 id="两期差分模型"><a href="#两期差分模型" class="headerlink" title="两期差分模型"></a>两期差分模型</h3><p><img src="/2020/09/07/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E9%9D%A2%E6%9D%BF%E6%95%B0%E6%8D%AE%E5%9B%9E%E5%BD%92%E6%A8%A1%E5%9E%8B/1.jpg" srcset="/img/loading.gif" alt></p>
-<h3 id="多期差分模型"><a href="#多期差分模型" class="headerlink" title="多期差分模型"></a>多期差分模型</h3><h4 id="方法一：个体中心化方法处理固定效应"><a href="#方法一：个体中心化方法处理固定效应" class="headerlink" title="方法一：个体中心化方法处理固定效应"></a>方法一：个体中心化方法处理固定效应</h4><p><img src="/2020/09/07/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E9%9D%A2%E6%9D%BF%E6%95%B0%E6%8D%AE%E5%9B%9E%E5%BD%92%E6%A8%A1%E5%9E%8B/2.jpg" srcset="/img/loading.gif" alt></p>
-<p>其原理是针对同一样本，将其不同时期的做均值化处理，而<strong>个体与组均值的离差</strong>这个差分方程就巧妙地消除了固定效应的影响。</p>
-<p>该方法类似于差分，但不同的是此处为’中心化’的数据，标准误也需要重新计算。</p>
-<h4 id="方法二：’n-1个二值变量’模型"><a href="#方法二：’n-1个二值变量’模型" class="headerlink" title="方法二：’n-1个二值变量’模型"></a>方法二：’n-1个二值变量’模型</h4><p>以一个样本为基础，例如：要考虑江苏、浙江、广州三个省的面板数据，将江苏作为基础，赋予浙江一个虚拟变量ZJ，广州一个虚拟变量GZ，引入这n-1个虚拟变量就可以刻画n条截距项不同的回归直线。</p>
-<p>优点：可以描绘出各个样本具体的异质性大小，还可以检验个体固定效应的显著性</p>
-<p>缺点：在截面样本量很大时实现起来比较困难且耗费自由度高</p>
-<h2 id="时间固定效应"><a href="#时间固定效应" class="headerlink" title="时间固定效应"></a>时间固定效应</h2><h3 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h3><p>遗漏的变量可能随时间而变化，但不随个体的变化而变化。</p>
-<h3 id="只有时间固定效应的模型"><a href="#只有时间固定效应的模型" class="headerlink" title="只有时间固定效应的模型"></a>只有时间固定效应的模型</h3><p>将时间固定效应与截距项合并，形成一个新的截距项。</p>
-<p>方法一：做<strong>‘年份中心化’</strong>处理：将某一时间点，这一横截面的所有数据做中心化处理，以消除这个新的截距项（固定时间点不变，对该时间点所有样本取了平均值）。</p>
-<p>方法二：’T-1二值变量’形式</p>
-<h3 id="同时包含个体和时间固定效应的模型"><a href="#同时包含个体和时间固定效应的模型" class="headerlink" title="同时包含个体和时间固定效应的模型"></a>同时包含个体和时间固定效应的模型</h3><p>当T=2时，继续使用一阶差分即可。</p>
-<p>当T&gt;2时，有2*2=4种处理方法，其中最常用的时对个体中心化&amp;加入时间虚拟变量的方法。</p>
-<h2 id="个体固定效应模型假设"><a href="#个体固定效应模型假设" class="headerlink" title="个体固定效应模型假设"></a>个体固定效应模型假设</h2><ol>
-<li>假设一：给定某个x的所有时期的取值和该个体的固定效应时，u的均值为0</li>
-</ol>
-<p>该假设要求u的条件均值不依赖于任何时期的x值。</p>
-<ol>
-<li>假设二：个体与个体之间是要求相互独立的，但对于某一个体不同时期的相关性不做要求，即允许数据存在自相关（序列相关）性</li>
-</ol>
-<p>结果：OLS估计量是无偏、一致且接近正态的，但一般的OLS估计的标准误是错误的，这个问题可以通过<strong>‘群聚’</strong>解决。面板数据中群聚标准误是横截面数据中异方差—稳健标准误的推广。在面板数据中，无论是否存在异方差或序列相关，群聚标准误均有效。</p>
-<h2 id="Hausman检验"><a href="#Hausman检验" class="headerlink" title="Hausman检验"></a>Hausman检验</h2><p>这是用来检验个体存在固定效应还是随机效应。</p>
-<p>基本思想：<strong>在a和其他解释变量不相关假定下</strong>，采用中心化变换法估计固定效应模型和采用GLS法随机效应模型得到的参数估计都是无偏且一致的，只是前者不具有效性。<br>若原假设不成立，则固定效应模型的参数估计仍然是一致的，但随机效应模型不一致。因此，在原假设下，二者的参数估计应该不会有显著的差异，<strong>可以基于二者参数估计的差异构造统计检验量</strong>。</p>
-<p><strong><em>H0：a和其他解释变量不相关</em></strong></p>
-<p>注意点：当模型误差项存在序列相关或异方差时，经典的Hausman检验不再试用，需要做其他考虑。</p>
+              <p>一般的Machine Learning步骤是：</p>
+<p>搜据数据—数据清洗—确定预测的column—选择特征变量—建立模型（选择合适的模型—带入数据进行学习—预测—评估模型准确性、稳定性等）</p>
+<p>下面以最简单的决策树模型为例，过一下整个流程（代码来自Kaggle的课程）</p>
+<p><strong>Selecting Data for Modeling</strong></p>
+<pre><code># Code you have previously used to load data
+import pandas as pd
+
+# Path of the file to read
+iowa_file_path = &#39;../input/home-data-for-ml-course/train.csv&#39;
+
+home_data = pd.read_csv(iowa_file_path)
+
+# Set up code checking
+from learntools.core import binder
+binder.bind(globals())
+from learntools.machine_learning.ex3 import *
+
+print(&quot;Setup Complete&quot;)
+</code></pre><p><strong>Selecting The Prediction Target</strong></p>
+<p>约定俗称的是用y代表要预测的序列</p>
+<pre><code>y = home_data.SalePrice
+</code></pre><p><strong>Choosing “Features”</strong></p>
+<p>这一串Featues通常被称为X</p>
+<pre><code># Create the list of features below
+feature_names = [&#39;LotArea&#39;,&#39;YearBuilt&#39;,&#39;1stFlrSF&#39;,&#39;2ndFlrSF&#39;,&#39;FullBath&#39;,&#39;BedroomAbvGr&#39;,&#39;TotRmsAbvGrd&#39;]
+
+# Select data corresponding to features in feature_names
+X = home_data[feature_names]
+</code></pre><p><strong>Building Model</strong></p>
+<p>The steps to building and using a model are:</p>
+<p><strong>Define:</strong> What type of model will it be? A decision tree? Some other type of model? Some other parameters of the model type are specified too.</p>
+<p>这里选择决策树模型</p>
+<pre><code>from sklearn.tree import DecisionTreeRegressor
+#specify the model. 
+#For model reproducibility, set a numeric value for random_state when specifying the model
+iowa_model = DecisionTreeRegressor(random_state = 1)
+</code></pre><p><strong>Fit:</strong>Capture patterns from provided data. This is the heart of modeling.</p>
+<pre><code>iowa_model.fit(X,y)
+</code></pre><p><strong>Predict:</strong> Just what it sounds like</p>
+<pre><code>predictions = iowa_model.predict(X)
+print(predictions)
+</code></pre><p><strong>Evaluate:</strong> Determine how accurate the model’s predictions are.</p>
+<p>one method for summarizing model quality: <strong>Mean Absolute Error(MSE)</strong></p>
+<p>在Evaluate模型时’In-Sample’的问题：sample可能与整体不是同分布的，对样本的过度拟合会使模型带上一些样本显著二总体不显著的特征（这里举的一个例子是可能样本中带绿色门的房子都很贵，模型就将绿色门和贵相联系，但其实总体中可能根本没有这种特征）。</p>
+<p>其他注意点：</p>
+<p>决策树张有许多可以选择的变量，其中最重要的就是树枝的分支数，但要注意的是，分支太多，可能造成overfitting的问题；分支太少，可能造成uderfitting的问题。可以使用max_leaf_nodes这个参数来控制分支数。</p>
+<pre><code>def get_mae(max_leaf_nodes, train_X, val_X, train_y, val_y):
+    model = DecisionTreeRegressor(max_leaf_nodes=max_leaf_nodes, random_state=0)
+    model.fit(train_X, train_y)
+    val_predictions = model.predict(val_X)
+    mae = mean_absolute_error(val_y, preds_val)
+    return(mae)
+
+# compare MAE with differing values of max_leaf_nodes
+for max_leaf_nodes in [5, 50, 500, 5000]:
+    my_mae = get_mae(max_leaf_nodes, train_X, val_X, train_y, val_y)
+    print(&quot;Max leaf nodes: %d  \t\t Mean Absolute Error:  %d&quot; %(max_leaf_nodes, my_mae))
+</code></pre><p>在决策树模型的基础上诞生的另一种模型：random forest（随机森林）。</p>
+<p>The random forest uses many trees, and it makes a prediction by averaging the predictions of each component tree. It generally has much better predictive accuracy than a single decision tree and <strong>it works well with default parameters.</strong></p>
+<p>其他算法可能会比random forest更加精确，但这需要更精确的参数匹配，不像random forest跑默认参数也运行地很好。</p>
 
             </div>
             <hr>
@@ -262,9 +295,9 @@
                   <div class="post-meta mr-3">
                     <i class="iconfont icon-category"></i>
                     
-                      <a class="hover-with-bg" href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</a>
+                      <a class="hover-with-bg" href="/categories/%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0/">技术笔记</a>
                     
-                      <a class="hover-with-bg" href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E8%AE%A1%E9%87%8F%E7%BB%8F%E6%B5%8E%E5%AD%A6/">计量经济学</a>
+                      <a class="hover-with-bg" href="/categories/%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0/python/">python</a>
                     
                   </div>
                 
@@ -272,7 +305,11 @@
                   <div class="post-meta">
                     <i class="iconfont icon-tags"></i>
                     
-                      <a class="hover-with-bg" href="/tags/%E9%9D%A2%E6%9D%BF%E6%95%B0%E6%8D%AE/">面板数据</a>
+                      <a class="hover-with-bg" href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">机器学习</a>
+                    
+                      <a class="hover-with-bg" href="/tags/%E5%86%B3%E7%AD%96%E6%A0%91%E6%A8%A1%E5%9E%8B/">决策树模型</a>
+                    
+                      <a class="hover-with-bg" href="/tags/%E9%9A%8F%E6%9C%BA%E6%A3%AE%E6%9E%97%E6%A8%A1%E5%9E%8B/">随机森林模型</a>
                     
                   </div>
                 
@@ -285,18 +322,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2020/09/09/%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0-Python%E6%95%B0%E6%8D%AE%E6%A8%A1%E5%9E%8B%E4%B9%8B%E9%AD%94%E6%9C%AF%E6%96%B9%E6%B3%95/">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">[技术笔记]Python数据模型</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2020/09/07/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E8%B7%A8%E6%97%B6%E6%A8%AA%E6%88%AA%E9%9D%A2%E7%9A%84%E6%B7%B7%E5%90%88%EF%BC%9A%E7%AE%80%E5%8D%95%E9%9D%A2%E6%9D%BF%E6%95%B0%E6%8D%AE%E6%96%B9%E6%B3%95/">
-                        <span class="hidden-mobile">[学习笔记]跨时横截面的混合：简单面板数据方法</span>
+                      <a href="/2020/09/09/%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0-%E5%BA%8F%E5%88%97%E7%9A%84%E4%B8%80%E4%BA%9B%E8%AF%AD%E6%B3%95%E7%B3%96/">
+                        <span class="hidden-mobile">[技术笔记]序列的一些用法</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
@@ -467,7 +498,7 @@
     var typed = new Typed('#subtitle', {
       strings: [
         '  ',
-        "[学习笔记]短面板数据回归模型&nbsp;",
+        "[技术笔记]机器学习初识&nbsp;",
       ],
       cursorChar: "|",
       typeSpeed: 60,
