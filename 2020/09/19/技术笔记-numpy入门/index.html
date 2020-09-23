@@ -17,7 +17,7 @@
   <meta name="description" content="">
   <meta name="author" content="ZiJie Xu">
   <meta name="keywords" content="">
-  <title>[技术笔记]机器学习初识 - WantonX</title>
+  <title>[技术笔记]numpy入门 - WantonX</title>
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
 
@@ -172,8 +172,8 @@
               
   <div class="mt-3 post-meta">
     <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-    <time datetime="2020-09-15 15:57" pubdate>
-      2020年9月15日 下午
+    <time datetime="2020-09-19 20:02" pubdate>
+      2020年9月19日 晚上
     </time>
   </div>
 
@@ -183,7 +183,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      685 字
+      903 字
     </span>
   
 
@@ -193,7 +193,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      10
+      11
        分钟
     </span>
   
@@ -223,69 +223,54 @@
         <div class="py-5" id="board">
           <article class="post-content mx-auto" id="post">
             <!-- SEO header -->
-            <h1 style="display: none">[技术笔记]机器学习初识</h1>
+            <h1 style="display: none">[技术笔记]numpy入门</h1>
             
             <div class="markdown-body" id="post-body">
-              <p>一般的Machine Learning步骤是：</p>
-<p>搜据数据—数据清洗—确定预测的column—选择特征变量—建立模型（选择合适的模型—带入数据进行学习—预测—评估模型准确性、稳定性等）</p>
-<p>下面以最简单的决策树模型为例，过一下整个流程（代码来自Kaggle的课程）</p>
-<p><strong>Selecting Data for Modeling</strong></p>
-<pre><code># Code you have previously used to load data
-import pandas as pd
-
-# Path of the file to read
-iowa_file_path = &#39;../input/home-data-for-ml-course/train.csv&#39;
-
-home_data = pd.read_csv(iowa_file_path)
-
-# Set up code checking
-from learntools.core import binder
-binder.bind(globals())
-from learntools.machine_learning.ex3 import *
-
-print(&quot;Setup Complete&quot;)
-</code></pre><p><strong>Selecting The Prediction Target</strong></p>
-<p>约定俗称的是用y代表要预测的序列</p>
-<pre><code>y = home_data.SalePrice
-</code></pre><p><strong>Choosing “Features”</strong></p>
-<p>这一串Featues通常被称为X</p>
-<pre><code># Create the list of features below
-feature_names = [&#39;LotArea&#39;,&#39;YearBuilt&#39;,&#39;1stFlrSF&#39;,&#39;2ndFlrSF&#39;,&#39;FullBath&#39;,&#39;BedroomAbvGr&#39;,&#39;TotRmsAbvGrd&#39;]
-
-# Select data corresponding to features in feature_names
-X = home_data[feature_names]
-</code></pre><p><strong>Building Model</strong></p>
-<p>The steps to building and using a model are:</p>
-<p><strong>Define:</strong> What type of model will it be? A decision tree? Some other type of model? Some other parameters of the model type are specified too.</p>
-<p>这里选择决策树模型</p>
-<pre><code>from sklearn.tree import DecisionTreeRegressor
-#specify the model. 
-#For model reproducibility, set a numeric value for random_state when specifying the model
-iowa_model = DecisionTreeRegressor(random_state = 1)
-</code></pre><p><strong>Fit:</strong>Capture patterns from provided data. This is the heart of modeling.</p>
-<pre><code>iowa_model.fit(X,y)
-</code></pre><p><strong>Predict:</strong> Just what it sounds like</p>
-<pre><code>predictions = iowa_model.predict(X)
-print(predictions)
-</code></pre><p><strong>Evaluate:</strong> Determine how accurate the model’s predictions are.</p>
-<p>one method for summarizing model quality: <strong>Mean Absolute Error(MSE)</strong></p>
-<p>在Evaluate模型时’In-Sample’的问题：sample可能与整体不是同分布的，对样本的过度拟合会使模型带上一些样本显著二总体不显著的特征（这里举的一个例子是可能样本中带绿色门的房子都很贵，模型就将绿色门和贵相联系，但其实总体中可能根本没有这种特征）。</p>
-<p>其他注意点：</p>
-<p>决策树张有许多可以选择的变量，其中最重要的就是树枝的分支数，但要注意的是，分支太多，可能造成overfitting的问题；分支太少，可能造成uderfitting的问题。可以使用max_leaf_nodes这个参数来控制分支数。</p>
-<pre><code>def get_mae(max_leaf_nodes, train_X, val_X, train_y, val_y):
-    model = DecisionTreeRegressor(max_leaf_nodes=max_leaf_nodes, random_state=0)
-    model.fit(train_X, train_y)
-    val_predictions = model.predict(val_X)
-    mae = mean_absolute_error(val_y, preds_val)
-    return(mae)
-
-# compare MAE with differing values of max_leaf_nodes
-for max_leaf_nodes in [5, 50, 500, 5000]:
-    my_mae = get_mae(max_leaf_nodes, train_X, val_X, train_y, val_y)
-    print(&quot;Max leaf nodes: %d  \t\t Mean Absolute Error:  %d&quot; %(max_leaf_nodes, my_mae))
-</code></pre><p>在决策树模型的基础上诞生的另一种模型：random forest（随机森林）。</p>
-<p>The random forest uses many trees, and it makes a prediction by averaging the predictions of each component tree. It generally has much better predictive accuracy than a single decision tree and <strong>it works well with default parameters.</strong></p>
-<p>其他算法可能会比random forest更加精确，但这需要更精确的参数匹配，不像random forest跑默认参数也运行地很好。</p>
+              <h2 id="NumPy数组基础"><a href="#NumPy数组基础" class="headerlink" title="NumPy数组基础"></a>NumPy数组基础</h2><h3 id="创建数组"><a href="#创建数组" class="headerlink" title="创建数组"></a>创建数组</h3><h4 id="直接创建"><a href="#直接创建" class="headerlink" title="直接创建"></a>直接创建</h4><p>要创建一维数组，即np.array([1,2,3,4]);创建多维数组的一种方法：np.array([range(i,i+3) for i in [2,4,6]])，输出结果为：</p>
+<pre><code>array([[2, 3, 4],
+      [4, 5, 6],
+      [6, 7, 8]])
+</code></pre><h4 id="大批量创建"><a href="#大批量创建" class="headerlink" title="大批量创建"></a>大批量创建</h4><p>创建长度为10的0值数组：np.zeros(10)</p>
+<p>创建3*5大小的1值数组：np.ones((3,5))</p>
+<p>创建3*5大小的定值数组：np.full((3,5), 5.5)</p>
+<p>创建一个0-20，步长为2的线性数组（类似于range函数)：np.arange(0,20,2)</p>
+<p>创建一个5分的区间为[0,1]的数组：np.linspace(0,1,6)</p>
+<p>创建一个0-1之间的3*3随机数组：np.random.random((3,3))</p>
+<p>创建一个均值为0，标准差为1的正态分布数组：np.random.normal(0,1,10)</p>
+<p>创建一个0-10间随机整数的3*3数组：np.random.randint(0,10,(3,3))</p>
+<p>创建一个3*3的单位矩阵：np.eye(3)</p>
+<h3 id="数组的属性"><a href="#数组的属性" class="headerlink" title="数组的属性"></a>数组的属性</h3><p>数组属性一般有.ndim（数组的维度）；.shape（各个维度的大小）；.size（总大小）</p>
+<h3 id="数组索引和切片"><a href="#数组索引和切片" class="headerlink" title="数组索引和切片"></a>数组索引和切片</h3><p>数组索引的方式与一般的python序列基本相同，有两点需要注意：1、因为不单是一维，可以多重索引；2、<strong>numpy数组类型是固定的，一个浮点数加入整型数组会被自动截短，且不会有提示，要小心！</strong></p>
+<p>还需要注意的是，数组的索引和切片并不是一个副本，而是原数组的视图，所有修改都会直接体现在原数组上，可以使用array.copy()函数来制造副本，从而避免这一点。</p>
+<h3 id="数组的变形"><a href="#数组的变形" class="headerlink" title="数组的变形"></a>数组的变形</h3><p>np.arange(1,10).reshape(3,3) —- 把一维数组转换成3*3的二维数组。</p>
+<p>x[np.newaxis,:] —- 获得数组的行向量</p>
+<p>x[:,np.newaxis] —- 获得数组的列向量</p>
+<h3 id="数组的拼接和分裂"><a href="#数组的拼接和分裂" class="headerlink" title="数组的拼接和分裂"></a>数组的拼接和分裂</h3><h4 id="数组的拼接"><a href="#数组的拼接" class="headerlink" title="数组的拼接"></a>数组的拼接</h4><p>纵向拼接：np.concatence([x,y,z]) 或 np.vstack([x,y,z])</p>
+<p>横向拼接：np.concatence([x,y,z], axis = 1) 或 np.hstack([x,y,z])</p>
+<h4 id="数组的分裂"><a href="#数组的分裂" class="headerlink" title="数组的分裂"></a>数组的分裂</h4><p>split、vsplit、hsplit三个函数，和数组的拼接差不多，用到了再看。</p>
+<h3 id="通用函数"><a href="#通用函数" class="headerlink" title="通用函数"></a>通用函数</h3><p>由于python的循环十分缓慢，因此numpy寻求一种优化的函数，改进这一点，这样的函数叫<strong>通用函数(ufunc)</strong>。通用函数作用于数组中的每一个元素，且执行效率很高。</p>
+<h4 id="常用通用函数"><a href="#常用通用函数" class="headerlink" title="常用通用函数"></a>常用通用函数</h4><p>+、-、<em>、/、//、*</em>、%都可以对数组直接使用</p>
+<p>绝对值函数：np.abs()</p>
+<p>三角函数：np.sin() np.cos() np.tan() np.arcsin() np.arccos() np.arctan()</p>
+<p>指数和对数：np.exp() np.exp2() np.power(n,x) np.log() np.log2() np.log10()</p>
+<p>其他专用的通用函数可以在numpy或scipy.special中找到</p>
+<h4 id="高级通用函数特性"><a href="#高级通用函数特性" class="headerlink" title="高级通用函数特性"></a>高级通用函数特性</h4><ul>
+<li>指定输出：所有通用函数都可以通过<strong>参数out</strong>指定结果的存放位置</li>
+<li><p>聚合：任何通用函数都可以用<strong>outer方法</strong>获得两隔不同输入数组<strong>所有元素对</strong>的函数运算结果。</p>
+<pre><code>  In [30]:
+  x = np.arange(1, 6)
+  np.multiply.outer(x, x)
+  Out[30]:
+  array([[ 1,  2,  3,  4,  5],
+    [ 2,  4,  6,  8, 10],
+    [ 3,  6,  9, 12, 15],
+    [ 4,  8, 12, 16, 20],
+    [ 5, 10, 15, 20, 25]])
+</code></pre></li>
+</ul>
+<h3 id="聚合-amp-广播-amp-比较、掩码和布尔逻辑"><a href="#聚合-amp-广播-amp-比较、掩码和布尔逻辑" class="headerlink" title="聚合&amp;广播&amp;比较、掩码和布尔逻辑"></a>聚合&amp;广播&amp;比较、掩码和布尔逻辑</h3><p>pandas都学过了，不赘述。</p>
+<h3 id="数组的排序"><a href="#数组的排序" class="headerlink" title="数组的排序"></a>数组的排序</h3><h4 id="快速排序"><a href="#快速排序" class="headerlink" title="快速排序"></a>快速排序</h4><p>numpy具有np.sort()和array.sort()两种方法，前者是产生一个副本，后者直接替换掉原值。另外还可以选择<strong>并归排序</strong>和<strong>堆排序</strong>。</p>
+<h4 id="部分排序"><a href="#部分排序" class="headerlink" title="部分排序"></a>部分排序</h4><p>可以只对数组部分排序：np.partition(x,3) —- 对x数组的前三小的值排前三，其他随便排。</p>
 
             </div>
             <hr>
@@ -305,11 +290,7 @@ for max_leaf_nodes in [5, 50, 500, 5000]:
                   <div class="post-meta">
                     <i class="iconfont icon-tags"></i>
                     
-                      <a class="hover-with-bg" href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">机器学习</a>
-                    
-                      <a class="hover-with-bg" href="/tags/%E5%86%B3%E7%AD%96%E6%A0%91%E6%A8%A1%E5%9E%8B/">决策树模型</a>
-                    
-                      <a class="hover-with-bg" href="/tags/%E9%9A%8F%E6%9C%BA%E6%A3%AE%E6%9E%97%E6%A8%A1%E5%9E%8B/">随机森林模型</a>
+                      <a class="hover-with-bg" href="/tags/numpy/">numpy</a>
                     
                   </div>
                 
@@ -322,9 +303,9 @@ for max_leaf_nodes in [5, 50, 500, 5000]:
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2020/09/16/%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0-Intermediate-ML%E7%9A%84%E4%B8%80%E4%BA%9B%E5%B0%8F%E6%8A%80%E5%B7%A7/">
+                      <a href="/2020/09/23/%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0-matplotlib%E4%B8%A4%E7%A7%8D%E7%94%BB%E5%9B%BE%E6%8E%A5%E5%8F%A3%E7%9A%84%E4%B8%8D%E5%90%8C/">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">[技术笔记]Intermediate ML的一些小技巧</span>
+                        <span class="hidden-mobile">[技术笔记]matplotlib两种画图接口的不同与其他常用知识</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -332,8 +313,8 @@ for max_leaf_nodes in [5, 50, 500, 5000]:
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2020/09/09/%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0-%E5%BA%8F%E5%88%97%E7%9A%84%E4%B8%80%E4%BA%9B%E8%AF%AD%E6%B3%95%E7%B3%96/">
-                        <span class="hidden-mobile">[技术笔记]序列的一些用法</span>
+                      <a href="/2020/09/17/%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0-pandas%E5%AD%A6%E4%B9%A0%E5%B0%8F%E7%AC%94%E8%AE%B02/">
+                        <span class="hidden-mobile">[技术笔记]pandas学习小笔记2</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
@@ -504,7 +485,7 @@ for max_leaf_nodes in [5, 50, 500, 5000]:
     var typed = new Typed('#subtitle', {
       strings: [
         '  ',
-        "[技术笔记]机器学习初识&nbsp;",
+        "[技术笔记]numpy入门&nbsp;",
       ],
       cursorChar: "|",
       typeSpeed: 60,

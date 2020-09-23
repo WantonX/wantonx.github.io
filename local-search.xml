@@ -4,6 +4,114 @@
   
   
   <entry>
+    <title>[技术笔记]matplotlib两种画图接口的不同与其他常用知识</title>
+    <link href="/2020/09/23/%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0-matplotlib%E4%B8%A4%E7%A7%8D%E7%94%BB%E5%9B%BE%E6%8E%A5%E5%8F%A3%E7%9A%84%E4%B8%8D%E5%90%8C/"/>
+    <url>/2020/09/23/%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0-matplotlib%E4%B8%A4%E7%A7%8D%E7%94%BB%E5%9B%BE%E6%8E%A5%E5%8F%A3%E7%9A%84%E4%B8%8D%E5%90%8C/</url>
+    
+    <content type="html"><![CDATA[<h2 id="接口区别"><a href="#接口区别" class="headerlink" title="接口区别"></a>接口区别</h2><p>相比于matlab风格的画图接口，我还是觉得面向对象的画图接口更符合python的设计哲学，但两者之间的一些函数就无法共用。</p><ul><li>plt.xlabel() → ax.set_xlabel()</li><li>plt.ylabel() → ax.set_ylabel()</li><li>plt.xlim() → ax.set_xlim()</li><li>plt.ylim() → ax.set_ylim()</li><li>plt.title() → ax.set_title()</li></ul><p>但是，面向对象接口中，一般都可以用一个ax.set()函数涵盖这些内容：</p><pre><code>ax.set(xlim=(0, 10), ylim=(-2, 2),       xlabel=&#39;x&#39;, ylabel=&#39;sin(x)&#39;,       title=&#39;A Simple Plot&#39;)</code></pre><h2 id="其他常用知识"><a href="#其他常用知识" class="headerlink" title="其他常用知识"></a>其他常用知识</h2><h3 id="plot与scatter在画散点图时的区别"><a href="#plot与scatter在画散点图时的区别" class="headerlink" title="plot与scatter在画散点图时的区别"></a>plot与scatter在画散点图时的区别</h3><p>在样本数据量小时，两者运行效率相差无几，并且由于scatter函数能使每个散点拥有各自的属性，所以效果更好。但在样本量大时，plot的执行效率会更高。</p><h3 id="基本误差线（errorbar）"><a href="#基本误差线（errorbar）" class="headerlink" title="基本误差线（errorbar）"></a>基本误差线（errorbar）</h3><p><strong>ax.errorbar(x, y, yerr=dy, fmt=’K.’, color=XXX, ecolor=XXX)</strong></p><p>其中yerr指垂直方向上的误差线，水平方向上的误差线为xerr，ecolor为误差线的颜色，一般来说，让误差线的颜色比数据点的颜色浅一点效果会非常好。</p><h3 id="连续误差"><a href="#连续误差" class="headerlink" title="连续误差"></a>连续误差</h3><p>想要刻画连续函数的误差，可以先构造一个ax.plot()，再构造一个ax.fill_between(x,y-dy,y+dy,alpha = 0.2)的函数，效果如图所示：<br><img src="/2020/09/23/%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0-matplotlib%E4%B8%A4%E7%A7%8D%E7%94%BB%E5%9B%BE%E6%8E%A5%E5%8F%A3%E7%9A%84%E4%B8%8D%E5%90%8C/1.jpg" srcset="/img/loading.gif" alt></p><h3 id="密度图与等高线图"><a href="#密度图与等高线图" class="headerlink" title="密度图与等高线图"></a>密度图与等高线图</h3><p>有contour、contourf、imshow三个函数，如果要显示颜色条，需要增加fig.colorbar(m, ax = ax1)，具体内容参阅Python DataScience Handbook P21-214。</p><h3 id="频次直方图"><a href="#频次直方图" class="headerlink" title="频次直方图"></a>频次直方图</h3><p>ax.hist(data, bins=xxx, normed=True/False, alpha=xxx, hsittype=xxx, color=xxx, edgecolor=xxx)</p><p>bins参数设置被切割的柱体数；normed参数为是否归一化，默认为False，如果设为True，将会调整纵坐标的值，使得直方图中每个长方形块的面积之和为1。</p><h4 id="二维频次直方图"><a href="#二维频次直方图" class="headerlink" title="二维频次直方图"></a>二维频次直方图</h4><p>ax.hist2d(x, y, bins=30, cmap=’Blues’)<br><img src="/2020/09/23/%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0-matplotlib%E4%B8%A4%E7%A7%8D%E7%94%BB%E5%9B%BE%E6%8E%A5%E5%8F%A3%E7%9A%84%E4%B8%8D%E5%90%8C/2.jpg" srcset="/img/loading.gif" alt></p><h4 id="六边形直方图"><a href="#六边形直方图" class="headerlink" title="六边形直方图"></a>六边形直方图</h4><p>ax.hexbin(x, y, gridszie=30, cmap=’Blues’)<br><img src="/2020/09/23/%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0-matplotlib%E4%B8%A4%E7%A7%8D%E7%94%BB%E5%9B%BE%E6%8E%A5%E5%8F%A3%E7%9A%84%E4%B8%8D%E5%90%8C/3.jpg" srcset="/img/loading.gif" alt></p>]]></content>
+    
+    
+    <categories>
+      
+      <category>技术笔记</category>
+      
+      <category>python</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>matplotlib</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>[技术笔记]numpy入门</title>
+    <link href="/2020/09/19/%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0-numpy%E5%85%A5%E9%97%A8/"/>
+    <url>/2020/09/19/%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0-numpy%E5%85%A5%E9%97%A8/</url>
+    
+    <content type="html"><![CDATA[<h2 id="NumPy数组基础"><a href="#NumPy数组基础" class="headerlink" title="NumPy数组基础"></a>NumPy数组基础</h2><h3 id="创建数组"><a href="#创建数组" class="headerlink" title="创建数组"></a>创建数组</h3><h4 id="直接创建"><a href="#直接创建" class="headerlink" title="直接创建"></a>直接创建</h4><p>要创建一维数组，即np.array([1,2,3,4]);创建多维数组的一种方法：np.array([range(i,i+3) for i in [2,4,6]])，输出结果为：</p><pre><code>array([[2, 3, 4],      [4, 5, 6],      [6, 7, 8]])</code></pre><h4 id="大批量创建"><a href="#大批量创建" class="headerlink" title="大批量创建"></a>大批量创建</h4><p>创建长度为10的0值数组：np.zeros(10)</p><p>创建3*5大小的1值数组：np.ones((3,5))</p><p>创建3*5大小的定值数组：np.full((3,5), 5.5)</p><p>创建一个0-20，步长为2的线性数组（类似于range函数)：np.arange(0,20,2)</p><p>创建一个5分的区间为[0,1]的数组：np.linspace(0,1,6)</p><p>创建一个0-1之间的3*3随机数组：np.random.random((3,3))</p><p>创建一个均值为0，标准差为1的正态分布数组：np.random.normal(0,1,10)</p><p>创建一个0-10间随机整数的3*3数组：np.random.randint(0,10,(3,3))</p><p>创建一个3*3的单位矩阵：np.eye(3)</p><h3 id="数组的属性"><a href="#数组的属性" class="headerlink" title="数组的属性"></a>数组的属性</h3><p>数组属性一般有.ndim（数组的维度）；.shape（各个维度的大小）；.size（总大小）</p><h3 id="数组索引和切片"><a href="#数组索引和切片" class="headerlink" title="数组索引和切片"></a>数组索引和切片</h3><p>数组索引的方式与一般的python序列基本相同，有两点需要注意：1、因为不单是一维，可以多重索引；2、<strong>numpy数组类型是固定的，一个浮点数加入整型数组会被自动截短，且不会有提示，要小心！</strong></p><p>还需要注意的是，数组的索引和切片并不是一个副本，而是原数组的视图，所有修改都会直接体现在原数组上，可以使用array.copy()函数来制造副本，从而避免这一点。</p><h3 id="数组的变形"><a href="#数组的变形" class="headerlink" title="数组的变形"></a>数组的变形</h3><p>np.arange(1,10).reshape(3,3) —- 把一维数组转换成3*3的二维数组。</p><p>x[np.newaxis,:] —- 获得数组的行向量</p><p>x[:,np.newaxis] —- 获得数组的列向量</p><h3 id="数组的拼接和分裂"><a href="#数组的拼接和分裂" class="headerlink" title="数组的拼接和分裂"></a>数组的拼接和分裂</h3><h4 id="数组的拼接"><a href="#数组的拼接" class="headerlink" title="数组的拼接"></a>数组的拼接</h4><p>纵向拼接：np.concatence([x,y,z]) 或 np.vstack([x,y,z])</p><p>横向拼接：np.concatence([x,y,z], axis = 1) 或 np.hstack([x,y,z])</p><h4 id="数组的分裂"><a href="#数组的分裂" class="headerlink" title="数组的分裂"></a>数组的分裂</h4><p>split、vsplit、hsplit三个函数，和数组的拼接差不多，用到了再看。</p><h3 id="通用函数"><a href="#通用函数" class="headerlink" title="通用函数"></a>通用函数</h3><p>由于python的循环十分缓慢，因此numpy寻求一种优化的函数，改进这一点，这样的函数叫<strong>通用函数(ufunc)</strong>。通用函数作用于数组中的每一个元素，且执行效率很高。</p><h4 id="常用通用函数"><a href="#常用通用函数" class="headerlink" title="常用通用函数"></a>常用通用函数</h4><p>+、-、<em>、/、//、*</em>、%都可以对数组直接使用</p><p>绝对值函数：np.abs()</p><p>三角函数：np.sin() np.cos() np.tan() np.arcsin() np.arccos() np.arctan()</p><p>指数和对数：np.exp() np.exp2() np.power(n,x) np.log() np.log2() np.log10()</p><p>其他专用的通用函数可以在numpy或scipy.special中找到</p><h4 id="高级通用函数特性"><a href="#高级通用函数特性" class="headerlink" title="高级通用函数特性"></a>高级通用函数特性</h4><ul><li>指定输出：所有通用函数都可以通过<strong>参数out</strong>指定结果的存放位置</li><li><p>聚合：任何通用函数都可以用<strong>outer方法</strong>获得两隔不同输入数组<strong>所有元素对</strong>的函数运算结果。</p><pre><code>  In [30]:  x = np.arange(1, 6)  np.multiply.outer(x, x)  Out[30]:  array([[ 1,  2,  3,  4,  5],    [ 2,  4,  6,  8, 10],    [ 3,  6,  9, 12, 15],    [ 4,  8, 12, 16, 20],    [ 5, 10, 15, 20, 25]])</code></pre></li></ul><h3 id="聚合-amp-广播-amp-比较、掩码和布尔逻辑"><a href="#聚合-amp-广播-amp-比较、掩码和布尔逻辑" class="headerlink" title="聚合&amp;广播&amp;比较、掩码和布尔逻辑"></a>聚合&amp;广播&amp;比较、掩码和布尔逻辑</h3><p>pandas都学过了，不赘述。</p><h3 id="数组的排序"><a href="#数组的排序" class="headerlink" title="数组的排序"></a>数组的排序</h3><h4 id="快速排序"><a href="#快速排序" class="headerlink" title="快速排序"></a>快速排序</h4><p>numpy具有np.sort()和array.sort()两种方法，前者是产生一个副本，后者直接替换掉原值。另外还可以选择<strong>并归排序</strong>和<strong>堆排序</strong>。</p><h4 id="部分排序"><a href="#部分排序" class="headerlink" title="部分排序"></a>部分排序</h4><p>可以只对数组部分排序：np.partition(x,3) —- 对x数组的前三小的值排前三，其他随便排。</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>技术笔记</category>
+      
+      <category>python</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>numpy</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>[技术笔记]pandas学习小笔记2</title>
+    <link href="/2020/09/17/%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0-pandas%E5%AD%A6%E4%B9%A0%E5%B0%8F%E7%AC%94%E8%AE%B02/"/>
+    <url>/2020/09/17/%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0-pandas%E5%AD%A6%E4%B9%A0%E5%B0%8F%E7%AC%94%E8%AE%B02/</url>
+    
+    <content type="html"><![CDATA[<p>1、可以将Series看成是一个定长的有序字典，因为它是索引值到数据值的一个映射，它可以用在许多原本需要字典参数的函数中。如果数据被存放在一个Python字典中，也可以直接通过这个字典来创建Series（在传入字典的前提下也可以通过index参数再来修改索引顺序）。</p><p>2、IPython提供了类似属性的访问（即frame2.year）和tab补全。 frame2[column]适用于任何列的名，但是frame2.column只有在列名是一个合理的Python变量名时才适用。所以说还是使用frame2[column]这样的形式更加普遍、通用，一些地方也不容易报错，<strong>需要注意的是，这样获取的一个列即为Series，可以用那些Series的方法，而失去了DataFrame独有的方法</strong>。</p><p>3、将列表或数组赋值给某个列时，其长度必须跟DataFrame的长度相匹配。如果赋值的是一个Series，就会精确匹配DataFrame的索引，所有的空位都将被填上缺失值。（所以不用担心元素级别的操作，实操上就是元素级别的）</p><p>4、小技巧：DataFrame是可以进行转置的：<strong>df.T</strong></p><p>5、Index还是有很多常见的函数的，如果能利用起来确实能解决很多问题。<img src="/2020/09/17/%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0-pandas%E5%AD%A6%E4%B9%A0%E5%B0%8F%E7%AC%94%E8%AE%B02/1.jpg" srcset="/img/loading.gif" alt></p><p>6、对两个Series或者DataFrame使用算术方法时，没有交集的地方会产生nan值，这其实可以通过<img src="/2020/09/17/%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0-pandas%E5%AD%A6%E4%B9%A0%E5%B0%8F%E7%AC%94%E8%AE%B02/2.jpg" srcset="/img/loading.gif" alt>解决。传入fill_value = xxx</p><p>7、<strong>函数应用和映射：</strong>NumPy的ufuncs（元素级数组方法）也可用于操作pandas对象。另一个常见的操作是，将函数应用到由各列或行所形成的一维数组上。DataFrame的apply方法即可实现此功能。当然，apply是对行或者列的整体操作，<strong>若要具体到元素级的操作，可以使用.applymap()</strong>。针对Series的元素级操作则为series.map(f)</p><p>8、数据加载的一些常见参数：header = none：不将数据集中的数据作为列名，另开默认一行作为列行；names = xxx：用于结果的列名列表；index_col = ‘’：用作行索引的列名或列编号（可能存在没有列名的情况，所以只能用列编号）；nrows = 5：如果只想读取几行（避免读取整个文件），通过nrows进行指定即可<br>。</p><p>9、若是通过一个字典调用fillna，就可以实现对不同的列填充不同的值：In [34]: df.fillna({1: 0.5, 2: 0})</p><p>10、通过data.map，所有字符串和正则表达式方法都能被应用于（传入lambda表达式或其他函数）各个值，但是如果存在NA（null）就会报错。为了解决这个问题，<strong>Series有一些能够跳过NA值的面向数组方法，进行字符串操作</strong>。通过Series的str属性即可访问这些方法（相当于DataFrame和Series内部自己构造的字符串方法了）。</p><p>11、对于层次化索引，有时，你需要重新调整某条轴上各级别的顺序，或根据指定级别上的值对数据进行排序。swaplevel接受两个级别编号或名称，并返回一个互换了级别的新对象（但数据不会发生变化）：frame.swaplevel(‘key1’, ‘key2’)</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>技术笔记</category>
+      
+      <category>python</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>pandas</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>[技术笔记]Intermediate ML的一些小技巧</title>
+    <link href="/2020/09/16/%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0-Intermediate-ML%E7%9A%84%E4%B8%80%E4%BA%9B%E5%B0%8F%E6%8A%80%E5%B7%A7/"/>
+    <url>/2020/09/16/%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0-Intermediate-ML%E7%9A%84%E4%B8%80%E4%BA%9B%E5%B0%8F%E6%8A%80%E5%B7%A7/</url>
+    
+    <content type="html"><![CDATA[<p>在收集特征变量X的时候，其实可以用X = X_full.copy()的形式，防止源数据的后续改动影响到前面跑模型的结果。</p><p>from sklearn.model_selection import train_test_split 的参数：train_size = 0.8,test_size = 0.2,random_state = 0 </p><p>在剔除具有无效值的列时，除了使用df.dropna(axis =1)外，还可以用</p><pre><code># Fill in the line below: get names of columns with missing valuesmissing_values_columns = [col for col in X_train.columns if X_train[col].isnull().any()] # Your code here# Fill in the lines below: drop columns in training and validation datareduced_X_train = X_train.drop(missing_values_columns, axis = 1)</code></pre><p>这样的方法。</p><h3 id="分类变量的三种处理办法"><a href="#分类变量的三种处理办法" class="headerlink" title="分类变量的三种处理办法"></a>分类变量的三种处理办法</h3><h4 id="Drop-Categorical-Variables"><a href="#Drop-Categorical-Variables" class="headerlink" title="Drop Categorical Variables"></a>Drop Categorical Variables</h4><p>当分类变量压根儿没啥用的时候，就用这个方法。</p><pre><code>drop_X_train = X_train.select_dtypes(exclude = [&#39;object&#39;])</code></pre><h4 id="Label-Encoding"><a href="#Label-Encoding" class="headerlink" title="Label Encoding"></a>Label Encoding</h4><p>当变量是ordinal variables时，    可以为其排名。</p><h4 id="One-Hot-Encoding"><a href="#One-Hot-Encoding" class="headerlink" title="One-Hot Encoding"></a>One-Hot Encoding</h4><p>对于之间有互斥关系的nominal variables，可以用这种方法，就类似dummies。</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>技术笔记</category>
+      
+      <category>python</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>机器学习</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>[技术笔记]机器学习初识</title>
     <link href="/2020/09/15/%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0-%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%88%9D%E8%AF%86/"/>
     <url>/2020/09/15/%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0-%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%88%9D%E8%AF%86/</url>
@@ -600,7 +708,7 @@
     <link href="/2020/07/14/%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0-pandas%E4%B8%AD%E7%9A%84%E9%80%BB%E8%BE%91%E8%BF%90%E7%AE%97%E7%AC%A6/"/>
     <url>/2020/07/14/%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0-pandas%E4%B8%AD%E7%9A%84%E9%80%BB%E8%BE%91%E8%BF%90%E7%AE%97%E7%AC%A6/</url>
     
-    <content type="html"><![CDATA[<p>首先需要说明的是，在pandas中进行逻辑运算时，其运算符不再是<strong>and</strong>;<strong>or</strong>;<strong>not</strong>，转而变成了相对应的<strong>&amp;</strong>，<strong>|</strong>，<strong>～</strong>，<sup><a href="#fn_1" id="reffn_1">1</a></sup>如下列代码:</p><pre><code>In [129]: s = pd.Series(range(-3, 4)) In [132]: s[(s &lt; -1) | (s &gt; 0.5)] Out[132]:             0   -3            1   -2            4    1            5    2            6    3            dtype: int64 </code></pre><p>其原因是什么？查阅了网上的一些<a href="https://www.imooc.com/wenda/detail/567532" target="_blank" rel="noopener">资料</a>发现，是因为当我们使用and，or，not等运算符时，python自动将运算符两边的式子转换为bool类型再进行比较，而在pandas的Series、DataFrame以及numpy的array上，是没有bool值的，所以在元素级的操作上使用&amp;、|、～代替。</p><p>（题外话：当然更具体的我也不是很清楚，这有待后续学习了《流畅的python》后再验证，一想到github上就有电子版，我还傻乎乎花了一百多买了个新书我就很心痛）</p><p>值得注意的是，其<strong>元素符优先级</strong>也发生了改变，在pandas中，这类逻辑运算符优先级很高，因此运算符两侧最好时刻都<strong>加上括号</strong>，防止不必要的错误。比如：</p><pre><code>In[23]: army[(army.deaths &gt; 500) | (army.deaths &lt; 50)]Out[23]: regiment    company    deaths    battles    size    veterans    readiness    armored    desertersorigin                                    Arizona    Nighthawks    1st    523    5    1045    1    1    1    4Texas    Nighthawks    2nd    25    2    1099    62    3    1    31Florida    Nighthawks    2nd    616    2    1400    26    3    1    2Maine    Dragoons    1st    43    4    1592    73    2    0    3Alaska    Dragoons    2nd    523    8    987    949    2    0    24Louisana    Scouts    2nd    37    8    1099    63    2    1    2Georgia    Scouts    2nd    35    9    1523    345    3    1    3</code></pre><p>是正确的，而army[army.deaths &gt; 500 | army.deaths &lt; 50]则会报错：<em>ValueError: The truth value of a Series is ambiguous. Use a.empty, a.bool(), a.item(), a.any() or a.all().</em></p><h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><p><sup><a href="#fn_1" id="reffn_1">1</a></sup>： 来源：<a href="https://blog.csdn.net/claroja/article/details/65661826" target="_blank" rel="noopener">https://blog.csdn.net/claroja/article/details/65661826</a> </p>]]></content>
+    <content type="html"><![CDATA[<p>首先需要说明的是，在pandas中进行逻辑运算时，其运算符不再是<strong>and</strong>;<strong>or</strong>;<strong>not</strong>，转而变成了相对应的<strong>&amp;</strong>，<strong>|</strong>，<strong>～</strong>，<sup><a href="#fn_1" id="reffn_1">1</a></sup>如下列代码:</p><pre><code>In [129]: s = pd.Series(range(-3, 4)) In [132]: s[(s &lt; -1) | (s &gt; 0.5)] Out[132]:             0   -3            1   -2            4    1            5    2            6    3            dtype: int64 </code></pre><p>其原因是什么？查阅了网上的一些<a href="https://www.imooc.com/wenda/detail/567532" target="_blank" rel="noopener">资料</a>发现，是因为当我们使用and，or，not等运算符时，python自动将运算符两边的式子转换为bool类型再进行比较，而在pandas的Series、DataFrame以及numpy的array上，是没有bool值的，所以在元素级的操作上使用&amp;、|、～代替。</p><p>（题外话：当然更具体的我也不是很清楚，这有待后续学习了《流畅的python》后再验证，一想到github上就有电子版，我还傻乎乎花了一百多买了个新书我就很心痛<sup><a href="#fn_2" id="reffn_2">2</a></sup>）</p><p>值得注意的是，其<strong>元素符优先级</strong>也发生了改变，在pandas中，这类逻辑运算符优先级很高，因此运算符两侧最好时刻都<strong>加上括号</strong>，防止不必要的错误。比如：</p><pre><code>In[23]: army[(army.deaths &gt; 500) | (army.deaths &lt; 50)]Out[23]: regiment    company    deaths    battles    size    veterans    readiness    armored    desertersorigin                                    Arizona    Nighthawks    1st    523    5    1045    1    1    1    4Texas    Nighthawks    2nd    25    2    1099    62    3    1    31Florida    Nighthawks    2nd    616    2    1400    26    3    1    2Maine    Dragoons    1st    43    4    1592    73    2    0    3Alaska    Dragoons    2nd    523    8    987    949    2    0    24Louisana    Scouts    2nd    37    8    1099    63    2    1    2Georgia    Scouts    2nd    35    9    1523    345    3    1    3</code></pre><p>是正确的，而army[army.deaths &gt; 500 | army.deaths &lt; 50]则会报错：<em>ValueError: The truth value of a Series is ambiguous. Use a.empty, a.bool(), a.item(), a.any() or a.all().</em></p><h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><p><sup><a href="#fn_1" id="reffn_1">1</a></sup>： 来源：<a href="https://blog.csdn.net/claroja/article/details/65661826" target="_blank" rel="noopener">https://blog.csdn.net/claroja/article/details/65661826</a> </p><p><sup><a href="#fn_2" id="reffn_2">2</a></sup>：后来在看《python数据科学手册》p67有了答案，是因为其内部比较的是<strong>每个对象中的比特位</strong></p>]]></content>
     
     
     <categories>

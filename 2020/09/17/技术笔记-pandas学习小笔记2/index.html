@@ -17,7 +17,7 @@
   <meta name="description" content="">
   <meta name="author" content="ZiJie Xu">
   <meta name="keywords" content="">
-  <title>[技术笔记]机器学习初识 - WantonX</title>
+  <title>[技术笔记]pandas学习小笔记2 - WantonX</title>
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
 
@@ -172,8 +172,8 @@
               
   <div class="mt-3 post-meta">
     <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-    <time datetime="2020-09-15 15:57" pubdate>
-      2020年9月15日 下午
+    <time datetime="2020-09-17 10:44" pubdate>
+      2020年9月17日 上午
     </time>
   </div>
 
@@ -183,7 +183,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      685 字
+      837 字
     </span>
   
 
@@ -193,7 +193,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      10
+      9
        分钟
     </span>
   
@@ -223,69 +223,20 @@
         <div class="py-5" id="board">
           <article class="post-content mx-auto" id="post">
             <!-- SEO header -->
-            <h1 style="display: none">[技术笔记]机器学习初识</h1>
+            <h1 style="display: none">[技术笔记]pandas学习小笔记2</h1>
             
             <div class="markdown-body" id="post-body">
-              <p>一般的Machine Learning步骤是：</p>
-<p>搜据数据—数据清洗—确定预测的column—选择特征变量—建立模型（选择合适的模型—带入数据进行学习—预测—评估模型准确性、稳定性等）</p>
-<p>下面以最简单的决策树模型为例，过一下整个流程（代码来自Kaggle的课程）</p>
-<p><strong>Selecting Data for Modeling</strong></p>
-<pre><code># Code you have previously used to load data
-import pandas as pd
-
-# Path of the file to read
-iowa_file_path = &#39;../input/home-data-for-ml-course/train.csv&#39;
-
-home_data = pd.read_csv(iowa_file_path)
-
-# Set up code checking
-from learntools.core import binder
-binder.bind(globals())
-from learntools.machine_learning.ex3 import *
-
-print(&quot;Setup Complete&quot;)
-</code></pre><p><strong>Selecting The Prediction Target</strong></p>
-<p>约定俗称的是用y代表要预测的序列</p>
-<pre><code>y = home_data.SalePrice
-</code></pre><p><strong>Choosing “Features”</strong></p>
-<p>这一串Featues通常被称为X</p>
-<pre><code># Create the list of features below
-feature_names = [&#39;LotArea&#39;,&#39;YearBuilt&#39;,&#39;1stFlrSF&#39;,&#39;2ndFlrSF&#39;,&#39;FullBath&#39;,&#39;BedroomAbvGr&#39;,&#39;TotRmsAbvGrd&#39;]
-
-# Select data corresponding to features in feature_names
-X = home_data[feature_names]
-</code></pre><p><strong>Building Model</strong></p>
-<p>The steps to building and using a model are:</p>
-<p><strong>Define:</strong> What type of model will it be? A decision tree? Some other type of model? Some other parameters of the model type are specified too.</p>
-<p>这里选择决策树模型</p>
-<pre><code>from sklearn.tree import DecisionTreeRegressor
-#specify the model. 
-#For model reproducibility, set a numeric value for random_state when specifying the model
-iowa_model = DecisionTreeRegressor(random_state = 1)
-</code></pre><p><strong>Fit:</strong>Capture patterns from provided data. This is the heart of modeling.</p>
-<pre><code>iowa_model.fit(X,y)
-</code></pre><p><strong>Predict:</strong> Just what it sounds like</p>
-<pre><code>predictions = iowa_model.predict(X)
-print(predictions)
-</code></pre><p><strong>Evaluate:</strong> Determine how accurate the model’s predictions are.</p>
-<p>one method for summarizing model quality: <strong>Mean Absolute Error(MSE)</strong></p>
-<p>在Evaluate模型时’In-Sample’的问题：sample可能与整体不是同分布的，对样本的过度拟合会使模型带上一些样本显著二总体不显著的特征（这里举的一个例子是可能样本中带绿色门的房子都很贵，模型就将绿色门和贵相联系，但其实总体中可能根本没有这种特征）。</p>
-<p>其他注意点：</p>
-<p>决策树张有许多可以选择的变量，其中最重要的就是树枝的分支数，但要注意的是，分支太多，可能造成overfitting的问题；分支太少，可能造成uderfitting的问题。可以使用max_leaf_nodes这个参数来控制分支数。</p>
-<pre><code>def get_mae(max_leaf_nodes, train_X, val_X, train_y, val_y):
-    model = DecisionTreeRegressor(max_leaf_nodes=max_leaf_nodes, random_state=0)
-    model.fit(train_X, train_y)
-    val_predictions = model.predict(val_X)
-    mae = mean_absolute_error(val_y, preds_val)
-    return(mae)
-
-# compare MAE with differing values of max_leaf_nodes
-for max_leaf_nodes in [5, 50, 500, 5000]:
-    my_mae = get_mae(max_leaf_nodes, train_X, val_X, train_y, val_y)
-    print(&quot;Max leaf nodes: %d  \t\t Mean Absolute Error:  %d&quot; %(max_leaf_nodes, my_mae))
-</code></pre><p>在决策树模型的基础上诞生的另一种模型：random forest（随机森林）。</p>
-<p>The random forest uses many trees, and it makes a prediction by averaging the predictions of each component tree. It generally has much better predictive accuracy than a single decision tree and <strong>it works well with default parameters.</strong></p>
-<p>其他算法可能会比random forest更加精确，但这需要更精确的参数匹配，不像random forest跑默认参数也运行地很好。</p>
+              <p>1、可以将Series看成是一个定长的有序字典，因为它是索引值到数据值的一个映射，它可以用在许多原本需要字典参数的函数中。如果数据被存放在一个Python字典中，也可以直接通过这个字典来创建Series（在传入字典的前提下也可以通过index参数再来修改索引顺序）。</p>
+<p>2、IPython提供了类似属性的访问（即frame2.year）和tab补全。 frame2[column]适用于任何列的名，但是frame2.column只有在列名是一个合理的Python变量名时才适用。所以说还是使用frame2[column]这样的形式更加普遍、通用，一些地方也不容易报错，<strong>需要注意的是，这样获取的一个列即为Series，可以用那些Series的方法，而失去了DataFrame独有的方法</strong>。</p>
+<p>3、将列表或数组赋值给某个列时，其长度必须跟DataFrame的长度相匹配。如果赋值的是一个Series，就会精确匹配DataFrame的索引，所有的空位都将被填上缺失值。（所以不用担心元素级别的操作，实操上就是元素级别的）</p>
+<p>4、小技巧：DataFrame是可以进行转置的：<strong>df.T</strong></p>
+<p>5、Index还是有很多常见的函数的，如果能利用起来确实能解决很多问题。<img src="/2020/09/17/%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0-pandas%E5%AD%A6%E4%B9%A0%E5%B0%8F%E7%AC%94%E8%AE%B02/1.jpg" srcset="/img/loading.gif" alt></p>
+<p>6、对两个Series或者DataFrame使用算术方法时，没有交集的地方会产生nan值，这其实可以通过<img src="/2020/09/17/%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0-pandas%E5%AD%A6%E4%B9%A0%E5%B0%8F%E7%AC%94%E8%AE%B02/2.jpg" srcset="/img/loading.gif" alt>解决。传入fill_value = xxx</p>
+<p>7、<strong>函数应用和映射：</strong>NumPy的ufuncs（元素级数组方法）也可用于操作pandas对象。另一个常见的操作是，将函数应用到由各列或行所形成的一维数组上。DataFrame的apply方法即可实现此功能。当然，apply是对行或者列的整体操作，<strong>若要具体到元素级的操作，可以使用.applymap()</strong>。针对Series的元素级操作则为series.map(f)</p>
+<p>8、数据加载的一些常见参数：header = none：不将数据集中的数据作为列名，另开默认一行作为列行；names = xxx：用于结果的列名列表；index_col = ‘’：用作行索引的列名或列编号（可能存在没有列名的情况，所以只能用列编号）；nrows = 5：如果只想读取几行（避免读取整个文件），通过nrows进行指定即可<br>。</p>
+<p>9、若是通过一个字典调用fillna，就可以实现对不同的列填充不同的值：In [34]: df.fillna({1: 0.5, 2: 0})</p>
+<p>10、通过data.map，所有字符串和正则表达式方法都能被应用于（传入lambda表达式或其他函数）各个值，但是如果存在NA（null）就会报错。为了解决这个问题，<strong>Series有一些能够跳过NA值的面向数组方法，进行字符串操作</strong>。通过Series的str属性即可访问这些方法（相当于DataFrame和Series内部自己构造的字符串方法了）。</p>
+<p>11、对于层次化索引，有时，你需要重新调整某条轴上各级别的顺序，或根据指定级别上的值对数据进行排序。swaplevel接受两个级别编号或名称，并返回一个互换了级别的新对象（但数据不会发生变化）：frame.swaplevel(‘key1’, ‘key2’)</p>
 
             </div>
             <hr>
@@ -305,11 +256,7 @@ for max_leaf_nodes in [5, 50, 500, 5000]:
                   <div class="post-meta">
                     <i class="iconfont icon-tags"></i>
                     
-                      <a class="hover-with-bg" href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">机器学习</a>
-                    
-                      <a class="hover-with-bg" href="/tags/%E5%86%B3%E7%AD%96%E6%A0%91%E6%A8%A1%E5%9E%8B/">决策树模型</a>
-                    
-                      <a class="hover-with-bg" href="/tags/%E9%9A%8F%E6%9C%BA%E6%A3%AE%E6%9E%97%E6%A8%A1%E5%9E%8B/">随机森林模型</a>
+                      <a class="hover-with-bg" href="/tags/pandas/">pandas</a>
                     
                   </div>
                 
@@ -322,9 +269,9 @@ for max_leaf_nodes in [5, 50, 500, 5000]:
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2020/09/16/%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0-Intermediate-ML%E7%9A%84%E4%B8%80%E4%BA%9B%E5%B0%8F%E6%8A%80%E5%B7%A7/">
+                      <a href="/2020/09/19/%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0-numpy%E5%85%A5%E9%97%A8/">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">[技术笔记]Intermediate ML的一些小技巧</span>
+                        <span class="hidden-mobile">[技术笔记]numpy入门</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -332,8 +279,8 @@ for max_leaf_nodes in [5, 50, 500, 5000]:
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2020/09/09/%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0-%E5%BA%8F%E5%88%97%E7%9A%84%E4%B8%80%E4%BA%9B%E8%AF%AD%E6%B3%95%E7%B3%96/">
-                        <span class="hidden-mobile">[技术笔记]序列的一些用法</span>
+                      <a href="/2020/09/16/%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0-Intermediate-ML%E7%9A%84%E4%B8%80%E4%BA%9B%E5%B0%8F%E6%8A%80%E5%B7%A7/">
+                        <span class="hidden-mobile">[技术笔记]Intermediate ML的一些小技巧</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
@@ -504,7 +451,7 @@ for max_leaf_nodes in [5, 50, 500, 5000]:
     var typed = new Typed('#subtitle', {
       strings: [
         '  ',
-        "[技术笔记]机器学习初识&nbsp;",
+        "[技术笔记]pandas学习小笔记2&nbsp;",
       ],
       cursorChar: "|",
       typeSpeed: 60,

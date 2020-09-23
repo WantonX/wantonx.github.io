@@ -17,7 +17,7 @@
   <meta name="description" content="">
   <meta name="author" content="ZiJie Xu">
   <meta name="keywords" content="">
-  <title>[技术笔记]机器学习初识 - WantonX</title>
+  <title>[技术笔记]Intermediate ML的一些小技巧 - WantonX</title>
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
 
@@ -172,8 +172,8 @@
               
   <div class="mt-3 post-meta">
     <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-    <time datetime="2020-09-15 15:57" pubdate>
-      2020年9月15日 下午
+    <time datetime="2020-09-16 10:49" pubdate>
+      2020年9月16日 上午
     </time>
   </div>
 
@@ -183,7 +183,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      685 字
+      213 字
     </span>
   
 
@@ -193,7 +193,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      10
+      2
        分钟
     </span>
   
@@ -223,69 +223,22 @@
         <div class="py-5" id="board">
           <article class="post-content mx-auto" id="post">
             <!-- SEO header -->
-            <h1 style="display: none">[技术笔记]机器学习初识</h1>
+            <h1 style="display: none">[技术笔记]Intermediate ML的一些小技巧</h1>
             
             <div class="markdown-body" id="post-body">
-              <p>一般的Machine Learning步骤是：</p>
-<p>搜据数据—数据清洗—确定预测的column—选择特征变量—建立模型（选择合适的模型—带入数据进行学习—预测—评估模型准确性、稳定性等）</p>
-<p>下面以最简单的决策树模型为例，过一下整个流程（代码来自Kaggle的课程）</p>
-<p><strong>Selecting Data for Modeling</strong></p>
-<pre><code># Code you have previously used to load data
-import pandas as pd
+              <p>在收集特征变量X的时候，其实可以用X = X_full.copy()的形式，防止源数据的后续改动影响到前面跑模型的结果。</p>
+<p>from sklearn.model_selection import train_test_split 的参数：train_size = 0.8,test_size = 0.2,random_state = 0 </p>
+<p>在剔除具有无效值的列时，除了使用df.dropna(axis =1)外，还可以用</p>
+<pre><code># Fill in the line below: get names of columns with missing values
+missing_values_columns = [col for col in X_train.columns if X_train[col].isnull().any()] # Your code here
 
-# Path of the file to read
-iowa_file_path = &#39;../input/home-data-for-ml-course/train.csv&#39;
-
-home_data = pd.read_csv(iowa_file_path)
-
-# Set up code checking
-from learntools.core import binder
-binder.bind(globals())
-from learntools.machine_learning.ex3 import *
-
-print(&quot;Setup Complete&quot;)
-</code></pre><p><strong>Selecting The Prediction Target</strong></p>
-<p>约定俗称的是用y代表要预测的序列</p>
-<pre><code>y = home_data.SalePrice
-</code></pre><p><strong>Choosing “Features”</strong></p>
-<p>这一串Featues通常被称为X</p>
-<pre><code># Create the list of features below
-feature_names = [&#39;LotArea&#39;,&#39;YearBuilt&#39;,&#39;1stFlrSF&#39;,&#39;2ndFlrSF&#39;,&#39;FullBath&#39;,&#39;BedroomAbvGr&#39;,&#39;TotRmsAbvGrd&#39;]
-
-# Select data corresponding to features in feature_names
-X = home_data[feature_names]
-</code></pre><p><strong>Building Model</strong></p>
-<p>The steps to building and using a model are:</p>
-<p><strong>Define:</strong> What type of model will it be? A decision tree? Some other type of model? Some other parameters of the model type are specified too.</p>
-<p>这里选择决策树模型</p>
-<pre><code>from sklearn.tree import DecisionTreeRegressor
-#specify the model. 
-#For model reproducibility, set a numeric value for random_state when specifying the model
-iowa_model = DecisionTreeRegressor(random_state = 1)
-</code></pre><p><strong>Fit:</strong>Capture patterns from provided data. This is the heart of modeling.</p>
-<pre><code>iowa_model.fit(X,y)
-</code></pre><p><strong>Predict:</strong> Just what it sounds like</p>
-<pre><code>predictions = iowa_model.predict(X)
-print(predictions)
-</code></pre><p><strong>Evaluate:</strong> Determine how accurate the model’s predictions are.</p>
-<p>one method for summarizing model quality: <strong>Mean Absolute Error(MSE)</strong></p>
-<p>在Evaluate模型时’In-Sample’的问题：sample可能与整体不是同分布的，对样本的过度拟合会使模型带上一些样本显著二总体不显著的特征（这里举的一个例子是可能样本中带绿色门的房子都很贵，模型就将绿色门和贵相联系，但其实总体中可能根本没有这种特征）。</p>
-<p>其他注意点：</p>
-<p>决策树张有许多可以选择的变量，其中最重要的就是树枝的分支数，但要注意的是，分支太多，可能造成overfitting的问题；分支太少，可能造成uderfitting的问题。可以使用max_leaf_nodes这个参数来控制分支数。</p>
-<pre><code>def get_mae(max_leaf_nodes, train_X, val_X, train_y, val_y):
-    model = DecisionTreeRegressor(max_leaf_nodes=max_leaf_nodes, random_state=0)
-    model.fit(train_X, train_y)
-    val_predictions = model.predict(val_X)
-    mae = mean_absolute_error(val_y, preds_val)
-    return(mae)
-
-# compare MAE with differing values of max_leaf_nodes
-for max_leaf_nodes in [5, 50, 500, 5000]:
-    my_mae = get_mae(max_leaf_nodes, train_X, val_X, train_y, val_y)
-    print(&quot;Max leaf nodes: %d  \t\t Mean Absolute Error:  %d&quot; %(max_leaf_nodes, my_mae))
-</code></pre><p>在决策树模型的基础上诞生的另一种模型：random forest（随机森林）。</p>
-<p>The random forest uses many trees, and it makes a prediction by averaging the predictions of each component tree. It generally has much better predictive accuracy than a single decision tree and <strong>it works well with default parameters.</strong></p>
-<p>其他算法可能会比random forest更加精确，但这需要更精确的参数匹配，不像random forest跑默认参数也运行地很好。</p>
+# Fill in the lines below: drop columns in training and validation data
+reduced_X_train = X_train.drop(missing_values_columns, axis = 1)
+</code></pre><p>这样的方法。</p>
+<h3 id="分类变量的三种处理办法"><a href="#分类变量的三种处理办法" class="headerlink" title="分类变量的三种处理办法"></a>分类变量的三种处理办法</h3><h4 id="Drop-Categorical-Variables"><a href="#Drop-Categorical-Variables" class="headerlink" title="Drop Categorical Variables"></a>Drop Categorical Variables</h4><p>当分类变量压根儿没啥用的时候，就用这个方法。</p>
+<pre><code>drop_X_train = X_train.select_dtypes(exclude = [&#39;object&#39;])
+</code></pre><h4 id="Label-Encoding"><a href="#Label-Encoding" class="headerlink" title="Label Encoding"></a>Label Encoding</h4><p>当变量是ordinal variables时，    可以为其排名。</p>
+<h4 id="One-Hot-Encoding"><a href="#One-Hot-Encoding" class="headerlink" title="One-Hot Encoding"></a>One-Hot Encoding</h4><p>对于之间有互斥关系的nominal variables，可以用这种方法，就类似dummies。</p>
 
             </div>
             <hr>
@@ -307,10 +260,6 @@ for max_leaf_nodes in [5, 50, 500, 5000]:
                     
                       <a class="hover-with-bg" href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">机器学习</a>
                     
-                      <a class="hover-with-bg" href="/tags/%E5%86%B3%E7%AD%96%E6%A0%91%E6%A8%A1%E5%9E%8B/">决策树模型</a>
-                    
-                      <a class="hover-with-bg" href="/tags/%E9%9A%8F%E6%9C%BA%E6%A3%AE%E6%9E%97%E6%A8%A1%E5%9E%8B/">随机森林模型</a>
-                    
                   </div>
                 
               </div>
@@ -322,9 +271,9 @@ for max_leaf_nodes in [5, 50, 500, 5000]:
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2020/09/16/%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0-Intermediate-ML%E7%9A%84%E4%B8%80%E4%BA%9B%E5%B0%8F%E6%8A%80%E5%B7%A7/">
+                      <a href="/2020/09/17/%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0-pandas%E5%AD%A6%E4%B9%A0%E5%B0%8F%E7%AC%94%E8%AE%B02/">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">[技术笔记]Intermediate ML的一些小技巧</span>
+                        <span class="hidden-mobile">[技术笔记]pandas学习小笔记2</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -332,8 +281,8 @@ for max_leaf_nodes in [5, 50, 500, 5000]:
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2020/09/09/%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0-%E5%BA%8F%E5%88%97%E7%9A%84%E4%B8%80%E4%BA%9B%E8%AF%AD%E6%B3%95%E7%B3%96/">
-                        <span class="hidden-mobile">[技术笔记]序列的一些用法</span>
+                      <a href="/2020/09/15/%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0-%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%88%9D%E8%AF%86/">
+                        <span class="hidden-mobile">[技术笔记]机器学习初识</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
@@ -504,7 +453,7 @@ for max_leaf_nodes in [5, 50, 500, 5000]:
     var typed = new Typed('#subtitle', {
       strings: [
         '  ',
-        "[技术笔记]机器学习初识&nbsp;",
+        "[技术笔记]Intermediate ML的一些小技巧&nbsp;",
       ],
       cursorChar: "|",
       typeSpeed: 60,
