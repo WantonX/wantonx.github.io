@@ -4,6 +4,35 @@
   
   
   <entry>
+    <title>[技术笔记]留出集不止train_test_split</title>
+    <link href="/2020/09/24/%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0-%E7%95%99%E5%87%BA%E9%9B%86%E4%B8%8D%E6%AD%A2train-test-split/"/>
+    <url>/2020/09/24/%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0-%E7%95%99%E5%87%BA%E9%9B%86%E4%B8%8D%E6%AD%A2train-test-split/</url>
+    
+    <content type="html"><![CDATA[<p>在kaggle初识machine learning时就知道了不能检验拟合的同一套数据，这样会造成overfitting，所以用model_selection里的train_test_split方法来解决这一问题，这被我们称为<strong>留出集</strong>。</p><p>然而用留出集进行模型验证有一个缺点，就是<strong>模型失去了部分训练机会</strong>。当训练集数据规模较小时，问题就比较严重了。因此，我们可以考虑让每个子集既是训练集，又是验证集，最后将几者结合，获取一个更准确的模型总体性能。这种方法被称为<strong>交叉检验</strong>。</p><p>如一个五轮交叉检验的代码如下：</p><pre><code>from skleran.model_selection import cross_val_scorecross_val_score(model, X, y, cv=5)</code></pre><p>如果每次只有一个样本做测试，其他样本全用于训练，这种交叉检验的方法就被称为<strong>LOO（leave-one-out）交叉检验</strong>，代码如下：</p><pre><code>from sklearn.model_selection import LeaveOneOutscores = cross_val_score(model, X, y, cv=LeaveOneOut(len(X)))scores.mean() #均值即为平均得分</code></pre>]]></content>
+    
+    
+    <categories>
+      
+      <category>技术笔记</category>
+      
+      <category>python</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>机器学习</tag>
+      
+      <tag>交叉检验</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>[技术笔记]matplotlib两种画图接口的不同与其他常用知识</title>
     <link href="/2020/09/23/%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0-matplotlib%E4%B8%A4%E7%A7%8D%E7%94%BB%E5%9B%BE%E6%8E%A5%E5%8F%A3%E7%9A%84%E4%B8%8D%E5%90%8C/"/>
     <url>/2020/09/23/%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0-matplotlib%E4%B8%A4%E7%A7%8D%E7%94%BB%E5%9B%BE%E6%8E%A5%E5%8F%A3%E7%9A%84%E4%B8%8D%E5%90%8C/</url>
@@ -286,7 +315,7 @@
     <link href="/2020/08/30/%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0-pandas%E5%AD%A6%E4%B9%A0%E5%B0%8F%E7%AC%94%E8%AE%B01/"/>
     <url>/2020/08/30/%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0-pandas%E5%AD%A6%E4%B9%A0%E5%B0%8F%E7%AC%94%E8%AE%B01/</url>
     
-    <content type="html"><![CDATA[<p>1、在使用<strong>pd.to_datetime()</strong>替换相关数据时，可能<em>df[XXX] = pd.to_datetime(df[XXX])</em>还是很好想到的，但如要对df的行标签进行转换，就应该是<em>df.index = pd.to_datetime(df.index)</em>这样子。</p><p>2、<strong>当要删除某些具有特定数据的行或者列时</strong>，应该使用df.replace()和df.dropna()结合的方法。</p><p>如想要删除那些全是0的列，可以写如下代码：</p><pre><code>df.replace(0, np.nan, inplace = True)cleaned = df.dropna()</code></pre><p>3、除了一般情况下的直接赋值，大部分情况下函数和方法都有<strong>inplace = True</strong>的属性，不说pd下的方法，就是set_index,fillna,dropna这些Series和DataFrame自带的方法都有inplace属性。</p><p>一个技巧：在jupyter notebook下，打出这样一行代码，直接产生交互的表格之类的，说明这就是一个新的表格，想要其直接继承就表格，就要使用inplace = True。</p><p>4、<strong>删除某行/列的两种方法：</strong>1.如果只想删除列，在df中，用del df[XXX]即可。 2.如果想对行或者列进行操作，则使用df.drop(‘’,axis = XXX, inpalace = XXX)</p><p>5、<strong>检查是否有缺失数据：</strong>对于比较小的数据量，直接使用df.isnull()即可，但是对于很大的数据量，df中间一些数据是省略的，这样做非常不直观。</p><p>所以在这里使用：<strong>df.isnull().sum()</strong>,直接就输出各列存在的缺失值数(因为Flase对应的是0，True对应的是1，全是False则自然是0，没有缺失值)。</p><p>6、<strong>Reset the index so it begins with 0 again:</strong> df.reset_index(drop = True,inplace = True)</p><p>7、<strong>解决使用drop方法删除多列时想要使用列整数索引指定而不是列索引名指定的问题</strong>：</p><p>问题描述：在使用df.drop()方法时，若要删除多行/列，只能输入一个包含行/列名的列表，而不能输入一个整数索引的列表，在使用整数索引更方便的时候就很难搞。</p><p>解决思想：我们可以把整数索引通过某种方式转换成名称组成的索引，再带入drop()中。</p><p>解决方法：若要删除df的1，3，7，9列，则应使用df.drop(df.columns[[0,2,6,8]], axis = 1)，巧妙地将整数索引进行了转化。</p><p>8、关于loc的优化</p><p>平常我们可能使用的是df.loc[1],df.loc[‘xxx’]这样的形式，但其实<strong>women = train.loc[train.Sex == ‘female’,”Survived”]</strong>这样将a condition expression带进去。</p><p>所以除了column names, row labels，这里用这种方法能够更加specific地索引一些需要的值。</p>]]></content>
+    <content type="html"><![CDATA[<p>1、在使用<strong>pd.to_datetime()</strong>替换相关数据时，可能<em>df[XXX] = pd.to_datetime(df[XXX])</em>还是很好想到的，但如要对df的行标签进行转换，就应该是<em>df.index = pd.to_datetime(df.index)</em>这样子。</p><p>2、<strong>当要删除某些具有特定数据的行或者列时</strong>，应该使用df.replace()和df.dropna()结合的方法。</p><p>如想要删除那些全是0的列，可以写如下代码：</p><pre><code>df.replace(0, np.nan, inplace = True)cleaned = df.dropna()</code></pre><p>3、除了一般情况下的直接赋值，大部分情况下函数和方法都有<strong>inplace = True</strong>的属性，不说pd下的方法，就是set_index,fillna,dropna这些Series和DataFrame自带的方法都有inplace属性。</p><p>一个技巧：在jupyter notebook下，打出这样一行代码，直接产生交互的表格之类的，说明这就是一个新的表格，想要其直接继承就表格，就要使用inplace = True。</p><p>4、<strong>删除某行/列的两种方法：</strong>1.如果只想删除列，在df中，用del df[XXX]即可。 2.如果想对行或者列进行操作，则使用df.drop(‘’,axis = XXX, inpalace = XXX)</p><p>5、<strong>检查是否有缺失数据：</strong>对于比较小的数据量，直接使用df.isnull()即可，但是对于很大的数据量，df中间一些数据是省略的，这样做非常不直观。</p><p>所以在这里使用：<strong>df.isnull().sum()</strong>,直接就输出各列存在的缺失值数(因为Flase对应的是0，True对应的是1，全是False则自然是0，没有缺失值)。</p><p>6、<strong>Reset the index so it begins with 0 again:</strong> df.reset_index(drop = True,inplace = True)</p><p>7、<strong>解决使用drop方法删除多列时想要使用列整数索引指定而不是列索引名指定的问题</strong>：</p><p>问题描述：在使用df.drop()方法时，若要删除多行/列，只能输入一个包含行/列名的列表，而不能输入一个整数索引的列表，在使用整数索引更方便的时候就很难搞。</p><p>解决思想：我们可以把整数索引通过某种方式转换成名称组成的索引，再带入drop()中。</p><p>解决方法：若要删除df的1，3，7，9列，则应使用df.drop(df.columns[[0,2,6,8]], axis = 1)，巧妙地将整数索引进行了转化。</p><p>8、关于loc的优化</p><p>平常我们可能使用的是df.loc[1],df.loc[‘xxx’]这样的形式，但其实<strong>women = train.loc[train.Sex == ‘female’,”Survived”]</strong>这样将a condition expression带进去。</p><p>所以除了column names, row labels，这里用这种方法能够更加specific地索引一些需要的值。</p><p>9、stack与unstack</p><p><strong>unstack()可以将一个多级索引的Series转换成普通的DataFrame；stack()可以将一个普通的DataFrame转换成多级索引的Series。</strong></p>]]></content>
     
     
     <categories>
@@ -351,7 +380,7 @@
     <link href="/2020/08/13/%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0-%E4%B8%80%E4%BA%9B%E5%B8%B8%E7%94%A8%E5%BA%93%E7%9A%84%E5%BC%95%E5%85%A5%E8%A7%84%E5%AE%9A%EF%BC%88%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0%EF%BC%89/"/>
     <url>/2020/08/13/%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0-%E4%B8%80%E4%BA%9B%E5%B8%B8%E7%94%A8%E5%BA%93%E7%9A%84%E5%BC%95%E5%85%A5%E8%A7%84%E5%AE%9A%EF%BC%88%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0%EF%BC%89/</url>
     
-    <content type="html"><![CDATA[<pre><code>import pandas as pdfrom pandas import Series, DataFrameimport matplotlib.pyplot as plt # 常用的绘图库from datetime import datetime/date/time/timedelta # python标准库里常用的时间方法from dateutil.parser import prase # pandas自动安装的时间包，parse方法可以解析几乎所有人类能够理解的日期表达形式import pytz #下载pandas自带的一个时区库from sklearn.tree import DecisionTreeRegressor #引用决策树模型from sklearn.model_Selection import train_test_split #用于在将数据带入模型前先将清理好的数据分成train类和test类from sklearn.metrics import mean_absolute_error # 引入平均绝对离差from sklearn.ensamble import RandomForestRegressor # 引入随机森林模型</code></pre>]]></content>
+    <content type="html"><![CDATA[<pre><code>import pandas as pdfrom pandas import Series, DataFrameimport matplotlib.pyplot as plt # 常用的绘图库from datetime import datetime/date/time/timedelta # python标准库里常用的时间方法from dateutil.parser import prase # pandas自动安装的时间包，parse方法可以解析几乎所有人类能够理解的日期表达形式import pytz #下载pandas自带的一个时区库from sklearn.tree import DecisionTreeRegressor #引用决策树模型from sklearn.model_Selection import train_test_split #用于在将数据带入模型前先将清理好的数据分成train类和test类from sklearn.metrics import mean_absolute_error # 引入平均绝对离差from sklearn.ensamble import RandomForestRegressor # 引入随机森林模型from sklearn.linear_model import LinearRegression #引入简单线性回归模型from sklearn.naive_bayes import GaussainNB #引入高斯朴素贝叶斯模型from sklearn.metrics import accuracy_score #引入准确率预测工具from sklearn.decomposition import PCA #引入主成分分析模型from sklearn.mixture import GMM #引入高斯混合模型</code></pre>]]></content>
     
     
     <categories>

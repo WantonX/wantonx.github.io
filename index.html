@@ -188,6 +188,58 @@
     
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
+        <a href="/2020/09/24/%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0-%E7%95%99%E5%87%BA%E9%9B%86%E4%B8%8D%E6%AD%A2train-test-split/">[技术笔记]留出集不止train_test_split</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2020/09/24/%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0-%E7%95%99%E5%87%BA%E9%9B%86%E4%B8%8D%E6%AD%A2train-test-split/">
+          
+          
+            
+          
+          在kaggle初识machine learning时就知道了不能检验拟合的同一套数据，这样会造成overfitting，所以用model_selection里的train_test_split方法来解决这一问题，这被我们称为留出集。
+然而用留出集进行模型验证有一个缺点，就是模型失去了部分训练机会。当训练集数据规模较小时，问题就比较严重了。因此，我们可以考虑让每个子集既是训练集，又是验证集，最后将几
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-09-24 19:49" pubdate>
+              2020-09-24
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0/">技术笔记</a>
+            
+              <a href="/categories/%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0/python/">python</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">机器学习</a>
+            
+              <a href="/tags/%E4%BA%A4%E5%8F%89%E6%A3%80%E9%AA%8C/">交叉检验</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
         <a href="/2020/09/23/%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0-matplotlib%E4%B8%A4%E7%A7%8D%E7%94%BB%E5%9B%BE%E6%8E%A5%E5%8F%A3%E7%9A%84%E4%B8%8D%E5%90%8C/">[技术笔记]matplotlib两种画图接口的不同与其他常用知识</a>
       </h1>
 
@@ -661,60 +713,6 @@ class Vector:
               <a href="/tags/%E9%9D%A2%E6%9D%BF%E6%95%B0%E6%8D%AE/">面板数据</a>
             
               <a href="/tags/%E6%B7%B7%E5%90%88%E6%A8%AA%E6%88%AA%E9%9D%A2/">混合横截面</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        <a href="/2020/09/07/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E8%AE%A1%E9%87%8F%E5%B0%8F%E5%A4%8D%E4%B9%A0/">[学习笔记]计量小复习</a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2020/09/07/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E8%AE%A1%E9%87%8F%E5%B0%8F%E5%A4%8D%E4%B9%A0/">
-          
-          
-            
-          
-          1、方差膨胀因子（VIF）：测度某一自变量是否存在多重共线性，一般认为VIF&gt;10则存在较强的多重共线性，VIF&gt;100则存在严重的多重共线性。
-2、含ln的回归系数的解释：
-lny = alnx x变动1%，y变动a%
-lny = ax x变动1，y变动100a%
-y = alnx x变动1%，y变动a/100
-3、Wald Test注意点：在WT中，c(n)的n是从1开始的，不是从
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2020-09-07 08:25" pubdate>
-              2020-09-07
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-category"></i>
-            
-              <a href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</a>
-            
-              <a href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E8%AE%A1%E9%87%8F%E7%BB%8F%E6%B5%8E%E5%AD%A6/">计量经济学</a>
-            
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/%E8%AE%A1%E9%87%8F%E7%BB%8F%E6%B5%8E%E5%AD%A6/">计量经济学</a>
             
           </div>
         
