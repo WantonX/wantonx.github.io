@@ -17,7 +17,7 @@
   <meta name="description" content="">
   <meta name="author" content="ZiJie Xu">
   <meta name="keywords" content="">
-  <title>[技术笔记]留出集不止train_test_split - WantonX</title>
+  <title>[技术笔记]Jupyter与Stata关联：Windows系统（转载） - WantonX</title>
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
 
@@ -172,8 +172,8 @@
               
   <div class="mt-3 post-meta">
     <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-    <time datetime="2020-09-24 19:49" pubdate>
-      2020年9月24日 晚上
+    <time datetime="2020-09-28 22:38" pubdate>
+      2020年9月28日 晚上
     </time>
   </div>
 
@@ -183,7 +183,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      252 字
+      556 字
     </span>
   
 
@@ -193,7 +193,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      2
+      6
        分钟
     </span>
   
@@ -223,19 +223,38 @@
         <div class="py-5" id="board">
           <article class="post-content mx-auto" id="post">
             <!-- SEO header -->
-            <h1 style="display: none">[技术笔记]留出集不止train_test_split</h1>
+            <h1 style="display: none">[技术笔记]Jupyter与Stata关联：Windows系统（转载）</h1>
             
             <div class="markdown-body" id="post-body">
-              <p>在kaggle初识machine learning时就知道了不能检验拟合的同一套数据，这样会造成overfitting，所以用model_selection里的train_test_split方法来解决这一问题，这被我们称为<strong>留出集</strong>。</p>
-<p>然而用留出集进行模型验证有一个缺点，就是<strong>模型失去了部分训练机会</strong>。当训练集数据规模较小时，问题就比较严重了。因此，我们可以考虑让每个子集既是训练集，又是验证集，最后将几者结合，获取一个更准确的模型总体性能。这种方法被称为<strong>交叉检验</strong>。</p>
-<p>如一个五轮交叉检验的代码如下：</p>
-<pre><code>from skleran.model_selection import cross_val_score
-cross_val_score(model, X, y, cv=5)
-</code></pre><p>如果每次只有一个样本做测试，其他样本全用于训练，这种交叉检验的方法就被称为<strong>LOO（leave-one-out）交叉检验</strong>，代码如下：</p>
-<pre><code>from sklearn.model_selection import LeaveOneOut
-scores = cross_val_score(model, X, y, cv=LeaveOneOut(len(X)))
-scores.mean() #均值即为平均得分
-</code></pre>
+              <p>作者：韩少真(西北大学) || 展金永（对外经济贸易大学）</p>
+<h2 id="将stata添加到命令行注册"><a href="#将stata添加到命令行注册" class="headerlink" title="将stata添加到命令行注册"></a>将stata添加到命令行注册</h2><p>根据下图步骤，以管理员身份运行Windows PowerShell。</p>
+<p>划重点：<strong>请务必以管理员身份运行</strong>。</p>
+<p><img src="/2020/09/28/%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0-Jupyter%E4%B8%8EStata%E5%85%B3%E8%81%94%EF%BC%9AWindows%E7%B3%BB%E7%BB%9F/1.jpg" srcset="/img/loading.gif" alt></p>
+<p>打开stata的安装的文件夹，根据下图获取stata的安装路径：</p>
+<p><img src="/2020/09/28/%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0-Jupyter%E4%B8%8EStata%E5%85%B3%E8%81%94%EF%BC%9AWindows%E7%B3%BB%E7%BB%9F/2.jpg" srcset="/img/loading.gif" alt></p>
+<p>在Windows PowerShell执行cd命令，以进入stata程序安装的路径。cd命令后接上步所获取的stata安装路径。根据个人电脑安装路径不同有所差异。路径请以英文引号包围，这样可以避免路径文件夹名称中包含空格导致无法顺利进入目标路径。</p>
+<pre><code>cd &quot;D:\Stata15&quot;
+</code></pre><p>执行上述命令后，请根据下图提示，确认是否已进入stata安装路径：</p>
+<p><img src="/2020/09/28/%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0-Jupyter%E4%B8%8EStata%E5%85%B3%E8%81%94%EF%BC%9AWindows%E7%B3%BB%E7%BB%9F/3.jpg" srcset="/img/loading.gif" alt></p>
+<p>在Windows PowerShell中执行.\StataMP-64.exe /Register命令，则可以成功将stata添加到命令行注册。需要注意的是，.\StataMP-64.exe /Register中的.\StataMP-64.exe部分，根据个人电脑安装stata15版本有所差异。我电脑安装的是MP版，所以为.\StataMP-64.exe。如果安装的是SE版，应该为.\StataSE-64.exe。</p>
+<pre><code>.\StataMP-64.exe /Register
+# or
+.\StataSE-64.exe /Register
+</code></pre><h2 id="安装stata-kernel包"><a href="#安装stata-kernel包" class="headerlink" title="安装stata_kernel包"></a>安装stata_kernel包</h2><p>在cmd逐行执行以下代码,安装stata_kernel包。安装结束后可根据cmd窗口的提示，判断是否成功安装。注意：<strong>不能省略第二行命令，下载stata_kernal包后要将其手动安装。</strong></p>
+<pre><code>pip install stata_kernel
+python -m stata_kernel.install
+</code></pre><h2 id="打开jupyter-notebook，新建stata语法格式的notebook，执行stata代码，检验是否关联成功"><a href="#打开jupyter-notebook，新建stata语法格式的notebook，执行stata代码，检验是否关联成功" class="headerlink" title="打开jupyter notebook，新建stata语法格式的notebook，执行stata代码，检验是否关联成功"></a>打开jupyter notebook，新建stata语法格式的notebook，执行stata代码，检验是否关联成功</h2><p>根据下图，在jupyter notebook中执行以下操作，新建一个支持stata语法的notebook。这会弹出一个新的网页标签。</p>
+<p><img src="/2020/09/28/%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0-Jupyter%E4%B8%8EStata%E5%85%B3%E8%81%94%EF%BC%9AWindows%E7%B3%BB%E7%BB%9F/4.jpg" srcset="/img/loading.gif" alt></p>
+<p>在新建的notebook中，通过下图可以初步判断是否关联成功。</p>
+<p><img src="/2020/09/28/%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0-Jupyter%E4%B8%8EStata%E5%85%B3%E8%81%94%EF%BC%9AWindows%E7%B3%BB%E7%BB%9F/5.jpg" srcset="/img/loading.gif" alt></p>
+<p>在命令行输入stata命令，并点击运行执行。如果关联成功，则会在命令的下方显示stata结果窗口的结果。具体如下图所示：</p>
+<pre><code>dis 1+3
+sysuse auto,clear
+reg price weight
+scatter price weight
+</code></pre><p><img src="/2020/09/28/%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0-Jupyter%E4%B8%8EStata%E5%85%B3%E8%81%94%EF%BC%9AWindows%E7%B3%BB%E7%BB%9F/6.jpg" srcset="/img/loading.gif" alt></p>
+<p>作者：mailshaozhen<br>链接：<a href="https://www.jianshu.com/p/790c86824411" target="_blank" rel="noopener">https://www.jianshu.com/p/790c86824411</a><br>来源：简书<br>著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。</p>
+
             </div>
             <hr>
             <div>
@@ -246,7 +265,7 @@ scores.mean() #均值即为平均得分
                     
                       <a class="hover-with-bg" href="/categories/%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0/">技术笔记</a>
                     
-                      <a class="hover-with-bg" href="/categories/%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0/python/">python</a>
+                      <a class="hover-with-bg" href="/categories/%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0/stata/">stata</a>
                     
                   </div>
                 
@@ -254,9 +273,9 @@ scores.mean() #均值即为平均得分
                   <div class="post-meta">
                     <i class="iconfont icon-tags"></i>
                     
-                      <a class="hover-with-bg" href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">机器学习</a>
+                      <a class="hover-with-bg" href="/tags/stata/">stata</a>
                     
-                      <a class="hover-with-bg" href="/tags/%E4%BA%A4%E5%8F%89%E6%A3%80%E9%AA%8C/">交叉检验</a>
+                      <a class="hover-with-bg" href="/tags/jupyter/">jupyter</a>
                     
                   </div>
                 
@@ -269,9 +288,9 @@ scores.mean() #均值即为平均得分
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2020/09/28/%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0-Jupyter%E4%B8%8EStata%E5%85%B3%E8%81%94%EF%BC%9AWindows%E7%B3%BB%E7%BB%9F/">
+                      <a href="/2020/10/10/%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0-%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1API%E4%B8%8Bmatplotlib%E7%9A%84%E4%B8%80%E4%BA%9B%E5%9D%91/">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">[技术笔记]Jupyter与Stata关联：Windows系统（转载）</span>
+                        <span class="hidden-mobile">[技术笔记]面向对象API下matplotlib的一些坑</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -279,8 +298,8 @@ scores.mean() #均值即为平均得分
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2020/09/23/%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0-matplotlib%E4%B8%A4%E7%A7%8D%E7%94%BB%E5%9B%BE%E6%8E%A5%E5%8F%A3%E7%9A%84%E4%B8%8D%E5%90%8C/">
-                        <span class="hidden-mobile">[技术笔记]matplotlib两种画图接口的不同与其他常用知识</span>
+                      <a href="/2020/09/24/%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0-%E7%95%99%E5%87%BA%E9%9B%86%E4%B8%8D%E6%AD%A2train-test-split/">
+                        <span class="hidden-mobile">[技术笔记]留出集不止train_test_split</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
@@ -451,7 +470,7 @@ scores.mean() #均值即为平均得分
     var typed = new Typed('#subtitle', {
       strings: [
         '  ',
-        "[技术笔记]留出集不止train_test_split&nbsp;",
+        "[技术笔记]Jupyter与Stata关联：Windows系统（转载）&nbsp;",
       ],
       cursorChar: "|",
       typeSpeed: 60,

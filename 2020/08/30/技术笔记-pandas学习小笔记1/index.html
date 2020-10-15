@@ -183,7 +183,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      686 字
+      810 字
     </span>
   
 
@@ -193,7 +193,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      8
+      9
        分钟
     </span>
   
@@ -246,6 +246,8 @@ cleaned = df.dropna()
 <p>所以除了column names, row labels，这里用这种方法能够更加specific地索引一些需要的值。</p>
 <p>9、stack与unstack</p>
 <p><strong>unstack()可以将一个多级索引的Series转换成普通的DataFrame；stack()可以将一个普通的DataFrame转换成多级索引的Series。</strong></p>
+<p>10、多级索引中只取其中一级</p>
+<p>在一些涉及画图或者机器学习的问题中，我们可能前期通过groupby构造了一个多级索引，但是要画图的时候，不需要用到一级索引，而只需要二级索引，此时就需要找到一种针对MultiIndex此类对象的方法。网上查阅可知，若要取二级索引，<strong>可以使用df.index.get_level_values(1)或者df.index.get_level_values(‘#index_name#’)</strong>选取所需索引。</p>
 
             </div>
             <hr>

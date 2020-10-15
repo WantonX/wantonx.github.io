@@ -183,7 +183,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      685 字
+      947 字
     </span>
   
 
@@ -193,7 +193,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      10
+      12
        分钟
     </span>
   
@@ -226,11 +226,11 @@
             <h1 style="display: none">[技术笔记]机器学习初识</h1>
             
             <div class="markdown-body" id="post-body">
-              <p>一般的Machine Learning步骤是：</p>
-<p>搜据数据—数据清洗—确定预测的column—选择特征变量—建立模型（选择合适的模型—带入数据进行学习—预测—评估模型准确性、稳定性等）</p>
+              <h2 id="学习前应知小常识"><a href="#学习前应知小常识" class="headerlink" title="学习前应知小常识"></a>学习前应知小常识</h2><p>机器学习一般可以分为两类，有监督学习和无监督学习。<strong>有监督学习</strong>是对数据的若干特征与若干标签之间的关联性进行建模的过程，具体来说，又分<strong>分类</strong>（classification）、<strong>回归</strong>（regression）。<strong>无监督学习</strong>是指不带任何标签的数据特征进行建模，包括<strong>聚类</strong>（clustering）、<strong>降维</strong>（dimensionality reduction）。</p>
+<p>对于高维数据，我们通常采用先降维再聚类的方法，就可以通过数据可视化的视角（因为高维数据的可视化是非常困难的）先研究一下不同数据的特征。一般来说，通过降维就可以首先将数据做出一个分类，聚类后则是一个更清晰的分类，这说明某些样本通过看似不同的特征组合是存在关联性的。<strong>降维/聚合的效果好其实是告诉我们：用一个非常简单的有监督分类算法就可以完成任务。</strong></p>
+<h2 id="一般的Machine-Learning步骤"><a href="#一般的Machine-Learning步骤" class="headerlink" title="一般的Machine Learning步骤"></a>一般的Machine Learning步骤</h2><p>搜据数据—数据清洗—确定预测的column—选择特征变量—建立模型（选择合适的模型—带入数据进行学习—预测—评估模型准确性、稳定性等）</p>
 <p>下面以最简单的决策树模型为例，过一下整个流程（代码来自Kaggle的课程）</p>
-<p><strong>Selecting Data for Modeling</strong></p>
-<pre><code># Code you have previously used to load data
+<h3 id="Selecting-Data-for-Modeling"><a href="#Selecting-Data-for-Modeling" class="headerlink" title="Selecting Data for Modeling"></a>Selecting Data for Modeling</h3><pre><code># Code you have previously used to load data
 import pandas as pd
 
 # Path of the file to read
@@ -244,18 +244,15 @@ binder.bind(globals())
 from learntools.machine_learning.ex3 import *
 
 print(&quot;Setup Complete&quot;)
-</code></pre><p><strong>Selecting The Prediction Target</strong></p>
-<p>约定俗称的是用y代表要预测的序列</p>
+</code></pre><h3 id="Selecting-The-Prediction-Target"><a href="#Selecting-The-Prediction-Target" class="headerlink" title="Selecting The Prediction Target"></a>Selecting The Prediction Target</h3><p>约定俗称的是用y代表要预测的序列</p>
 <pre><code>y = home_data.SalePrice
-</code></pre><p><strong>Choosing “Features”</strong></p>
-<p>这一串Featues通常被称为X</p>
+</code></pre><h3 id="Choosing-“Features”"><a href="#Choosing-“Features”" class="headerlink" title="Choosing “Features”"></a>Choosing “Features”</h3><p>这一串Featues通常被称为X</p>
 <pre><code># Create the list of features below
 feature_names = [&#39;LotArea&#39;,&#39;YearBuilt&#39;,&#39;1stFlrSF&#39;,&#39;2ndFlrSF&#39;,&#39;FullBath&#39;,&#39;BedroomAbvGr&#39;,&#39;TotRmsAbvGrd&#39;]
 
 # Select data corresponding to features in feature_names
 X = home_data[feature_names]
-</code></pre><p><strong>Building Model</strong></p>
-<p>The steps to building and using a model are:</p>
+</code></pre><h3 id="Building-Model"><a href="#Building-Model" class="headerlink" title="Building Model"></a>Building Model</h3><p>The steps to building and using a model are:</p>
 <p><strong>Define:</strong> What type of model will it be? A decision tree? Some other type of model? Some other parameters of the model type are specified too.</p>
 <p>这里选择决策树模型</p>
 <pre><code>from sklearn.tree import DecisionTreeRegressor

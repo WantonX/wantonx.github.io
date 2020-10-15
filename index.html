@@ -188,6 +188,97 @@
     
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
+        <a href="/2020/10/10/%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0-%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1API%E4%B8%8Bmatplotlib%E7%9A%84%E4%B8%80%E4%BA%9B%E5%9D%91/">[技术笔记]面向对象API下matplotlib的一些坑</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2020/10/10/%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0-%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1API%E4%B8%8Bmatplotlib%E7%9A%84%E4%B8%80%E4%BA%9B%E5%9D%91/">
+          
+          
+            
+          
+          虽然matplotlib的面向对象的API好像更符合操作逻辑，在处理复杂问题时能更好地在多个图像间进行转换，但也因为matlab封装下的API实在太有群众基础了，导致很多网上的教程都是此API。这两个API下一些细微的区别就会造成本人搜索时巨大的时间浪费，因此本文想总结一些面向对象API下matplotlib的坑，希望后人不要再踩坑了……
+旋转坐标轴标签在遇到时间刻度或者一些较长的刻度时，原本水平
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-10-10 10:46" pubdate>
+              2020-10-10
+            </time>
+          </div>
+        
+        
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        <a href="/2020/09/28/%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0-Jupyter%E4%B8%8EStata%E5%85%B3%E8%81%94%EF%BC%9AWindows%E7%B3%BB%E7%BB%9F/">[技术笔记]Jupyter与Stata关联：Windows系统（转载）</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2020/09/28/%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0-Jupyter%E4%B8%8EStata%E5%85%B3%E8%81%94%EF%BC%9AWindows%E7%B3%BB%E7%BB%9F/">
+          
+          
+            
+          
+          作者：韩少真(西北大学) || 展金永（对外经济贸易大学）
+将stata添加到命令行注册根据下图步骤，以管理员身份运行Windows PowerShell。
+划重点：请务必以管理员身份运行。
+
+打开stata的安装的文件夹，根据下图获取stata的安装路径：
+
+在Windows PowerShell执行cd命令，以进入stata程序安装的路径。cd命令后接上步所获取的stata安装路径。根据个人电
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-09-28 22:38" pubdate>
+              2020-09-28
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0/">技术笔记</a>
+            
+              <a href="/categories/%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0/stata/">stata</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/stata/">stata</a>
+            
+              <a href="/tags/jupyter/">jupyter</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
         <a href="/2020/09/24/%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0-%E7%95%99%E5%87%BA%E9%9B%86%E4%B8%8D%E6%AD%A2train-test-split/">[技术笔记]留出集不止train_test_split</a>
       </h1>
 
@@ -459,11 +550,8 @@ from sklearn.model_selection import train_test_split 的参数：train_size = 0.
           
             
           
-          一般的Machine Learning步骤是：
-搜据数据—数据清洗—确定预测的column—选择特征变量—建立模型（选择合适的模型—带入数据进行学习—预测—评估模型准确性、稳定性等）
-下面以最简单的决策树模型为例，过一下整个流程（代码来自Kaggle的课程）
-Selecting Data for Modeling
-# Code you have previously used to load da
+          学习前应知小常识机器学习一般可以分为两类，有监督学习和无监督学习。有监督学习是对数据的若干特征与若干标签之间的关联性进行建模的过程，具体来说，又分分类（classification）、回归（regression）。无监督学习是指不带任何标签的数据特征进行建模，包括聚类（clustering）、降维（dimensionality reduction）。
+对于高维数据，我们通常采用先降维再聚类的方法，
         </a>
       </p>
 
@@ -614,117 +702,11 @@ class Vector:
     </article>
   </div>
 
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        <a href="/2020/09/07/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E9%9D%A2%E6%9D%BF%E6%95%B0%E6%8D%AE%E5%9B%9E%E5%BD%92%E6%A8%A1%E5%9E%8B/">[学习笔记]短面板数据回归模型</a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2020/09/07/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E9%9D%A2%E6%9D%BF%E6%95%B0%E6%8D%AE%E5%9B%9E%E5%BD%92%E6%A8%A1%E5%9E%8B/">
-          
-          
-            
-          
-          面板数据的分类面板数据的优势可以处理一些不可观测的遗漏变量——如果漏掉的变量不随时间变化，则面板数据可以帮助消除遗漏变量偏差。
-由上一篇笔记可知，由于各人/地/企业…各自存在一些属于自己的，影响因变量而不随时间变化的特征（异质性特征），横截面数据很难消除这些固定效应，因此选择面板数据回归模型进行处理。
-差分估计两期差分模型
-多期差分模型方法一：个体中心化方法处理固定效应
-其原理是针对同一样本，将其
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2020-09-07 20:23" pubdate>
-              2020-09-07
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-category"></i>
-            
-              <a href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</a>
-            
-              <a href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E8%AE%A1%E9%87%8F%E7%BB%8F%E6%B5%8E%E5%AD%A6/">计量经济学</a>
-            
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/%E9%9D%A2%E6%9D%BF%E6%95%B0%E6%8D%AE/">面板数据</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        <a href="/2020/09/07/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E8%B7%A8%E6%97%B6%E6%A8%AA%E6%88%AA%E9%9D%A2%E7%9A%84%E6%B7%B7%E5%90%88%EF%BC%9A%E7%AE%80%E5%8D%95%E9%9D%A2%E6%9D%BF%E6%95%B0%E6%8D%AE%E6%96%B9%E6%B3%95/">[学习笔记]跨时横截面的混合：简单面板数据方法</a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2020/09/07/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E8%B7%A8%E6%97%B6%E6%A8%AA%E6%88%AA%E9%9D%A2%E7%9A%84%E6%B7%B7%E5%90%88%EF%BC%9A%E7%AE%80%E5%8D%95%E9%9D%A2%E6%9D%BF%E6%95%B0%E6%8D%AE%E6%96%B9%E6%B3%95/">
-          
-          
-            
-          
-          跨时独立横截面的混合定义跨时独立混合横截面数据指的是在不同时点从一个大总体里进行随机抽样的结果，各个时期都是各自进行一次随机抽样，样本量可以不同，完全独立。这可能造成观测点不是同分布的。
-年度虚拟变量年度虚拟变量就是用来解决不同时间的观测点不是同分布问题的，即以最初一年为基年，后续几年分别设立一个虚拟变量，容许截距项甚至斜率（通过交互项）随时间的改变而改变。
-利用混合截面做政策分析当某些外生事件（
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2020-09-07 12:47" pubdate>
-              2020-09-07
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-category"></i>
-            
-              <a href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</a>
-            
-              <a href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E8%AE%A1%E9%87%8F%E7%BB%8F%E6%B5%8E%E5%AD%A6/">计量经济学</a>
-            
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/%E9%9D%A2%E6%9D%BF%E6%95%B0%E6%8D%AE/">面板数据</a>
-            
-              <a href="/tags/%E6%B7%B7%E5%90%88%E6%A8%AA%E6%88%AA%E9%9D%A2/">混合横截面</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
 
 
   <nav aria-label="navigation">
     <span class="pagination" id="pagination">
-      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/"><i class="iconfont icon-arrowright"></i></a>
+      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/2/"><i class="iconfont icon-arrowright"></i></a>
     </span>
   </nav>
   
