@@ -188,6 +188,61 @@
     
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
+        <a href="/2020/09/23/%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0-matplotlib%E4%B8%A4%E7%A7%8D%E7%94%BB%E5%9B%BE%E6%8E%A5%E5%8F%A3%E7%9A%84%E4%B8%8D%E5%90%8C/">[技术笔记]matplotlib两种画图接口的不同与其他常用知识</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2020/09/23/%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0-matplotlib%E4%B8%A4%E7%A7%8D%E7%94%BB%E5%9B%BE%E6%8E%A5%E5%8F%A3%E7%9A%84%E4%B8%8D%E5%90%8C/">
+          
+          
+            
+          
+          接口区别相比于matlab风格的画图接口，我还是觉得面向对象的画图接口更符合python的设计哲学，但两者之间的一些函数就无法共用。
+
+plt.xlabel() → ax.set_xlabel()
+plt.ylabel() → ax.set_ylabel()
+plt.xlim() → ax.set_xlim()
+plt.ylim() → ax.set_ylim()
+plt.title() → ax
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-09-23 10:18" pubdate>
+              2020-09-23
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0/">技术笔记</a>
+            
+              <a href="/categories/%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0/python/">python</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/matplotlib/">matplotlib</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
         <a href="/2020/09/19/%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0-numpy%E5%85%A5%E9%97%A8/">[技术笔记]numpy入门</a>
       </h1>
 
@@ -657,57 +712,6 @@ y = alnx x变动1%，y变动a/100
             <i class="iconfont icon-tags"></i>
             
               <a href="/tags/%E8%AE%A1%E9%87%8F%E7%BB%8F%E6%B5%8E%E5%AD%A6/">计量经济学</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        <a href="/2020/08/30/%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0-pandas%E5%AD%A6%E4%B9%A0%E5%B0%8F%E7%AC%94%E8%AE%B01/">[技术笔记]pandas学习小笔记1</a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2020/08/30/%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0-pandas%E5%AD%A6%E4%B9%A0%E5%B0%8F%E7%AC%94%E8%AE%B01/">
-          
-          
-            
-          
-          1、在使用pd.to_datetime()替换相关数据时，可能df[XXX] = pd.to_datetime(df[XXX])还是很好想到的，但如要对df的行标签进行转换，就应该是df.index = pd.to_datetime(df.index)这样子。
-2、当要删除某些具有特定数据的行或者列时，应该使用df.replace()和df.dropna()结合的方法。
-如想要删除那些全是0的列，
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2020-08-30 17:20" pubdate>
-              2020-08-30
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-category"></i>
-            
-              <a href="/categories/%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0/">技术笔记</a>
-            
-              <a href="/categories/%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0/python/">python</a>
-            
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/pandas/">pandas</a>
             
           </div>
         

@@ -188,6 +188,57 @@
     
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
+        <a href="/2020/08/30/%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0-pandas%E5%AD%A6%E4%B9%A0%E5%B0%8F%E7%AC%94%E8%AE%B01/">[技术笔记]pandas学习小笔记1</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2020/08/30/%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0-pandas%E5%AD%A6%E4%B9%A0%E5%B0%8F%E7%AC%94%E8%AE%B01/">
+          
+          
+            
+          
+          1、在使用pd.to_datetime()替换相关数据时，可能df[XXX] = pd.to_datetime(df[XXX])还是很好想到的，但如要对df的行标签进行转换，就应该是df.index = pd.to_datetime(df.index)这样子。
+2、当要删除某些具有特定数据的行或者列时，应该使用df.replace()和df.dropna()结合的方法。
+如想要删除那些全是0的列，
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-08-30 17:20" pubdate>
+              2020-08-30
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0/">技术笔记</a>
+            
+              <a href="/categories/%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0/python/">python</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/pandas/">pandas</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
         <a href="/2020/08/17/%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0-%E9%87%8D%E8%A3%85%E7%B3%BB%E7%BB%9F%E5%90%8E%E5%AE%89%E8%A3%85%E8%BD%AF%E4%BB%B6%E9%81%87%E5%88%B0%E7%9A%84%E5%90%84%E7%A7%8D%E9%97%AE%E9%A2%98%E5%8F%8A%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95/">[技术笔记]重装硬盘后安装软件遇到的各种问题及解决办法</a>
       </h1>
 
@@ -676,56 +727,6 @@ x(
             <i class="iconfont icon-tags"></i>
             
               <a href="/tags/%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B%E6%A8%A1%E5%9E%8B/">微分方程模型</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        <a href="/2020/07/27/%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0-jupyter%E4%B8%8D%E8%83%BD%E9%80%9A%E8%BF%87%E6%B5%8F%E8%A7%88%E5%99%A8%E8%87%AA%E5%8A%A8%E6%89%93%E5%BC%80/">[技术笔记]jupyter不能通过浏览器自动打开</a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2020/07/27/%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0-jupyter%E4%B8%8D%E8%83%BD%E9%80%9A%E8%BF%87%E6%B5%8F%E8%A7%88%E5%99%A8%E8%87%AA%E5%8A%A8%E6%89%93%E5%BC%80/">
-          
-          
-            
-          
-          这两天用win+R打开juypter的时候发现不能通过浏览器自动打开了，只能手动打开。之前我配置的默认浏览器是chrome，中间因为chrome版本太低Google帮我重装过一次，怀疑是重装过后的chrome被改了文件路径，从而导致打不开了，因此决定重新配置juypter的路径即可：
-1、在cmd下执行jupyter notebook —generate-config，会提示该文件所在的目录，我的
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2020-07-27 08:52" pubdate>
-              2020-07-27
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-category"></i>
-            
-              <a href="/categories/%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0/">技术笔记</a>
-            
-              <a href="/categories/%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0/python/">python</a>
-            
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/jupyter-notebook/">jupyter notebook</a>
             
           </div>
         
