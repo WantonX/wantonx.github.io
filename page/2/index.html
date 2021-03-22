@@ -8,28 +8,31 @@
 <head>
   <meta charset="UTF-8">
   <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
-  <link rel="icon" type="image/png" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
   <meta name="viewport"
         content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   
   <meta name="theme-color" content="#2f4154">
-  <meta name="description" content="">
+  
+    <meta name="description" content="">
+  
   <meta name="author" content="ZiJie Xu">
   <meta name="keywords" content="">
+  
   <title>WantonX</title>
 
-  <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
 
 
 
 <!-- 主题依赖的图标库，不要自行修改 -->
 
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_6peoq002giu.css">
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
 
 
 
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_pjno9b9zyxs.css">
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
 
 
 <link  rel="stylesheet" href="/css/main.css" />
@@ -37,6 +40,10 @@
 <!-- 自定义样式保持在最底部 -->
 
 
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"yoursite.com","root":"/","version":"1.8.8","typing":{"enable":true,"typeSpeed":60,"cursorChar":"|","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"onlypost":false},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null},"tajs":null}};
+  </script>
   <script  src="/js/utils.js" ></script>
   <script  src="/js/color-schema.js" ></script>
 <meta name="generator" content="Hexo 4.2.1"></head>
@@ -148,13 +155,13 @@
   </div>
 </nav>
 
-    <div class="banner intro-2" id="background" parallax=true
+    <div class="banner" id="banner" parallax=true
          style="background: url('/website_picture/article_picture.jpg') no-repeat center center;
            background-size: cover;">
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
-          <div class="container page-header text-center fade-in-up">
-            <span class="h2" id="subtitle">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="Now is better than never">
               
             </span>
 
@@ -173,7 +180,7 @@
 
   <main>
     
-      <div class="container nopadding-md">
+      <div class="container nopadding-x-md">
         <div class="py-5" id="board"
           style=margin-top:0>
           
@@ -188,6 +195,290 @@
     
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
+        
+        <a href="/2020/10/28/%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0-%E4%B8%93%E9%A2%98%EF%BC%9A%E5%86%B3%E7%AD%96%E6%A0%91%E4%B8%8E%E9%9A%8F%E6%9C%BA%E6%A3%AE%E6%9E%97/">[技术笔记]专题：决策树与随机森林</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2020/10/28/%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0-%E4%B8%93%E9%A2%98%EF%BC%9A%E5%86%B3%E7%AD%96%E6%A0%91%E4%B8%8E%E9%9A%8F%E6%9C%BA%E6%A3%AE%E6%9E%97/">
+          
+          
+            
+          
+          import numpy as np
+import matplotlib.pyplot as plt
+import seaborn as sns; sns.set()
+%matplotlib inline
+随机森林的诱因：决策树创建一课决策树# 构建一组数据
+from sklearn.datasets import make_blobs
+X, y = make_blobs(n_samples=30
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-10-28 15:32" pubdate>
+              2020-10-28
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0/">技术笔记</a>
+            
+              <a href="/categories/%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0/python/">python</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">机器学习</a>
+            
+              <a href="/tags/%E5%86%B3%E7%AD%96%E6%A0%91%E6%A8%A1%E5%9E%8B/">决策树模型</a>
+            
+              <a href="/tags/%E9%9A%8F%E6%9C%BA%E6%A3%AE%E6%9E%97%E6%A8%A1%E5%9E%8B/">随机森林模型</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2020/10/21/%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0-matplotlib%E4%B8%8B%E5%AF%B9%E8%B1%A1%E7%9A%84%E4%B8%80%E4%BA%9B%E4%B8%8D%E5%B8%B8%E7%94%A8%E7%9A%84%E5%8F%82%E6%95%B0/">[技术笔记]matplotlib下对象的一些不常用的参数或方法</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2020/10/21/%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0-matplotlib%E4%B8%8B%E5%AF%B9%E8%B1%A1%E7%9A%84%E4%B8%80%E4%BA%9B%E4%B8%8D%E5%B8%B8%E7%94%A8%E7%9A%84%E5%8F%82%E6%95%B0/">
+          
+          
+            
+          
+          zoreder参数作用：当一个图上出现了很多线条、补丁以及图例中的文本时，当这几种对象重合，会有一个参数来规定重合时谁在谁的上方，这个参数就是zorder。默认的参数设置如下表：
+
+
+
+
+Artist
+Z-order
+
+
+
+
+Patch/PatchCollection
+1
+
+
+Line2D/LineCollection
+2
+
+
+Text
+3
+
+
+
+
+任何单独的绘图调用方法都可以为该特定项的zord
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-10-21 15:14" pubdate>
+              2020-10-21
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0/">技术笔记</a>
+            
+              <a href="/categories/%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0/python/">python</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/matplotlib/">matplotlib</a>
+            
+              <a href="/tags/numpy/">numpy</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2020/10/10/%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0-%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1API%E4%B8%8Bmatplotlib%E7%9A%84%E4%B8%80%E4%BA%9B%E5%9D%91/">[技术笔记]面向对象API下matplotlib的一些坑</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2020/10/10/%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0-%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1API%E4%B8%8Bmatplotlib%E7%9A%84%E4%B8%80%E4%BA%9B%E5%9D%91/">
+          
+          
+            
+          
+          虽然matplotlib的面向对象的API好像更符合操作逻辑，在处理复杂问题时能更好地在多个图像间进行转换，但也因为matlab封装下的API实在太有群众基础了，导致很多网上的教程都是此API。这两个API下一些细微的区别就会造成本人搜索时巨大的时间浪费，因此本文想总结一些面向对象API下matplotlib的坑，希望后人不要再踩坑了……
+旋转坐标轴标签在遇到时间刻度或者一些较长的刻度时，原本水平
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-10-10 10:46" pubdate>
+              2020-10-10
+            </time>
+          </div>
+        
+        
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2020/09/28/%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0-Jupyter%E4%B8%8EStata%E5%85%B3%E8%81%94%EF%BC%9AWindows%E7%B3%BB%E7%BB%9F/">[技术笔记]Jupyter与Stata关联：Windows系统（转载）</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2020/09/28/%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0-Jupyter%E4%B8%8EStata%E5%85%B3%E8%81%94%EF%BC%9AWindows%E7%B3%BB%E7%BB%9F/">
+          
+          
+            
+          
+          作者：韩少真(西北大学) || 展金永（对外经济贸易大学）
+将stata添加到命令行注册根据下图步骤，以管理员身份运行Windows PowerShell。
+划重点：请务必以管理员身份运行。
+
+打开stata的安装的文件夹，根据下图获取stata的安装路径：
+
+在Windows PowerShell执行cd命令，以进入stata程序安装的路径。cd命令后接上步所获取的stata安装路径。根据个人电
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-09-28 22:38" pubdate>
+              2020-09-28
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0/">技术笔记</a>
+            
+              <a href="/categories/%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0/stata/">stata</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/stata/">stata</a>
+            
+              <a href="/tags/jupyter/">jupyter</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2020/09/24/%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0-%E7%95%99%E5%87%BA%E9%9B%86%E4%B8%8D%E6%AD%A2train-test-split/">[技术笔记]留出集不止train_test_split</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2020/09/24/%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0-%E7%95%99%E5%87%BA%E9%9B%86%E4%B8%8D%E6%AD%A2train-test-split/">
+          
+          
+            
+          
+          在kaggle初识machine learning时就知道了不能检验拟合的同一套数据，这样会造成overfitting，所以用model_selection里的train_test_split方法来解决这一问题，这被我们称为留出集。
+然而用留出集进行模型验证有一个缺点，就是模型失去了部分训练机会。当训练集数据规模较小时，问题就比较严重了。因此，我们可以考虑让每个子集既是训练集，又是验证集，最后将几
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-09-24 19:49" pubdate>
+              2020-09-24
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0/">技术笔记</a>
+            
+              <a href="/categories/%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0/python/">python</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">机器学习</a>
+            
+              <a href="/tags/%E4%BA%A4%E5%8F%89%E6%A3%80%E9%AA%8C/">交叉检验</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
         <a href="/2020/09/23/%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0-matplotlib%E4%B8%A4%E7%A7%8D%E7%94%BB%E5%9B%BE%E6%8E%A5%E5%8F%A3%E7%9A%84%E4%B8%8D%E5%90%8C/">[技术笔记]matplotlib两种画图接口的不同与其他常用知识</a>
       </h1>
 
@@ -243,6 +534,7 @@ plt.title() → ax
     
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
+        
         <a href="/2020/09/19/%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0-numpy%E5%85%A5%E9%97%A8/">[技术笔记]numpy入门</a>
       </h1>
 
@@ -297,6 +589,7 @@ array([[2, 3, 4],
     
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
+        
         <a href="/2020/09/17/%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0-pandas%E5%AD%A6%E4%B9%A0%E5%B0%8F%E7%AC%94%E8%AE%B02/">[技术笔记]pandas学习小笔记2</a>
       </h1>
 
@@ -347,6 +640,7 @@ array([[2, 3, 4],
     
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
+        
         <a href="/2020/09/16/%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0-Intermediate-ML%E7%9A%84%E4%B8%80%E4%BA%9B%E5%B0%8F%E6%8A%80%E5%B7%A7/">[技术笔记]Intermediate ML的一些小技巧</a>
       </h1>
 
@@ -398,6 +692,7 @@ from sklearn.model_selection import train_test_split 的参数：train_size = 0.
     
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
+        
         <a href="/2020/09/15/%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0-%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%88%9D%E8%AF%86/">[技术笔记]机器学习初识</a>
       </h1>
 
@@ -447,291 +742,13 @@ from sklearn.model_selection import train_test_split 的参数：train_size = 0.
     </article>
   </div>
 
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        <a href="/2020/09/09/%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0-%E5%BA%8F%E5%88%97%E7%9A%84%E4%B8%80%E4%BA%9B%E8%AF%AD%E6%B3%95%E7%B3%96/">[技术笔记]序列的一些用法</a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2020/09/09/%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0-%E5%BA%8F%E5%88%97%E7%9A%84%E4%B8%80%E4%BA%9B%E8%AF%AD%E6%B3%95%E7%B3%96/">
-          
-          
-            
-          
-          容器序列如list,tuple,collections.deque可以存放不同类型的数据，而扁平序列如str,bytes,array.array则只可以存放同一类型的数据。
-但是，容器序列存放的是它们所包含的对象的引用，扁平序列则存放值，是一段更加紧凑的内存空间。
-列表推导和生成器表达式列表推导式列表推导式是用来创建新列表的一个方法，通常能够对for循环、if条件语句等进行精简，是非常好用的语法糖
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2020-09-09 14:48" pubdate>
-              2020-09-09
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-category"></i>
-            
-              <a href="/categories/%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0/">技术笔记</a>
-            
-              <a href="/categories/%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0/python/">python</a>
-            
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/%E5%BA%8F%E5%88%97/">序列</a>
-            
-              <a href="/tags/%E8%AF%AD%E6%B3%95%E7%B3%96/">语法糖</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        <a href="/2020/09/09/%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0-Python%E6%95%B0%E6%8D%AE%E6%A8%A1%E5%9E%8B%E4%B9%8B%E9%AD%94%E6%9C%AF%E6%96%B9%E6%B3%95/">[技术笔记]Python数据模型</a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2020/09/09/%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0-Python%E6%95%B0%E6%8D%AE%E6%A8%A1%E5%9E%8B%E4%B9%8B%E9%AD%94%E6%9C%AF%E6%96%B9%E6%B3%95/">
-          
-          
-            
-          
-          参考代码：
-from  math import hypot
-
-class Vector:
-
-    def __init__(self, x=0, y=0):
-        self.x = x 
-        self.y = y
-
-    def __repr__(self):
-        return &#39;Vector(%r,%r)&#39; % (self.x, self.y
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2020-09-09 12:04" pubdate>
-              2020-09-09
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-category"></i>
-            
-              <a href="/categories/%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0/">技术笔记</a>
-            
-              <a href="/categories/%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0/python/">python</a>
-            
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/%E9%AD%94%E6%9C%AF%E6%96%B9%E6%B3%95/">魔术方法</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        <a href="/2020/09/07/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E9%9D%A2%E6%9D%BF%E6%95%B0%E6%8D%AE%E5%9B%9E%E5%BD%92%E6%A8%A1%E5%9E%8B/">[学习笔记]短面板数据回归模型</a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2020/09/07/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E9%9D%A2%E6%9D%BF%E6%95%B0%E6%8D%AE%E5%9B%9E%E5%BD%92%E6%A8%A1%E5%9E%8B/">
-          
-          
-            
-          
-          面板数据的分类面板数据的优势可以处理一些不可观测的遗漏变量——如果漏掉的变量不随时间变化，则面板数据可以帮助消除遗漏变量偏差。
-由上一篇笔记可知，由于各人/地/企业…各自存在一些属于自己的，影响因变量而不随时间变化的特征（异质性特征），横截面数据很难消除这些固定效应，因此选择面板数据回归模型进行处理。
-差分估计两期差分模型
-多期差分模型方法一：个体中心化方法处理固定效应
-其原理是针对同一样本，将其
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2020-09-07 20:23" pubdate>
-              2020-09-07
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-category"></i>
-            
-              <a href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</a>
-            
-              <a href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E8%AE%A1%E9%87%8F%E7%BB%8F%E6%B5%8E%E5%AD%A6/">计量经济学</a>
-            
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/%E9%9D%A2%E6%9D%BF%E6%95%B0%E6%8D%AE/">面板数据</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        <a href="/2020/09/07/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E8%B7%A8%E6%97%B6%E6%A8%AA%E6%88%AA%E9%9D%A2%E7%9A%84%E6%B7%B7%E5%90%88%EF%BC%9A%E7%AE%80%E5%8D%95%E9%9D%A2%E6%9D%BF%E6%95%B0%E6%8D%AE%E6%96%B9%E6%B3%95/">[学习笔记]跨时横截面的混合：简单面板数据方法</a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2020/09/07/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E8%B7%A8%E6%97%B6%E6%A8%AA%E6%88%AA%E9%9D%A2%E7%9A%84%E6%B7%B7%E5%90%88%EF%BC%9A%E7%AE%80%E5%8D%95%E9%9D%A2%E6%9D%BF%E6%95%B0%E6%8D%AE%E6%96%B9%E6%B3%95/">
-          
-          
-            
-          
-          跨时独立横截面的混合定义跨时独立混合横截面数据指的是在不同时点从一个大总体里进行随机抽样的结果，各个时期都是各自进行一次随机抽样，样本量可以不同，完全独立。这可能造成观测点不是同分布的。
-年度虚拟变量年度虚拟变量就是用来解决不同时间的观测点不是同分布问题的，即以最初一年为基年，后续几年分别设立一个虚拟变量，容许截距项甚至斜率（通过交互项）随时间的改变而改变。
-利用混合截面做政策分析当某些外生事件（
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2020-09-07 12:47" pubdate>
-              2020-09-07
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-category"></i>
-            
-              <a href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</a>
-            
-              <a href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E8%AE%A1%E9%87%8F%E7%BB%8F%E6%B5%8E%E5%AD%A6/">计量经济学</a>
-            
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/%E9%9D%A2%E6%9D%BF%E6%95%B0%E6%8D%AE/">面板数据</a>
-            
-              <a href="/tags/%E6%B7%B7%E5%90%88%E6%A8%AA%E6%88%AA%E9%9D%A2/">混合横截面</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        <a href="/2020/09/07/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E8%AE%A1%E9%87%8F%E5%B0%8F%E5%A4%8D%E4%B9%A0/">[学习笔记]计量小复习</a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2020/09/07/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E8%AE%A1%E9%87%8F%E5%B0%8F%E5%A4%8D%E4%B9%A0/">
-          
-          
-            
-          
-          1、方差膨胀因子（VIF）：测度某一自变量是否存在多重共线性，一般认为VIF&gt;10则存在较强的多重共线性，VIF&gt;100则存在严重的多重共线性。
-2、含ln的回归系数的解释：
-lny = alnx x变动1%，y变动a%
-lny = ax x变动1，y变动100a%
-y = alnx x变动1%，y变动a/100
-3、Wald Test注意点：在WT中，c(n)的n是从1开始的，不是从
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2020-09-07 08:25" pubdate>
-              2020-09-07
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-category"></i>
-            
-              <a href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</a>
-            
-              <a href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E8%AE%A1%E9%87%8F%E7%BB%8F%E6%B5%8E%E5%AD%A6/">计量经济学</a>
-            
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/%E8%AE%A1%E9%87%8F%E7%BB%8F%E6%B5%8E%E5%AD%A6/">计量经济学</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
 
 
   <nav aria-label="navigation">
     <span class="pagination" id="pagination">
-      <a class="extend prev" rel="prev" href="/"><i class="iconfont icon-arrowleft"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/3/"><i class="iconfont icon-arrowright"></i></a>
+      <a class="extend prev" rel="prev" href="/"><i class="iconfont icon-arrowleft"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/#board">3</a><a class="page-number" href="/page/4/#board">4</a><a class="page-number" href="/page/5/#board">5</a><a class="extend next" rel="next" href="/page/3/#board"><i class="iconfont icon-arrowright"></i></a>
     </span>
   </nav>
-  
-  <script>
-    for (ele of document.getElementById("pagination").getElementsByTagName("a")) {
-      ele.href += '#board';
-    }
-  </script>
 
 
 
@@ -741,16 +758,15 @@ y = alnx x变动1%，y变动a/100
         </div>
       </div>
     
-  </main>
 
-  
-    <a id="scroll-top-button" href="#" role="button">
-      <i class="iconfont icon-arrowup" aria-hidden="true"></i>
-    </a>
-  
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
 
-  
-    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
      aria-hidden="true">
   <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
     <div class="modal-content">
@@ -771,33 +787,41 @@ y = alnx x变动1%，y变动a/100
     </div>
   </div>
 </div>
-  
-
-  
-
-  
-
-  <footer class="mt-5">
-  <div class="text-center py-3">
-    <div>
-      <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a>
-      <i class="iconfont icon-love"></i>
-      <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener">
-        <span>Fluid</span></a>
-    </div>
     
 
     
+  </main>
 
-    
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
   </div>
+  
+
+  
+
+  
 </footer>
 
 <!-- SCRIPTS -->
-<script  src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js" ></script>
-<script  src="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/js/bootstrap.min.js" ></script>
+
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" ></script>
 <script  src="/js/debouncer.js" ></script>
-<script  src="/js/main.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
 
 <!-- Plugins -->
 
@@ -808,8 +832,7 @@ y = alnx x变动1%，y变动a/100
 
 
 
-  <script defer src="https://cdn.staticfile.org/clipboard.js/2.0.6/clipboard.min.js" ></script>
-  <script  src="/js/clipboard-use.js" ></script>
+  
 
 
 
@@ -819,36 +842,37 @@ y = alnx x变动1%，y变动a/100
 
 
 
-  <script  src="https://cdn.staticfile.org/typed.js/2.0.11/typed.min.js" ></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js" ></script>
+
+
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11/lib/typed.min.js" ></script>
   <script>
-    var typed = new Typed('#subtitle', {
-      strings: [
-        '  ',
-        "Now is better than never&nbsp;",
-      ],
-      cursorChar: "|",
-      typeSpeed: 60,
-      loop: false,
-    });
-    typed.stop();
-    $(document).ready(function () {
-      $(".typed-cursor").addClass("h2");
-      typed.start();
-    });
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
   </script>
-
-
 
 
 
   <script  src="/js/local-search.js" ></script>
   <script>
-    var path = "/local-search.xml";
-    var inputArea = document.querySelector("#local-search-input");
-    inputArea.onclick = function () {
-      searchFunc(path, 'local-search-input', 'local-search-result');
-      this.onclick = null
-    }
+    (function () {
+      var path = "/local-search.xml";
+      $('#local-search-input').on('click', function() {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      });
+      $('#modalSearch').on('shown.bs.modal', function() {
+        $('#local-search-input').focus();
+      });
+    })()
   </script>
 
 
@@ -865,10 +889,8 @@ y = alnx x变动1%，y变动a/100
 
 
 
-
-
-
-
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
 
 
 
