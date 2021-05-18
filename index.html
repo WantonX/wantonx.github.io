@@ -196,6 +196,270 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
+        <a href="/2021/05/02/%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0-%E5%AE%9E%E4%BE%8B%EF%BC%9A%E5%B0%86%E4%B8%8A%E5%B8%82%E5%85%AC%E5%8F%B8%E6%95%B0%E6%8D%AE%E5%90%88%E5%B9%B6/">[技术笔记]实例：将上市公司数据合并</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2021/05/02/%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0-%E5%AE%9E%E4%BE%8B%EF%BC%9A%E5%B0%86%E4%B8%8A%E5%B8%82%E5%85%AC%E5%8F%B8%E6%95%B0%E6%8D%AE%E5%90%88%E5%B9%B6/">
+          
+          
+            
+          
+          上市公司数据合并需求描述写论文需要2010-2020年间所有上市公司的资产总额、产权性质、营业收入增长率、ROA、公司规模、资产负债率、综合杠杆等数据，目前数据已通过CSMAR下载完毕。现存在的问题是：
+
+各项指标都是分割的，需要用python进行整合；
+部分指标存在缺失值，需要根据缺失值的具体情况判断是直接赋予一个NAN还是另行赋值；
+对异常值需进行winsorize处理（该部分可以在stata
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-05-02 08:59" pubdate>
+              2021-05-02
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0/">技术笔记</a>
+            
+              <a href="/categories/%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0/python/">python</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E6%95%B0%E6%8D%AE%E6%B8%85%E6%B4%97/">数据清洗</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/04/25/%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0-%E4%BD%BF%E7%94%A8%E9%87%8D%E9%87%87%E6%A0%B7%E5%B0%86%E6%9C%88%E5%BA%A6%E6%95%B0%E6%8D%AE%E6%94%B9%E4%B8%BA%E5%AD%A3%E5%BA%A6%E6%95%B0%E6%8D%AE/">[技术笔记]使用重采样将月度数据改为季度数据</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2021/04/25/%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0-%E4%BD%BF%E7%94%A8%E9%87%8D%E9%87%87%E6%A0%B7%E5%B0%86%E6%9C%88%E5%BA%A6%E6%95%B0%E6%8D%AE%E6%94%B9%E4%B8%BA%E5%AD%A3%E5%BA%A6%E6%95%B0%E6%8D%AE/">
+          
+          
+            
+          
+          使用重采样功能将月度数据改为季度数据需求描述在国家统计局下载了2010-2020年每个月的CPI数据，而我想得到CPI的季度数据，因此需要使用公式
+
+CPI_{Season}=CPI_{Month1}*CPI_{Month2}*CPI_{Month3}首先将三个月的数据改为季度数据再进行操作。
+功能实现Pandas对于时间序列数据有专门的优化和公式（如果我没记错的话，pandas的创始人就是搞金融
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-04-25 08:56" pubdate>
+              2021-04-25
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0/">技术笔记</a>
+            
+              <a href="/categories/%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0/python/">python</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E9%87%8D%E9%87%87%E6%A0%B7/">重采样</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/04/12/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1%E5%A4%8D%E4%B9%A0%EF%BC%88%E5%90%ABpdf%EF%BC%89/">[学习笔记]概率论与数理统计复习（含pdf）</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2021/04/12/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1%E5%A4%8D%E4%B9%A0%EF%BC%88%E5%90%ABpdf%EF%BC%89/">
+          
+          
+            
+          
+          终于学会了如何在hexo上传pdf，于是数学笔记可以以pdf形式上传了！这是属于懒惰党的胜利！（话说hexo这个静态体系太折磨了，各种问题+上传麻烦，等有空了考虑换个体系了。
+
+
+
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-04-12 22:31" pubdate>
+              2021-04-12
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</a>
+            
+              <a href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E6%95%B0%E5%AD%A6/">数学</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E6%A6%82%E7%8E%87%E8%AE%BA/">概率论</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/03/30/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E6%97%A0%E7%A9%B7%E7%BA%A7%E6%95%B0/">[学习笔记]无穷级数</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2021/03/30/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E6%97%A0%E7%A9%B7%E7%BA%A7%E6%95%B0/">
+          
+          
+            
+          
+          
+
+
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-03-30 14:51" pubdate>
+              2021-03-30
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</a>
+            
+              <a href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E6%95%B0%E5%AD%A6/">数学</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6/">高等数学</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/03/25/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E5%85%B3%E4%BA%8E%E6%96%B0%E5%8F%A4%E5%85%B8%E5%88%86%E9%85%8D%E7%90%86%E8%AE%BA%E5%92%8C%E6%9F%AF%E5%B8%83-%E9%81%93%E6%A0%BC%E6%8B%89%E6%96%AF%E5%87%BD%E6%95%B0%E7%9A%84%E4%B8%80%E7%82%B9%E6%80%9D%E8%80%83/">[学习笔记]关于新古典分配理论和柯布-道格拉斯函数的一点思考</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2021/03/25/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E5%85%B3%E4%BA%8E%E6%96%B0%E5%8F%A4%E5%85%B8%E5%88%86%E9%85%8D%E7%90%86%E8%AE%BA%E5%92%8C%E6%9F%AF%E5%B8%83-%E9%81%93%E6%A0%BC%E6%8B%89%E6%96%AF%E5%87%BD%E6%95%B0%E7%9A%84%E4%B8%80%E7%82%B9%E6%80%9D%E8%80%83/">
+          
+          
+            
+          
+          今天看了中宏的新古典分配理论，讲到国民收入会分配到劳动回报和资本回报这两项上，联想之前看到清华大学汪小涓教授讲的鲍莫尔定理：服务业的低效会拖慢整体经济的发展，因为这其中存在部门间的工资平均化。
+
+F(K,L)=MPL*L+MPK*K既然此处涉及到收入分配，我就在想是否可以用这个模型解释鲍莫尔定理。正思索着，就看到了柯布-道格拉斯函数：这是保罗·道格拉斯（Paul Douglas）与查尔斯·柯布（C
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-03-25 14:47" pubdate>
+              2021-03-25
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</a>
+            
+              <a href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E7%BB%8F%E6%B5%8E%E5%AD%A6/">经济学</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E6%9F%AF%E5%B8%83-%E9%81%93%E6%A0%BC%E6%8B%89%E6%96%AF%E5%87%BD%E6%95%B0/">柯布-道格拉斯函数</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
         <a href="/2021/03/20/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E5%A4%9A%E5%85%83%E5%87%BD%E6%95%B0%E5%BE%AE%E5%88%86%E5%AD%A6/">[学习笔记]多元函数微分学与二重积分</a>
       </h1>
 
@@ -449,255 +713,6 @@
               <a href="/tags/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6/">高等数学</a>
             
           </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2021/03/12/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E5%87%BD%E6%95%B0%E6%9E%81%E9%99%90%E5%8F%8A%E8%BF%9E%E7%BB%AD%E6%80%A7/">[学习笔记]函数极限及连续性</a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2021/03/12/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E5%87%BD%E6%95%B0%E6%9E%81%E9%99%90%E5%8F%8A%E8%BF%9E%E7%BB%AD%E6%80%A7/">
-          
-          
-            
-          
-          
-
-
-
-
-
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2021-03-12 16:36" pubdate>
-              2021-03-12
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-category"></i>
-            
-              <a href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</a>
-            
-              <a href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E6%95%B0%E5%AD%A6/">数学</a>
-            
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6/">高等数学</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2021/03/12/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E6%95%B0%E5%88%97%E6%9E%81%E9%99%90/">[学习笔记]数列极限</a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2021/03/12/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E6%95%B0%E5%88%97%E6%9E%81%E9%99%90/">
-          
-          
-            
-          
-          
-
-
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2021-03-12 16:36" pubdate>
-              2021-03-12
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-category"></i>
-            
-              <a href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</a>
-            
-              <a href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E6%95%B0%E5%AD%A6/">数学</a>
-            
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6/">高等数学</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2021/03/10/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E9%AB%98%E6%95%B0%E9%A2%84%E5%A4%87%E7%9F%A5%E8%AF%86/">[学习笔记]高数预备知识</a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2021/03/10/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E9%AB%98%E6%95%B0%E9%A2%84%E5%A4%87%E7%9F%A5%E8%AF%86/">
-          
-          
-            
-          
-          
-
-
-
-
-
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2021-03-10 09:34" pubdate>
-              2021-03-10
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-category"></i>
-            
-              <a href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</a>
-            
-              <a href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E6%95%B0%E5%AD%A6/">数学</a>
-            
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6/">高等数学</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2021/02/10/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E7%BE%8E%E8%B5%9B%E7%9A%84%E6%80%BB%E7%BB%93%E4%B8%8E%E6%84%9F%E6%83%B3%EF%BC%9A%E7%BB%A7%E7%BB%AD%E5%87%BA%E5%8F%91/">[学习笔记]美赛的总结与感想：继续出发</a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2021/02/10/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E7%BE%8E%E8%B5%9B%E7%9A%84%E6%80%BB%E7%BB%93%E4%B8%8E%E6%84%9F%E6%83%B3%EF%BC%9A%E7%BB%A7%E7%BB%AD%E5%87%BA%E5%8F%91/">
-          
-          
-            
-          
-          美赛后的一点总结2021年的美赛落下帷幕，基本也宣告本科的最后一次数学建模比赛也结束了（大四应该不会再参加了，除非是国赛想再弥补一下遗憾）。其实说来也挺无奈的，为了保研啥的，明明是个经济类专业，还要和数学、统计一类专业的大佬一起竞争数学建模的奖项。国赛因为准备不足，一度很失望，觉得确实比不过其他人，还好亚太赛拿了个二等奖，总算是找回了一些自信，觉得还有些努力的意义。
-不光是数学建模的比赛，创新创业
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2021-02-10 16:35" pubdate>
-              2021-02-10
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-category"></i>
-            
-              <a href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</a>
-            
-              <a href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1/">数学建模</a>
-            
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/%E7%BE%8E%E8%B5%9B/">美赛</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2020/10/30/%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0-SVM%E5%B8%B8%E7%94%A8%E6%A0%B8%E5%87%BD%E6%95%B0/">[技术笔记]SVM常用核函数</a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2020/10/30/%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0-SVM%E5%B8%B8%E7%94%A8%E6%A0%B8%E5%87%BD%E6%95%B0/">
-          
-          
-            
-          
-          本文转载于https://blog.csdn.net/yefcion/article/details/81099390
-SVM核函数的选择对于其性能的表现有至关重要的作用，尤其是针对线性不可分的数据。核函数的作用是，通过将空间内线性不可分的数据映射到一个高维的特征空间，使得数据在特征空间内是可分的（动画）。我们定义这种映射为 ϕ(x)，那么我们就可以把求解约束最优化问题变为
-minα−−&gt;1
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2020-10-30 09:20" pubdate>
-              2020-10-30
-            </time>
-          </div>
-        
-        
         
       </div>
     </article>

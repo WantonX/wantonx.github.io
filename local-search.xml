@@ -4,6 +4,141 @@
   
   
   <entry>
+    <title>[技术笔记]实例：将上市公司数据合并</title>
+    <link href="/2021/05/02/%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0-%E5%AE%9E%E4%BE%8B%EF%BC%9A%E5%B0%86%E4%B8%8A%E5%B8%82%E5%85%AC%E5%8F%B8%E6%95%B0%E6%8D%AE%E5%90%88%E5%B9%B6/"/>
+    <url>/2021/05/02/%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0-%E5%AE%9E%E4%BE%8B%EF%BC%9A%E5%B0%86%E4%B8%8A%E5%B8%82%E5%85%AC%E5%8F%B8%E6%95%B0%E6%8D%AE%E5%90%88%E5%B9%B6/</url>
+    
+    <content type="html"><![CDATA[<h2 id="上市公司数据合并"><a href="#上市公司数据合并" class="headerlink" title="上市公司数据合并"></a>上市公司数据合并</h2><h3 id="需求描述"><a href="#需求描述" class="headerlink" title="需求描述"></a>需求描述</h3><p>写论文需要2010-2020年间所有上市公司的资产总额、产权性质、营业收入增长率、ROA、公司规模、资产负债率、综合杠杆等数据，目前数据已通过CSMAR下载完毕。现存在的问题是：</p><ol><li>各项指标都是分割的，需要用python进行整合；</li><li>部分指标存在缺失值，需要根据缺失值的具体情况判断是直接赋予一个NAN还是另行赋值；</li><li>对异常值需进行winsorize处理（该部分可以在stata中完成，另议）；</li><li>需根据行业代码去除所有金融类上市公司；</li><li>根据公司名称去除ST、*ST等连续亏损公司。</li></ol><h3 id="功能实现"><a href="#功能实现" class="headerlink" title="功能实现"></a>功能实现</h3><p>话不多说，直接开始。</p><h4 id="合并工作"><a href="#合并工作" class="headerlink" title="合并工作"></a>合并工作</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> pandas <span class="hljs-keyword">as</span> pd<br><span class="hljs-comment">#首先将所有要合并的数据写入内存</span><br>fa = pd.read_excel(<span class="hljs-string">r'C:\Users\wanton\Desktop\论文写作\资产负债表\资产数据.xlsx'</span>)<br>equ = pd.read_excel(<span class="hljs-string">r'C:\Users\wanton\Desktop\论文写作\产权性质\equ.xlsx'</span>)<br>roa = pd.read_excel(<span class="hljs-string">r'C:\Users\wanton\Desktop\论文写作\ROA\ROA.xlsx'</span>)<br>growth = pd.read_excel(<span class="hljs-string">r'C:\Users\wanton\Desktop\论文写作\营业收入增长率\growth.xlsx'</span>)<br>lev = pd.read_excel(<span class="hljs-string">r'C:\Users\wanton\Desktop\论文写作\资产负债率\lev.xlsx'</span>)<br>leverage = pd.read_excel(<span class="hljs-string">r'C:\Users\wanton\Desktop\论文写作\综合杠杆\leverage.xlsx'</span>)<br><br><span class="hljs-comment">#先处理历史遗留问题，把fa里面的证券代码转成str</span><br>fa[<span class="hljs-string">'股票代码'</span>].fillna(method=<span class="hljs-string">'pad'</span>, inplace=<span class="hljs-literal">True</span>)<br>fa[<span class="hljs-string">'股票代码'</span>] = fa[<span class="hljs-string">'股票代码'</span>].astype(<span class="hljs-string">'int'</span>)<br>fa[<span class="hljs-string">'股票代码'</span>] = fa[<span class="hljs-string">'股票代码'</span>].astype(<span class="hljs-string">'str'</span>)<br><br><span class="hljs-comment">#使用merge函数，以股票代码和截止日期为主键将roa和fa合并，其他同理</span><br>roa[<span class="hljs-string">'股票代码'</span>] = roa[<span class="hljs-string">'股票代码'</span>].astype(<span class="hljs-string">'str'</span>)<br>x1 = pd.merge(fa,roa, on=[<span class="hljs-string">'股票代码'</span>,<span class="hljs-string">'截止日期'</span>], how=<span class="hljs-string">'inner'</span>)<br>growth[<span class="hljs-string">'股票代码'</span>] = growth[<span class="hljs-string">'股票代码'</span>].astype(<span class="hljs-string">'str'</span>)<br>x2 = pd.merge(x1,growth, how=<span class="hljs-string">'inner'</span>)<br>lev[<span class="hljs-string">'股票代码'</span>] = lev[<span class="hljs-string">'股票代码'</span>].astype(<span class="hljs-string">'str'</span>)<br>x3 = pd.merge(x2,lev, how=<span class="hljs-string">'inner'</span>)<br>leverage[<span class="hljs-string">'股票代码'</span>] = leverage[<span class="hljs-string">'股票代码'</span>].astype(<span class="hljs-string">'str'</span>)<br>x4 = pd.merge(x3,leverage, how=<span class="hljs-string">'inner'</span>)<br>x4.info() <span class="hljs-comment">#查看可得共有109530行，与上市公司数*季度数基本吻合，说明数据处理应该没有问题</span><br></code></pre></td></tr></table></figure><h4 id="一个小难点：产权性质的合并"><a href="#一个小难点：产权性质的合并" class="headerlink" title="一个小难点：产权性质的合并"></a>一个小难点：产权性质的合并</h4><p>下面要进行产权性质equ的合并，但问题是：CSMAR中获得的数据是每年12月31号的，需要将该数据扩充到3-31，6-30，9-30。并且产权性质不是不变的，就是因为其会改变，所以不能按照一对多的索引来用merge函数，必须将其扩充到一对一。</p><p>我想到的解决方法是：首先使用to_datetime将截止日期都改成年度时间格式，然后用重采样提高其频率至每一季度，其中使用pad()方法填充缺失值，理论上应该可以完成任务。</p><p>下面开始实践：</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs python">equ[<span class="hljs-string">'截至日期'</span>] = equ[<span class="hljs-string">'截至日期'</span>].str.split(<span class="hljs-string">'-'</span>).str.get(<span class="hljs-number">0</span>) <span class="hljs-comment">#按照‘-’拆分日期，保留得到的拆分数组中的第一个数（即年份）</span><br>equ[<span class="hljs-string">'截至日期'</span>] = pd.to_datetime(equ[<span class="hljs-string">'截止日期'</span>], format=<span class="hljs-string">'%Y'</span>) <span class="hljs-comment">#转换成datetime格式</span><br><br><span class="hljs-comment">#先对股权性质编码进行处理，去除缺失值，将（2，3）这样的多值改为单值并转化为int，再以虚拟变量形式赋值</span><br>equ[<span class="hljs-string">'股权性质编码'</span>]= equ[<span class="hljs-string">'股权性质编码'</span>].str.split(<span class="hljs-string">','</span>).str.get(<span class="hljs-number">0</span>)<br>equ = equ.dropna()<br>equ[<span class="hljs-string">'股权性质编码'</span>] = equ[<span class="hljs-string">'股权性质编码'</span>].astype(<span class="hljs-string">'int'</span>)<br>equ[<span class="hljs-string">'股权性质编码'</span>].map(<span class="hljs-keyword">lambda</span> x: <span class="hljs-number">1</span> <span class="hljs-keyword">if</span> x == <span class="hljs-number">1</span> <span class="hljs-keyword">else</span> <span class="hljs-number">0</span>)<br>equ[<span class="hljs-string">'股权性质编码'</span>] = equ[<span class="hljs-string">'股权性质编码'</span>].map(<span class="hljs-keyword">lambda</span> x: <span class="hljs-number">1</span> <span class="hljs-keyword">if</span> x == <span class="hljs-number">1</span> <span class="hljs-keyword">else</span> <span class="hljs-number">0</span>)<br></code></pre></td></tr></table></figure><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs python">equ.resample(<span class="hljs-string">'Q'</span>).pad()<br></code></pre></td></tr></table></figure><p>兴致冲冲使用了上述方法，结果报错：<strong>ValueError: cannot reindex a non-unique index with a method or limit</strong></p><p>网上查了一下，类似的错误其原因是：<strong>An index needs to be unique. Your first record and third record have the same date ‘5/1/2017’ which makes it is impossible to set the date column as a index column.</strong></p><p>就是说<strong>重采样中不能有相同的日期，每一个日期都应该是独一无二的</strong>，但在我的数据里，每一个公司为一个簇类，就有好多相同的值…心态崩了…得另作他法。</p><p>重新翻了翻python的书，想到了另一个方法：<strong>用时间序列的移动（shifting）方法来构造前3个月、6个月、9个月的数据。</strong>然后用concat将其拼接。</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs python">equ = equ.set_index(<span class="hljs-string">'截止日期'</span>)<br><span class="hljs-comment">#数据相同，但移动日期</span><br>equ9 = equ.shift(<span class="hljs-number">-3</span>, freq=<span class="hljs-string">'M'</span>)<br>equ6 = equ.shift(<span class="hljs-number">-6</span>, freq=<span class="hljs-string">'M'</span>)<br>equ3 = equ.shift(<span class="hljs-number">-9</span>, freq=<span class="hljs-string">'M'</span>)<br><span class="hljs-comment">#拼接</span><br>frame = pd.concat([equ3,equ6,equ9,equ], axis=<span class="hljs-number">0</span>)<br>frame = frame.reset_index()<br>frame[<span class="hljs-string">'截止日期'</span>] = frame[<span class="hljs-string">'截止日期'</span>].astype(<span class="hljs-string">'str'</span>)<br></code></pre></td></tr></table></figure><h4 id="最后一步：删除金融公司及亏损公司"><a href="#最后一步：删除金融公司及亏损公司" class="headerlink" title="最后一步：删除金融公司及亏损公司"></a>最后一步：删除金融公司及亏损公司</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs python">x5 = pd.merge(x4,frame, how=<span class="hljs-string">'inner'</span>)<br>x5 = x5[~x5[<span class="hljs-string">'证券简称'</span>].str.contains(<span class="hljs-string">'ST'</span>)]<br>x5 = x5[~x5[<span class="hljs-string">'行业代码'</span>].str.contains(<span class="hljs-string">'J'</span>)] <span class="hljs-comment">#按照证监会标准，金融类公司的代码是J66-69</span><br><span class="hljs-comment">#大功告成，输出文档！</span><br>x5.to_excel(<span class="hljs-string">r'C:\Users\wanton\Desktop\论文写作\处理过的数据（全）.xlsx'</span>)<br></code></pre></td></tr></table></figure><h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>上述过程中可能存在部分代码未列出，如有疑问请直接联系笔者。</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>技术笔记</category>
+      
+      <category>python</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>数据清洗</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>[技术笔记]使用重采样将月度数据改为季度数据</title>
+    <link href="/2021/04/25/%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0-%E4%BD%BF%E7%94%A8%E9%87%8D%E9%87%87%E6%A0%B7%E5%B0%86%E6%9C%88%E5%BA%A6%E6%95%B0%E6%8D%AE%E6%94%B9%E4%B8%BA%E5%AD%A3%E5%BA%A6%E6%95%B0%E6%8D%AE/"/>
+    <url>/2021/04/25/%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0-%E4%BD%BF%E7%94%A8%E9%87%8D%E9%87%87%E6%A0%B7%E5%B0%86%E6%9C%88%E5%BA%A6%E6%95%B0%E6%8D%AE%E6%94%B9%E4%B8%BA%E5%AD%A3%E5%BA%A6%E6%95%B0%E6%8D%AE/</url>
+    
+    <content type="html"><![CDATA[<h2 id="使用重采样功能将月度数据改为季度数据"><a href="#使用重采样功能将月度数据改为季度数据" class="headerlink" title="使用重采样功能将月度数据改为季度数据"></a>使用重采样功能将月度数据改为季度数据</h2><h3 id="需求描述"><a href="#需求描述" class="headerlink" title="需求描述"></a>需求描述</h3><p>在国家统计局下载了2010-2020年每个月的CPI数据，而我想得到CPI的季度数据，因此需要使用公式</p><script type="math/tex; mode=display">CPI_{Season}=CPI_{Month1}*CPI_{Month2}*CPI_{Month3}</script><p>首先将三个月的数据改为季度数据再进行操作。</p><h3 id="功能实现"><a href="#功能实现" class="headerlink" title="功能实现"></a>功能实现</h3><p>Pandas对于时间序列数据有专门的优化和公式（如果我没记错的话，pandas的创始人就是搞金融量化的），此处可以使用重采样函数<strong><em>resample()</em></strong>来实现不同频率间时间的转化。该函数类似与<strong><em>Groupby()</em></strong>，都是将一个DataFrame按照某种规律进行再分组，只不过重采样是特别针对时间的。</p><p>具体操作如下：</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> pandas <span class="hljs-keyword">as</span> pd<br>df = pd.read_csv(<span class="hljs-string">r'C:\Users\wanton\Desktop\论文写作\2010-2020CPI.xlsx'</span>)<br><span class="hljs-comment">#首先将日期列改为时间序列数据，再应用于resample函数</span><br>df[<span class="hljs-string">'Time'</span>] = pd.to_datetime(df[<span class="hljs-string">'Time'</span>])<br>df_new = df.resample(<span class="hljs-string">'Q'</span>, on=<span class="hljs-string">'Time'</span>).prod() <span class="hljs-comment">#应用于‘Time’列并改为连乘数据</span><br><span class="hljs-comment">#保存数据</span><br>df_new.to_excel(<span class="hljs-string">r'C:\Users\wanton\Desktop\论文写作\处理过的CPI.xlsx'</span>)<br></code></pre></td></tr></table></figure>]]></content>
+    
+    
+    <categories>
+      
+      <category>技术笔记</category>
+      
+      <category>python</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>重采样</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>[学习笔记]概率论与数理统计复习（含pdf）</title>
+    <link href="/2021/04/12/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1%E5%A4%8D%E4%B9%A0%EF%BC%88%E5%90%ABpdf%EF%BC%89/"/>
+    <url>/2021/04/12/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1%E5%A4%8D%E4%B9%A0%EF%BC%88%E5%90%ABpdf%EF%BC%89/</url>
+    
+    <content type="html"><![CDATA[<p>终于学会了如何在hexo上传pdf，于是数学笔记可以以pdf形式上传了！这是属于懒惰党的胜利！（话说hexo这个静态体系太折磨了，各种问题+上传麻烦，等有空了考虑换个体系了。</p><object data="./概率论与数理统计.pdf" type="application/pdf" width="100%" height="877px"></object>]]></content>
+    
+    
+    <categories>
+      
+      <category>学习笔记</category>
+      
+      <category>数学</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>概率论</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>[学习笔记]无穷级数</title>
+    <link href="/2021/03/30/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E6%97%A0%E7%A9%B7%E7%BA%A7%E6%95%B0/"/>
+    <url>/2021/03/30/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E6%97%A0%E7%A9%B7%E7%BA%A7%E6%95%B0/</url>
+    
+    <content type="html"><![CDATA[<p><img src="/2021/03/30/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E6%97%A0%E7%A9%B7%E7%BA%A7%E6%95%B0/1.jpg" srcset="/img/loading.gif" alt></p><p><img src="/2021/03/30/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E6%97%A0%E7%A9%B7%E7%BA%A7%E6%95%B0/2.jpg" srcset="/img/loading.gif" alt><br><img src="/2021/03/30/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E6%97%A0%E7%A9%B7%E7%BA%A7%E6%95%B0/3.jpg" srcset="/img/loading.gif" alt><br><img src="/2021/03/30/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E6%97%A0%E7%A9%B7%E7%BA%A7%E6%95%B0/4.jpg" srcset="/img/loading.gif" alt></p>]]></content>
+    
+    
+    <categories>
+      
+      <category>学习笔记</category>
+      
+      <category>数学</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>高等数学</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>[学习笔记]关于新古典分配理论和柯布-道格拉斯函数的一点思考</title>
+    <link href="/2021/03/25/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E5%85%B3%E4%BA%8E%E6%96%B0%E5%8F%A4%E5%85%B8%E5%88%86%E9%85%8D%E7%90%86%E8%AE%BA%E5%92%8C%E6%9F%AF%E5%B8%83-%E9%81%93%E6%A0%BC%E6%8B%89%E6%96%AF%E5%87%BD%E6%95%B0%E7%9A%84%E4%B8%80%E7%82%B9%E6%80%9D%E8%80%83/"/>
+    <url>/2021/03/25/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E5%85%B3%E4%BA%8E%E6%96%B0%E5%8F%A4%E5%85%B8%E5%88%86%E9%85%8D%E7%90%86%E8%AE%BA%E5%92%8C%E6%9F%AF%E5%B8%83-%E9%81%93%E6%A0%BC%E6%8B%89%E6%96%AF%E5%87%BD%E6%95%B0%E7%9A%84%E4%B8%80%E7%82%B9%E6%80%9D%E8%80%83/</url>
+    
+    <content type="html"><![CDATA[<p>今天看了中宏的新古典分配理论，讲到国民收入会分配到劳动回报和资本回报这两项上，联想之前看到清华大学汪小涓教授讲的鲍莫尔定理：服务业的低效会拖慢整体经济的发展，因为这其中存在部门间的工资平均化。</p><script type="math/tex; mode=display">F(K,L)=MPL*L+MPK*K</script><p>既然此处涉及到收入分配，我就在想是否可以用这个模型解释鲍莫尔定理。正思索着，就看到了柯布-道格拉斯函数：这是保罗·道格拉斯（Paul Douglas）与查尔斯·柯布（Charles Cobb）发现的一个事实，即从美国经济的实证研究上来看，<strong>国民收入在劳动力和资本间的分配在长时间内大体不变</strong>。从数学上来看是这样的：</p><script type="math/tex; mode=display">MPL*L=(1-\alpha)*Y\\MPK*K=\alpha*Y</script><p>与这两项生产要素的生产效率无关，只和一个参数alpha有关，所以常年来两者间的分配比例基本不变——一个分配到alpha%的收入，另一个分配到1-alpha%的收入。明明在以前的学习中经常看到k-b函数，却从来没有去深想为什么，为什么每年分配的比例都是固定的呢？为什么和劳动力、资本两者的生产效率毫无关系？直觉上讲肯定是哪个要素生产效率高，哪个要素能获得更多的回报。</p><p>现在好像有点明白了（虽然最终的逻辑推导仍然可能是错的），这不就是侧面体现了鲍莫尔定理吗——虽然劳动力的生产效率低，但其是必要的存在，所以要求生产效率高的资本给予劳动力一定的补偿，导致收入在两者间的分配比例基本不变。</p><p>到了大三下才感觉自己学的东西有点用，不是学了=不如电子厂上班了，知识间产生关联的感觉太好</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>学习笔记</category>
+      
+      <category>经济学</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>柯布-道格拉斯函数</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>[学习笔记]多元函数微分学与二重积分</title>
     <link href="/2021/03/20/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E5%A4%9A%E5%85%83%E5%87%BD%E6%95%B0%E5%BE%AE%E5%88%86%E5%AD%A6/"/>
     <url>/2021/03/20/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E5%A4%9A%E5%85%83%E5%87%BD%E6%95%B0%E5%BE%AE%E5%88%86%E5%AD%A6/</url>
